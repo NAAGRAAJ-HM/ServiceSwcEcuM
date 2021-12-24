@@ -13,7 +13,7 @@
 //#include "Gpt.h"
 //#include "Wdg.h"
 #include "WdgM.h"
-//#include "Adc.h"
+#include "Adc.h"
 //#include "Icu.h"
 //#include "Ocu.h"
 
@@ -35,7 +35,7 @@ static void DriverInitOne(void){
 //   Gpt.InitFunction(/*configuration abstract type*/);
 //   Wdg.InitFunction(/*configuration abstract type*/);
    WdgM.InitFunction(/*configuration abstract type*/);
-//   Adc.InitFunction(/*configuration abstract type*/);
+   Adc.InitFunction(/*configuration abstract type*/);
 //   Icu.InitFunction(/*configuration abstract type*/);
 //   Ocu.InitFunction(/*configuration abstract type*/);
 /*
