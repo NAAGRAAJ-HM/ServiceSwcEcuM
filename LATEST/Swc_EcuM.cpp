@@ -10,8 +10,8 @@
 #include "NvM.h"
 //#include "Mcu.h"
 //#include "Port.h"
-//#include "Gpt.h"
-//#include "Wdg.h"
+#include "Gpt.h"
+#include "Wdg.h"
 #include "WdgM.h"
 #include "Adc.h"
 //#include "Icu.h"
@@ -32,8 +32,8 @@ static void DriverInitZero(void){
 static void DriverInitOne(void){
 //   Mcu.InitFunction(/*configuration abstract type*/);
 //   Port.InitFunction(/*configuration abstract type*/);
-//   Gpt.InitFunction(/*configuration abstract type*/);
-//   Wdg.InitFunction(/*configuration abstract type*/);
+   Gpt.InitFunction(/*configuration abstract type*/);
+   Wdg.InitFunction(/*configuration abstract type*/);
    WdgM.InitFunction(/*configuration abstract type*/);
    Adc.InitFunction(/*configuration abstract type*/);
 //   Icu.InitFunction(/*configuration abstract type*/);
