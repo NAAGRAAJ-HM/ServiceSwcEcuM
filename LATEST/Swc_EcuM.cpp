@@ -8,7 +8,7 @@
 #include "Dem.h"
 //#include "Fls.h"
 #include "NvM.h"
-//#include "Mcu.h"
+#include "Mcu.h"
 //#include "Port.h"
 #include "Gpt.h"
 #include "Wdg.h"
@@ -30,7 +30,7 @@ static void DriverInitZero(void){
 }
 
 static void DriverInitOne(void){
-//   Mcu.InitFunction(/*configuration abstract type*/);
+   Mcu.InitFunction(/*configuration abstract type*/);
 //   Port.InitFunction(/*configuration abstract type*/);
    Gpt.InitFunction(/*configuration abstract type*/);
    Wdg.InitFunction(/*configuration abstract type*/);
