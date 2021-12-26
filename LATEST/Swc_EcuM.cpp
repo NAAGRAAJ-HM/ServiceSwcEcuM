@@ -39,21 +39,21 @@ static void DriverInitOne(void){
 //   Icu.InitFunction(/*configuration abstract type*/);
 //   Ocu.InitFunction(/*configuration abstract type*/);
 /*
-Can.InitFunction(configuration abstract type);
-CanTrcv.InitFunction(configuration abstract type);
-Com.InitFunction(configuration abstract type);
-Nm.InitFunction(configuration abstract type);
-Eth.InitFunction(configuration abstract type);
-EthSwt.InitFunction(configuration abstract type);
-EthTrcv.InitFunction(configuration abstract type);
-Fr.InitFunction(configuration abstract type);
-FrTrcv.InitFunction(configuration abstract type);
-IoAbHw.InitFunction(configuration abstract type);
-Lin.InitFunction(configuration abstract type);
-LinTrcv.InitFunction(configuration abstract type);
-Os.InitFunction(configuration abstract type);
-Pwm.InitFunction(configuration abstract type);
-Spi.InitFunction(configuration abstract type);
+   Can.InitFunction(configuration abstract type);
+   CanTrcv.InitFunction(configuration abstract type);
+   Com.InitFunction(configuration abstract type);
+   Nm.InitFunction(configuration abstract type);
+   Eth.InitFunction(configuration abstract type);
+   EthSwt.InitFunction(configuration abstract type);
+   EthTrcv.InitFunction(configuration abstract type);
+   Fr.InitFunction(configuration abstract type);
+   FrTrcv.InitFunction(configuration abstract type);
+   IoAbHw.InitFunction(configuration abstract type);
+   Lin.InitFunction(configuration abstract type);
+   LinTrcv.InitFunction(configuration abstract type);
+   Os.InitFunction(configuration abstract type);
+   Pwm.InitFunction(configuration abstract type);
+   Spi.InitFunction(configuration abstract type);
 */
 }
 
