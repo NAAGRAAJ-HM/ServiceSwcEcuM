@@ -17,6 +17,13 @@
 #include "Icu.h"
 #include "Ocu.h"
 
+#include "Can.h"
+#include "Eth.h"
+#include "Fr.h"
+#include "Lin.h"
+#include "Pwm.h"
+#include "Spi.h"
+
 class_Swc_EcuM Swc_EcuM;
 
 static void SetProgrammableInterrupts(void){
