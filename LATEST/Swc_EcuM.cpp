@@ -26,17 +26,17 @@
 
 class_Swc_EcuM Swc_EcuM;
 
-static void SetProgrammableInterrupts(void){
+static FUNC(void, SWC_ECUM_CODE) SetProgrammableInterrupts(void){
 }
 
-static void DriverInitZero(void){
+static FUNC(void, SWC_ECUM_CODE) DriverInitZero(void){
    Det.InitFunction(/*configuration abstract type*/);
    Dem.InitFunction(/*configuration abstract type*/);
    Fls.InitFunction(/*configuration abstract type*/);
    NvM.InitFunction(/*configuration abstract type*/);
 }
 
-static void DriverInitOne(void){
+static FUNC(void, SWC_ECUM_CODE) DriverInitOne(void){
    Mcu.InitFunction(/*configuration abstract type*/);
    Port.InitFunction(/*configuration abstract type*/);
    Gpt.InitFunction(/*configuration abstract type*/);
@@ -65,19 +65,19 @@ static void DriverInitOne(void){
 */
 }
 
-static void OnGoOffOne(void){
+static FUNC(void, SWC_ECUM_CODE) OnGoOffOne(void){
 }
 
-static void OnGoOffTwo(void){
+static FUNC(void, SWC_ECUM_CODE) OnGoOffTwo(void){
 }
 
-static void Reset(void){
+static FUNC(void, SWC_ECUM_CODE) Reset(void){
 }
 
-static void SwitchOff(void){
+static FUNC(void, SWC_ECUM_CODE) SwitchOff(void){
 }
 
-void class_Swc_EcuM::StartPreOs(void){
+FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::StartPreOs(void){
    SetProgrammableInterrupts();
    DriverInitZero();
    EcuM.DeterminePbConfiguration();
@@ -92,14 +92,14 @@ void class_Swc_EcuM::StartPreOs(void){
    EcuM.LoopDetection();
 }
 
-void class_Swc_EcuM::StartPostOs(void){
+FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::StartPostOs(void){
    SchM.Start();
    BswM.InitFunction(/*TBD: configuration*/);
    SchM.InitFunction(/*TBD: configuration*/);
    SchM.StartTiming();
 }
 
-void class_Swc_EcuM::OffPreOs(void){
+FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::OffPreOs(void){
    OnGoOffOne();
    BswM.DeInitFunction();
    SchM.DeInitFunction();
@@ -109,22 +109,22 @@ void class_Swc_EcuM::OffPreOs(void){
    }
 }
 
-void class_Swc_EcuM::OffPostOs(void){
+FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::OffPostOs(void){
    OnGoOffTwo();
    Reset();
    SwitchOff();
 }
 
-void class_Swc_EcuM::EnableWakeupSources(void){
+FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::EnableWakeupSources(void){
 }
 
-void class_Swc_EcuM::GenerateRamHash(void){
+FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::GenerateRamHash(void){
 }
 
-void class_Swc_EcuM::CheckRamHash(void){
+FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::CheckRamHash(void){
 }
 
-void class_Swc_EcuM::ErrorHook(void){
+FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::ErrorHook(void){
 }
 
 // Go to sleep sequence
