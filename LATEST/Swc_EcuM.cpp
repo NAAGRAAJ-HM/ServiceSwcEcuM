@@ -67,36 +67,36 @@ static FUNC(void, SWC_ECUM_CODE) SetProgrammableInterrupts(void){
 static FUNC(void, SWC_ECUM_CODE) DriverInitZero(void){
    Det.InitFunction(/*configuration abstract type*/);
    Dem.InitFunction(/*configuration abstract type*/);
-   Fls_EcuM_ptr->InitFunction(/*configuration abstract type*/);
+   EcuM_Client_ptr_Fls->InitFunction(/*configuration abstract type*/);
    NvM.InitFunction(/*configuration abstract type*/);
 }
 
 static FUNC(void, SWC_ECUM_CODE) DriverInitOne(void){
-   Mcu_EcuM_ptr->InitFunction(/*configuration abstract type*/);
-   Port_EcuM_ptr->InitFunction(/*configuration abstract type*/);
-   Gpt_EcuM_ptr->InitFunction(/*configuration abstract type*/);
-   Wdg_EcuM_ptr->InitFunction(/*configuration abstract type*/);
+   EcuM_Client_ptr_Mcu->InitFunction(/*configuration abstract type*/);
+   EcuM_Client_ptr_Port->InitFunction(/*configuration abstract type*/);
+   EcuM_Client_ptr_Gpt->InitFunction(/*configuration abstract type*/);
+   EcuM_Client_ptr_Wdg->InitFunction(/*configuration abstract type*/);
    WdgM.InitFunction(/*configuration abstract type*/);
-   Adc_EcuM_ptr->InitFunction(/*configuration abstract type*/);
-   Icu_EcuM_ptr->InitFunction(/*configuration abstract type*/);
-   Ocu_EcuM_ptr->InitFunction(/*configuration abstract type*/);
+   EcuM_Client_ptr_Adc->InitFunction(/*configuration abstract type*/);
+   EcuM_Client_ptr_Icu->InitFunction(/*configuration abstract type*/);
+   EcuM_Client_ptr_Ocu->InitFunction(/*configuration abstract type*/);
 
-   Can_EcuM_ptr->InitFunction(/*configuration abstract type*/);
-   Eth_EcuM_ptr->InitFunction(/*configuration abstract type*/);
-   Fr_EcuM_ptr->InitFunction(/*configuration abstract type*/);
-   Lin_EcuM_ptr->InitFunction(/*configuration abstract type*/);
-   Pwm_EcuM_ptr->InitFunction(/*configuration abstract type*/);
-   Spi_EcuM_ptr->InitFunction(/*configuration abstract type*/);
+   EcuM_Client_ptr_Can->InitFunction(/*configuration abstract type*/);
+   EcuM_Client_ptr_Eth->InitFunction(/*configuration abstract type*/);
+   EcuM_Client_ptr_Fr->InitFunction(/*configuration abstract type*/);
+   EcuM_Client_ptr_Lin->InitFunction(/*configuration abstract type*/);
+   EcuM_Client_ptr_Pwm->InitFunction(/*configuration abstract type*/);
+   EcuM_Client_ptr_Spi->InitFunction(/*configuration abstract type*/);
 /*
-   CanTrcv_EcuM_ptr->InitFunction(configuration abstract type);
-   Com_EcuM_ptr->InitFunction(configuration abstract type);
-   Nm_EcuM_ptr->InitFunction(configuration abstract type);
-   EthSwt_EcuM_ptr->InitFunction(configuration abstract type);
-   EthTrcv_EcuM_ptr->InitFunction(configuration abstract type);
-   FrTrcv_EcuM_ptr->InitFunction(configuration abstract type);
-   IoAbHw_EcuM_ptr->InitFunction(configuration abstract type);
-   LinTrcv_EcuM_ptr->InitFunction(configuration abstract type);
-   Os_EcuM_ptr->InitFunction(configuration abstract type);
+   EcuM_Client_ptr_CanTrcv->InitFunction(configuration abstract type);
+   EcuM_Client_ptr_Com->InitFunction(configuration abstract type);
+   EcuM_Client_ptr_Nm->InitFunction(configuration abstract type);
+   EcuM_Client_ptr_EthSwt->InitFunction(configuration abstract type);
+   EcuM_Client_ptr_EthTrcv->InitFunction(configuration abstract type);
+   EcuM_Client_ptr_FrTrcv->InitFunction(configuration abstract type);
+   EcuM_Client_ptr_IoAbHw->InitFunction(configuration abstract type);
+   EcuM_Client_ptr_LinTrcv->InitFunction(configuration abstract type);
+   EcuM_Client_ptr_Os->InitFunction(configuration abstract type);
 */
 }
 
