@@ -24,7 +24,8 @@ class class_EcuM_Client{
 /*****************************************************/
 /* FUNCTIONS                                         */
 /*****************************************************/
-      virtual void InitFunction(void) = 0;
+      virtual void InitFunction   (void) = 0;
+      virtual void DeInitFunction (void);
 };
 
 /*****************************************************/

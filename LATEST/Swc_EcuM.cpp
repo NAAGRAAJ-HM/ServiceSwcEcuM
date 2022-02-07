@@ -15,9 +15,10 @@
 #include "EcuM_Client.h"
 
 #include "Adc_EcuM.h"
+#include "BswM_EcuM.h"
 #include "Can_EcuM.h"
-#include "Dem.h"
-#include "Det.h"
+#include "Dem_EcuM.h"
+#include "Det_EcuM.h"
 #include "Eth_EcuM.h"
 #include "Fls_EcuM.h"
 #include "Fr_EcuM.h"
@@ -25,13 +26,14 @@
 #include "Icu_EcuM.h"
 #include "Lin_EcuM.h"
 #include "Mcu_EcuM.h"
-#include "NvM.h"
+#include "NvM_EcuM.h"
 #include "Ocu_EcuM.h"
 #include "Port_EcuM.h"
 #include "Pwm_EcuM.h"
+#include "SchM_EcuM.h"
 #include "Spi_EcuM.h"
 #include "Wdg_EcuM.h"
-#include "WdgM.h"
+#include "WdgM_EcuM.h"
 
 /*****************************************************/
 /* #DEFINES                                          */
@@ -65,10 +67,10 @@ static FUNC(void, SWC_ECUM_CODE) SetProgrammableInterrupts(void){
 }
 
 static FUNC(void, SWC_ECUM_CODE) DriverInitZero(void){
-   Det.InitFunction(/*configuration abstract type*/);
-   Dem.InitFunction(/*configuration abstract type*/);
+   EcuM_Client_ptr_Det->InitFunction(/*configuration abstract type*/);
+   EcuM_Client_ptr_Dem->InitFunction(/*configuration abstract type*/);
    EcuM_Client_ptr_Fls->InitFunction(/*configuration abstract type*/);
-   NvM.InitFunction(/*configuration abstract type*/);
+   EcuM_Client_ptr_NvM->InitFunction(/*configuration abstract type*/);
 }
 
 static FUNC(void, SWC_ECUM_CODE) DriverInitOne(void){
@@ -76,7 +78,7 @@ static FUNC(void, SWC_ECUM_CODE) DriverInitOne(void){
    EcuM_Client_ptr_Port->InitFunction(/*configuration abstract type*/);
    EcuM_Client_ptr_Gpt->InitFunction(/*configuration abstract type*/);
    EcuM_Client_ptr_Wdg->InitFunction(/*configuration abstract type*/);
-   WdgM.InitFunction(/*configuration abstract type*/);
+   EcuM_Client_ptr_WdgM->InitFunction(/*configuration abstract type*/);
    EcuM_Client_ptr_Adc->InitFunction(/*configuration abstract type*/);
    EcuM_Client_ptr_Icu->InitFunction(/*configuration abstract type*/);
    EcuM_Client_ptr_Ocu->InitFunction(/*configuration abstract type*/);
@@ -129,15 +131,15 @@ FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::StartPreOs(void){
 
 FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::StartPostOs(void){
    SchM.Start();
-   BswM.InitFunction(/*TBD: configuration*/);
-   SchM.InitFunction(/*TBD: configuration*/);
+   EcuM_Client_ptr_BswM->InitFunction(/*TBD: configuration*/);
+   EcuM_Client_ptr_SchM->InitFunction(/*TBD: configuration*/);
    SchM.StartTiming();
 }
 
 FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::OffPreOs(void){
    OnGoOffOne();
-   BswM.DeInitFunction();
-   SchM.DeInitFunction();
+   EcuM_Client_ptr_BswM->DeInitFunction();
+   EcuM_Client_ptr_SchM->DeInitFunction();
 
    if(EcuM.GetPendingWakeupEvents()){
       EcuM.SelectShutdownTarget();
