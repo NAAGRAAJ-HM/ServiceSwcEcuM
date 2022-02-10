@@ -19,13 +19,13 @@
 /*****************************************************/
 /* TYPEDEFS                                          */
 /*****************************************************/
-class class_EcuM_Client{
+class interface_EcuM_Client{
    public:
 /*****************************************************/
 /* FUNCTIONS                                         */
 /*****************************************************/
       virtual void InitFunction   (void) = 0;
-      virtual void DeInitFunction (void);
+      virtual void DeInitFunction (void) = 0;
 };
 
 /*****************************************************/
