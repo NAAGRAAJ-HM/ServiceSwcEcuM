@@ -1,14 +1,15 @@
 #pragma once
 /*****************************************************/
-/* File   : Swc_EcuM_Unused.h                        */
+/* File   : Swc_EcuM.h                               */
 /* Author : Naagraaj HM                              */
 /*****************************************************/
 
 /*****************************************************/
 /* #INCLUDES                                         */
 /*****************************************************/
-#include "Std_Types.h"
-#include "Compiler_Cfg_Swc_EcuM.h"
+#include "Compiler_Cfg_EcuM.h"
+
+#include "EcuM_Client.h"
 
 /*****************************************************/
 /* #DEFINES                                          */
@@ -21,19 +22,15 @@
 /*****************************************************/
 /* TYPEDEFS                                          */
 /*****************************************************/
-class class_Swc_EcuM_Unused{
+class interface_Swc_EcuM : public interface_EcuM_Client{
    public:
 /*****************************************************/
 /* FUNCTIONS                                         */
 /*****************************************************/
-      FUNC(void, SWC_ECUM_CODE) StartPreOs             (void);
-      FUNC(void, SWC_ECUM_CODE) StartPostOs            (void);
-      FUNC(void, SWC_ECUM_CODE) OffPreOs               (void);
-      FUNC(void, SWC_ECUM_CODE) OffPostOs              (void);
-      FUNC(void, SWC_ECUM_CODE) EnableWakeupSources    (void);
-      FUNC(void, SWC_ECUM_CODE) GenerateRamHash        (void);
-      FUNC(void, SWC_ECUM_CODE) CheckRamHash           (void);
-      FUNC(void, SWC_ECUM_CODE) ErrorHook              (void);
+      FUNC(void, ECUM_CODE) InitFunction   (void);
+      FUNC(void, ECUM_CODE) DeInitFunction (void);
+      FUNC(void, ECUM_CODE) StartPreOs     (void);
+      FUNC(void, ECUM_CODE) StartPostOs    (void);
 };
 
 /*****************************************************/
@@ -47,7 +44,7 @@ class class_Swc_EcuM_Unused{
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-//extern class_Swc_EcuM Swc_EcuM;
+extern interface_Swc_EcuM *EcuM_Client_ptr_Swc_EcuM;
 
 /*****************************************************/
 /* EOF                                               */

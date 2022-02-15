@@ -8,7 +8,7 @@
 /*****************************************************/
 #include "EcuM.h"
 
-#include "Swc_EcuM.h"
+#include "Swc_EcuM_Unused.h"
 #include "SchM.h"
 #include "BswM.h"
 
@@ -46,6 +46,18 @@
 /*****************************************************/
 /* TYPEDEFS                                          */
 /*****************************************************/
+class module_Swc_EcuM:
+      public class_module
+   ,  public interface_Swc_EcuM
+{
+   public:
+      FUNC(void, ECUM_CODE) InitFunction   (void);
+      FUNC(void, ECUM_CODE) DeInitFunction (void);
+      FUNC(void, ECUM_CODE) MainFunction   (void);
+      FUNC(void, ECUM_CODE) StartPreOs     (void);
+      FUNC(void, ECUM_CODE) StartPostOs    (void);
+};
+
 
 /*****************************************************/
 /* CONSTS                                            */
@@ -58,7 +70,10 @@
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-class_Swc_EcuM Swc_EcuM;
+module_Swc_EcuM Swc_EcuM;
+
+interface_EcuM_Client *EcuM_Client_ptr_Swc_EcuM = &Swc_EcuM;
+interface_SchM_Client *SchM_Client_ptr_Swc_EcuM = &Swc_EcuM;
 
 /*****************************************************/
 /* FUNCTIONS                                         */
@@ -114,7 +129,17 @@ static FUNC(void, SWC_ECUM_CODE) Reset(void){
 static FUNC(void, SWC_ECUM_CODE) SwitchOff(void){
 }
 
-FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::StartPreOs(void){
+FUNC(void, ECUM_CODE) module_Swc_EcuM::InitFunction(void){
+}
+
+FUNC(void, ECUM_CODE) module_Swc_EcuM::DeInitFunction(void){
+}
+
+FUNC(void, ECUM_CODE) module_Swc_EcuM::MainFunction(void){
+//TBD MainFunctionRx, MainFunctionTx
+}
+
+FUNC(void, SWC_ECUM_CODE) module_Swc_EcuM::StartPreOs(void){
    SetProgrammableInterrupts();
    DriverInitZero();
    EcuM.DeterminePbConfiguration();
