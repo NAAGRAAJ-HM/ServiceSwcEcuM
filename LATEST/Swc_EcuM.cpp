@@ -6,11 +6,11 @@
 /*****************************************************/
 /* #INCLUDES                                         */
 /*****************************************************/
-#include "EcuM.h"
+#include "module.h"
 
 #include "Swc_EcuM_Unused.h"
-#include "SchM.h"
-#include "BswM.h"
+//#include "SchM.h"
+//#include "BswM.h"
 
 #include "EcuM_Client.h"
 

@@ -31,6 +31,8 @@ class interface_Swc_EcuM : public interface_EcuM_Client{
       FUNC(void, ECUM_CODE) DeInitFunction (void);
       FUNC(void, ECUM_CODE) StartPreOs     (void);
       FUNC(void, ECUM_CODE) StartPostOs    (void);
+      FUNC(void, ECUM_CODE) OffPreOs       (void);
+      FUNC(void, ECUM_CODE) OffPostOs      (void);
 };
 
 /*****************************************************/
