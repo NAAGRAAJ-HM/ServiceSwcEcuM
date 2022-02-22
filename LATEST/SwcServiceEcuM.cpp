@@ -1,5 +1,5 @@
 /*****************************************************/
-/* File   : Swc_EcuM.cpp                             */
+/* File   : SwcServiceEcuM.cpp                       */
 /* Author : Naagraaj HM                              */
 /*****************************************************/
 
@@ -7,10 +7,9 @@
 /* #INCLUDES                                         */
 /*****************************************************/
 #include "module.h"
-
-#include "Swc_EcuM_Unused.h"
-//#include "SchM.h"
-//#include "BswM.h"
+#include "SwcServiceEcuM_EcuM.h"
+#include "SwcServiceEcuM_SchM.h"
+#include "SwcServiceEcuM_Unused.h"
 
 #include "EcuM_Client.h"
 
@@ -46,9 +45,10 @@
 /*****************************************************/
 /* TYPEDEFS                                          */
 /*****************************************************/
-class module_Swc_EcuM:
-      public class_module
-   ,  public interface_Swc_EcuM
+class module_SwcServiceEcuM:
+      public abstract_module
+   ,  public interface_SwcServiceEcuM_EcuM
+   ,  public interface_SwcServiceEcuM_SchM
 {
    public:
       FUNC(void, ECUM_CODE) InitFunction   (void);
@@ -57,7 +57,6 @@ class module_Swc_EcuM:
       FUNC(void, ECUM_CODE) StartPreOs     (void);
       FUNC(void, ECUM_CODE) StartPostOs    (void);
 };
-
 
 /*****************************************************/
 /* CONSTS                                            */
@@ -70,10 +69,10 @@ class module_Swc_EcuM:
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-module_Swc_EcuM Swc_EcuM;
+module_SwcServiceEcuM SwcServiceEcuM;
 
-interface_EcuM_Client *EcuM_Client_ptr_Swc_EcuM = &Swc_EcuM;
-interface_SchM_Client *SchM_Client_ptr_Swc_EcuM = &Swc_EcuM;
+interface_SwcServiceEcuM_EcuM *EcuM_Client_ptr_SwcServiceEcuM = &SwcServiceEcuM;
+interface_SwcServiceEcuM_SchM *SchM_Client_ptr_SwcServiceEcuM = &SwcServiceEcuM;
 
 /*****************************************************/
 /* FUNCTIONS                                         */
@@ -136,7 +135,6 @@ FUNC(void, ECUM_CODE) module_Swc_EcuM::DeInitFunction(void){
 }
 
 FUNC(void, ECUM_CODE) module_Swc_EcuM::MainFunction(void){
-//TBD MainFunctionRx, MainFunctionTx
 }
 
 FUNC(void, SWC_ECUM_CODE) module_Swc_EcuM::StartPreOs(void){

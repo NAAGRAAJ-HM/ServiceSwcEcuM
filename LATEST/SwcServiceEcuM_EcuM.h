@@ -1,6 +1,6 @@
 #pragma once
 /*****************************************************/
-/* File   : Swc_EcuM.h                               */
+/* File   : SwcServiceEcuM_EcuM.h                    */
 /* Author : Naagraaj HM                              */
 /*****************************************************/
 
@@ -22,7 +22,7 @@
 /*****************************************************/
 /* TYPEDEFS                                          */
 /*****************************************************/
-class interface_Swc_EcuM : public interface_EcuM_Client{
+class interface_SwcServiceEcuM_EcuM : public interface_EcuM_Client{
    public:
 /*****************************************************/
 /* FUNCTIONS                                         */
@@ -46,7 +46,7 @@ class interface_Swc_EcuM : public interface_EcuM_Client{
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-extern interface_Swc_EcuM *EcuM_Client_ptr_Swc_EcuM;
+extern interface_SwcServiceEcuM_EcuM *EcuM_Client_ptr_Swc_EcuM;
 
 /*****************************************************/
 /* EOF                                               */
