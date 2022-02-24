@@ -4,9 +4,57 @@ add_library(
 )
 
 include_directories(
-   ../../BswAUTOSAR_Service_SchM/LATEST
    ../../common/LATEST
    ../../common/LATEST/Compiler_Abstraction_GNU/LATEST
+   ../../BswAUTOSAR_Service_EcuM/LATEST
+   ../../BswAUTOSAR_EcuAb_CanIf/LATEST
+   ../../BswAUTOSAR_EcuAb_CryIf/LATEST
+   ../../BswAUTOSAR_EcuAb_Ea/LATEST
+   ../../BswAUTOSAR_EcuAb_EthIf/LATEST
+   ../../BswAUTOSAR_EcuAb_Fee/LATEST
+   ../../BswAUTOSAR_EcuAb_FrIf/LATEST
+   ../../BswAUTOSAR_EcuAb_LinIf/LATEST
+   ../../BswAUTOSAR_EcuAb_LinTp/LATEST
+   ../../BswAUTOSAR_EcuAb_MemIf/LATEST
+   ../../BswAUTOSAR_EcuAb_WdgIf/LATEST
+   ../../BswAUTOSAR_McAL_Adc/LATEST
+   ../../BswAUTOSAR_McAL_Can/LATEST
+   ../../BswAUTOSAR_McAL_Cry/LATEST
+   ../../BswAUTOSAR_McAL_Dio/LATEST
+   ../../BswAUTOSAR_McAL_Eep/LATEST
+   ../../BswAUTOSAR_McAL_Eth/LATEST
+   ../../BswAUTOSAR_McAL_Fls/LATEST
+   ../../BswAUTOSAR_McAL_Fr/LATEST
+   ../../BswAUTOSAR_McAL_Gpt/LATEST
+   ../../BswAUTOSAR_McAL_Icu/LATEST
+   ../../BswAUTOSAR_McAL_Lin/LATEST
+   ../../BswAUTOSAR_McAL_Mcu/LATEST
+   ../../BswAUTOSAR_McAL_Ocu/LATEST
+   ../../BswAUTOSAR_McAL_Port/LATEST
+   ../../BswAUTOSAR_McAL_Pwm/LATEST
+   ../../BswAUTOSAR_McAL_Spi/LATEST
+   ../../BswAUTOSAR_McAL_Wdg/LATEST
+   ../../BswAUTOSAR_Service_BswM/LATEST
+   ../../BswAUTOSAR_Service_Com/LATEST
+   ../../BswAUTOSAR_Service_ComM/LATEST
+   ../../BswAUTOSAR_Service_Csm/LATEST
+   ../../BswAUTOSAR_Service_Dcm/LATEST
+   ../../BswAUTOSAR_Service_Dem/LATEST
+   ../../BswAUTOSAR_Service_Det/LATEST
+   ../../BswAUTOSAR_Service_FiM/LATEST
+   ../../BswAUTOSAR_Service_Nm/LATEST
+   ../../BswAUTOSAR_Service_NvM/LATEST
+   ../../BswAUTOSAR_Service_Os/LATEST
+   ../../BswAUTOSAR_Service_PduR/LATEST
+   ../../BswAUTOSAR_Service_SchM/LATEST
+   ../../BswAUTOSAR_Service_SecOC/LATEST
+   ../../BswAUTOSAR_Service_SokFm/LATEST
+   ../../BswAUTOSAR_Service_StartUp/LATEST
+   ../../BswAUTOSAR_Service_StbM/LATEST
+   ../../BswAUTOSAR_Service_Vkms/LATEST
+   ../../BswAUTOSAR_Service_WdgM/LATEST
+   ../../Rte/LATEST
+   ../../SwcApplFoc/LATEST
    ../../SwcServiceEcuM/LATEST
    ../../SwcServiceOs/LATEST
 )

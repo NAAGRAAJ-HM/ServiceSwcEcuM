@@ -34,6 +34,8 @@
 #include "Wdg_EcuM.h"
 #include "WdgM_EcuM.h"
 
+#include "EcuM_SwcServiceEcuM.h"
+
 /*****************************************************/
 /* #DEFINES                                          */
 /*****************************************************/
@@ -51,11 +53,11 @@ class module_SwcServiceEcuM:
    ,  public interface_SwcServiceEcuM_SchM
 {
    public:
-      FUNC(void, ECUM_CODE) InitFunction   (void);
-      FUNC(void, ECUM_CODE) DeInitFunction (void);
-      FUNC(void, ECUM_CODE) MainFunction   (void);
-      FUNC(void, ECUM_CODE) StartPreOs     (void);
-      FUNC(void, ECUM_CODE) StartPostOs    (void);
+      FUNC(void, SWCSERVICEECUM_CODE) InitFunction   (void);
+      FUNC(void, SWCSERVICEECUM_CODE) DeInitFunction (void);
+      FUNC(void, SWCSERVICEECUM_CODE) MainFunction   (void);
+      FUNC(void, SWCSERVICEECUM_CODE) StartPreOs     (void);
+      FUNC(void, SWCSERVICEECUM_CODE) StartPostOs    (void);
 };
 
 /*****************************************************/
@@ -77,17 +79,17 @@ interface_SwcServiceEcuM_SchM *SchM_Client_ptr_SwcServiceEcuM = &SwcServiceEcuM;
 /*****************************************************/
 /* FUNCTIONS                                         */
 /*****************************************************/
-static FUNC(void, SWC_ECUM_CODE) SetProgrammableInterrupts(void){
+static FUNC(void, SWCSERVICEECUM_CODE) SetProgrammableInterrupts(void){
 }
 
-static FUNC(void, SWC_ECUM_CODE) DriverInitZero(void){
+static FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero(void){
    EcuM_Client_ptr_Det->InitFunction(/*configuration abstract type*/);
    EcuM_Client_ptr_Dem->InitFunction(/*configuration abstract type*/);
    EcuM_Client_ptr_Fls->InitFunction(/*configuration abstract type*/);
    EcuM_Client_ptr_NvM->InitFunction(/*configuration abstract type*/);
 }
 
-static FUNC(void, SWC_ECUM_CODE) DriverInitOne(void){
+static FUNC(void, SWCSERVICEECUM_CODE) DriverInitOne(void){
    EcuM_Client_ptr_Mcu->InitFunction(/*configuration abstract type*/);
    EcuM_Client_ptr_Port->InitFunction(/*configuration abstract type*/);
    EcuM_Client_ptr_Gpt->InitFunction(/*configuration abstract type*/);
@@ -116,80 +118,80 @@ static FUNC(void, SWC_ECUM_CODE) DriverInitOne(void){
 */
 }
 
-static FUNC(void, SWC_ECUM_CODE) OnGoOffOne(void){
+static FUNC(void, SWCSERVICEECUM_CODE) OnGoOffOne(void){
 }
 
-static FUNC(void, SWC_ECUM_CODE) OnGoOffTwo(void){
+static FUNC(void, SWCSERVICEECUM_CODE) OnGoOffTwo(void){
 }
 
-static FUNC(void, SWC_ECUM_CODE) Reset(void){
+static FUNC(void, SWCSERVICEECUM_CODE) Reset(void){
 }
 
-static FUNC(void, SWC_ECUM_CODE) SwitchOff(void){
+static FUNC(void, SWCSERVICEECUM_CODE) SwitchOff(void){
 }
 
-FUNC(void, ECUM_CODE) module_Swc_EcuM::InitFunction(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::InitFunction(void){
 }
 
-FUNC(void, ECUM_CODE) module_Swc_EcuM::DeInitFunction(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DeInitFunction(void){
 }
 
-FUNC(void, ECUM_CODE) module_Swc_EcuM::MainFunction(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::MainFunction(void){
 }
 
-FUNC(void, SWC_ECUM_CODE) module_Swc_EcuM::StartPreOs(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPreOs(void){
    SetProgrammableInterrupts();
    DriverInitZero();
-   EcuM.DeterminePbConfiguration();
+   SwcServiceEcuM_Client_ptr_EcuM->DeterminePbConfiguration();
 
    //Check consistency of configuration data
 
    DriverInitOne();
-   EcuM.GetValidatedWakeupEvents();
+   SwcServiceEcuM_Client_ptr_EcuM->GetValidatedWakeupEvents();
 
    //Select default shutdown target
 
-   EcuM.LoopDetection();
+   SwcServiceEcuM_Client_ptr_EcuM->LoopDetection();
 }
 
-FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::StartPostOs(void){
-   SchM.Start();
+FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Unused::StartPostOs(void){
+   EcuM_Client_ptr_SchM->Start();
    EcuM_Client_ptr_BswM->InitFunction(/*TBD: configuration*/);
    EcuM_Client_ptr_SchM->InitFunction(/*TBD: configuration*/);
-   SchM.StartTiming();
+   EcuM_Client_ptr_SchM->StartTiming();
 }
 
-FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::OffPreOs(void){
+FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Unused::OffPreOs(void){
    OnGoOffOne();
    EcuM_Client_ptr_BswM->DeInitFunction();
    EcuM_Client_ptr_SchM->DeInitFunction();
 
-   if(EcuM.GetPendingWakeupEvents()){
-      EcuM.SelectShutdownTarget();
+   if(SwcServiceEcuM_Client_ptr_EcuM->GetPendingWakeupEvents()){
+      SwcServiceEcuM_Client_ptr_EcuM->SelectShutdownTarget();
    }
 }
 
-FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::OffPostOs(void){
+FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Unused::OffPostOs(void){
    OnGoOffTwo();
    Reset();
    SwitchOff();
 }
 
-FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::EnableWakeupSources(void){
+FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Unused::EnableWakeupSources(void){
 }
 
-FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::GenerateRamHash(void){
+FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Unused::GenerateRamHash(void){
 }
 
-FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::CheckRamHash(void){
+FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Unused::CheckRamHash(void){
 }
 
-FUNC(void, SWC_ECUM_CODE) class_Swc_EcuM::ErrorHook(void){
+FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Unused::ErrorHook(void){
 }
 
 // Go to sleep sequence
 // BswM.CurrentWakeupSources();
-// Swc_EcuM.EnableWakeupSources();
+// SwcServiceEcuM.EnableWakeupSources();
 // Os.GetResource();
 
 // Go to halt sequence
