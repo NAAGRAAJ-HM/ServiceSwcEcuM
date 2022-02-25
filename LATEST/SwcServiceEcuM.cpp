@@ -58,6 +58,8 @@ class module_SwcServiceEcuM:
       FUNC(void, SWCSERVICEECUM_CODE) MainFunction   (void);
       FUNC(void, SWCSERVICEECUM_CODE) StartPreOs     (void);
       FUNC(void, SWCSERVICEECUM_CODE) StartPostOs    (void);
+      FUNC(void, SWCSERVICEECUM_CODE) OffPreOs       (void);
+      FUNC(void, SWCSERVICEECUM_CODE) OffPostOs      (void);
 };
 
 /*****************************************************/
@@ -154,14 +156,14 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPreOs(void){
    SwcServiceEcuM_Client_ptr_EcuM->LoopDetection();
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Unused::StartPostOs(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPostOs(void){
    EcuM_Client_ptr_SchM->Start();
    EcuM_Client_ptr_BswM->InitFunction(/*TBD: configuration*/);
    EcuM_Client_ptr_SchM->InitFunction(/*TBD: configuration*/);
    EcuM_Client_ptr_SchM->StartTiming();
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Unused::OffPreOs(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::OffPreOs(void){
    OnGoOffOne();
    EcuM_Client_ptr_BswM->DeInitFunction();
    EcuM_Client_ptr_SchM->DeInitFunction();
@@ -171,7 +173,7 @@ FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Unused::OffPreOs(void){
    }
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Unused::OffPostOs(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::OffPostOs(void){
    OnGoOffTwo();
    Reset();
    SwitchOff();

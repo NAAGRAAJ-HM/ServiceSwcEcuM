@@ -7,7 +7,7 @@
 /*****************************************************/
 /* #INCLUDES                                         */
 /*****************************************************/
-#include "Compiler_Cfg_EcuM.h"
+#include "Compiler_Cfg_SwcServiceEcuM.h"
 
 #include "EcuM_Client.h"
 
@@ -27,12 +27,12 @@ class interface_SwcServiceEcuM_EcuM : public interface_EcuM_Client{
 /*****************************************************/
 /* FUNCTIONS                                         */
 /*****************************************************/
-      FUNC(void, ECUM_CODE) InitFunction   (void);
-      FUNC(void, ECUM_CODE) DeInitFunction (void);
-      FUNC(void, ECUM_CODE) StartPreOs     (void);
-      FUNC(void, ECUM_CODE) StartPostOs    (void);
-      FUNC(void, ECUM_CODE) OffPreOs       (void);
-      FUNC(void, ECUM_CODE) OffPostOs      (void);
+      virtual FUNC(void, SWCSERVICEECUM_CODE) InitFunction   (void) = 0;
+      virtual FUNC(void, SWCSERVICEECUM_CODE) DeInitFunction (void) = 0;
+      virtual FUNC(void, SWCSERVICEECUM_CODE) StartPreOs     (void) = 0;
+      virtual FUNC(void, SWCSERVICEECUM_CODE) StartPostOs    (void) = 0;
+      virtual FUNC(void, SWCSERVICEECUM_CODE) OffPreOs       (void) = 0;
+      virtual FUNC(void, SWCSERVICEECUM_CODE) OffPostOs      (void) = 0;
 };
 
 /*****************************************************/
@@ -46,7 +46,7 @@ class interface_SwcServiceEcuM_EcuM : public interface_EcuM_Client{
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-extern interface_SwcServiceEcuM_EcuM *EcuM_Client_ptr_Swc_EcuM;
+extern interface_SwcServiceEcuM_EcuM *EcuM_Client_ptr_SwcServiceEcuM;
 
 /*****************************************************/
 /* EOF                                               */
