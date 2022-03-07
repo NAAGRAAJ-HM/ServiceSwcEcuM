@@ -49,8 +49,6 @@
 /*****************************************************/
 class module_SwcServiceEcuM:
       public abstract_module
-   ,  public interface_SwcServiceEcuM_EcuM
-   ,  public interface_SwcServiceEcuM_SchM
 {
    public:
       FUNC(void, SWCSERVICEECUM_CODE) InitFunction   (void);
@@ -74,9 +72,8 @@ class module_SwcServiceEcuM:
 /* OBJECTS                                           */
 /*****************************************************/
 module_SwcServiceEcuM SwcServiceEcuM;
-
-interface_SwcServiceEcuM_EcuM *EcuM_Client_ptr_SwcServiceEcuM = &SwcServiceEcuM;
-interface_SwcServiceEcuM_SchM *SchM_Client_ptr_SwcServiceEcuM = &SwcServiceEcuM;
+infEcuMClient*        gptrinfEcuMClient_SwcServiceEcuM = &SwcServiceEcuM;
+infSchMClient*        gptrinfSchMClient_SwcServiceEcuM = &SwcServiceEcuM;
 
 /*****************************************************/
 /* FUNCTIONS                                         */
