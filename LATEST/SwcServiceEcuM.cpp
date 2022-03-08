@@ -11,7 +11,52 @@
 #include "SwcServiceEcuM_SchM.h"
 #include "SwcServiceEcuM_Unused.h"
 
-#include "EcuM_Client.h"
+/*****************************************************/
+/* #DEFINES                                          */
+/*****************************************************/
+
+/*****************************************************/
+/* MACROS                                            */
+/*****************************************************/
+
+/*****************************************************/
+/* TYPEDEFS                                          */
+/*****************************************************/
+class module_SwcServiceEcuM:
+      public abstract_module
+   ,  public infSwcServiceEcuM_EcuM
+{
+   public:
+      FUNC(void, SWCSERVICEECUM_CODE) InitFunction   (void);
+      FUNC(void, SWCSERVICEECUM_CODE) DeInitFunction (void);
+      FUNC(void, SWCSERVICEECUM_CODE) MainFunction   (void);
+      FUNC(void, SWCSERVICEECUM_CODE) StartPreOs     (void);
+      FUNC(void, SWCSERVICEECUM_CODE) StartPostOs    (void);
+      FUNC(void, SWCSERVICEECUM_CODE) OffPreOs       (void);
+      FUNC(void, SWCSERVICEECUM_CODE) OffPostOs      (void);
+};
+
+/*****************************************************/
+/* CONSTS                                            */
+/*****************************************************/
+
+/*****************************************************/
+/* PARAMS                                            */
+/*****************************************************/
+
+/*****************************************************/
+/* OBJECTS                                           */
+/*****************************************************/
+module_SwcServiceEcuM   SwcServiceEcuM;
+infEcuMClient*          gptrinfEcuMClient_SwcServiceEcuM = &SwcServiceEcuM;
+infSchMClient*          gptrinfSchMClient_SwcServiceEcuM = &SwcServiceEcuM;
+infSwcServiceEcuM_EcuM* gptrinfSwcServiceEcuM_EcuM       = &SwcServiceEcuM;
+
+/*****************************************************/
+/* FUNCTIONS                                         */
+/*****************************************************/
+static FUNC(void, SWCSERVICEECUM_CODE) SetProgrammableInterrupts(void){
+}
 
 #include "Adc_EcuM.h"
 #include "BswM_EcuM.h"
@@ -36,84 +81,59 @@
 
 #include "EcuM_SwcServiceEcuM.h"
 
-/*****************************************************/
-/* #DEFINES                                          */
-/*****************************************************/
-
-/*****************************************************/
-/* MACROS                                            */
-/*****************************************************/
-
-/*****************************************************/
-/* TYPEDEFS                                          */
-/*****************************************************/
-class module_SwcServiceEcuM:
-      public abstract_module
-{
-   public:
-      FUNC(void, SWCSERVICEECUM_CODE) InitFunction   (void);
-      FUNC(void, SWCSERVICEECUM_CODE) DeInitFunction (void);
-      FUNC(void, SWCSERVICEECUM_CODE) MainFunction   (void);
-      FUNC(void, SWCSERVICEECUM_CODE) StartPreOs     (void);
-      FUNC(void, SWCSERVICEECUM_CODE) StartPostOs    (void);
-      FUNC(void, SWCSERVICEECUM_CODE) OffPreOs       (void);
-      FUNC(void, SWCSERVICEECUM_CODE) OffPostOs      (void);
-};
-
-/*****************************************************/
-/* CONSTS                                            */
-/*****************************************************/
-
-/*****************************************************/
-/* PARAMS                                            */
-/*****************************************************/
-
-/*****************************************************/
-/* OBJECTS                                           */
-/*****************************************************/
-module_SwcServiceEcuM SwcServiceEcuM;
-infEcuMClient*        gptrinfEcuMClient_SwcServiceEcuM = &SwcServiceEcuM;
-infSchMClient*        gptrinfSchMClient_SwcServiceEcuM = &SwcServiceEcuM;
-
-/*****************************************************/
-/* FUNCTIONS                                         */
-/*****************************************************/
-static FUNC(void, SWCSERVICEECUM_CODE) SetProgrammableInterrupts(void){
-}
-
 static FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero(void){
-   EcuM_Client_ptr_Det->InitFunction(/*configuration abstract type*/);
-   EcuM_Client_ptr_Dem->InitFunction(/*configuration abstract type*/);
-   EcuM_Client_ptr_Fls->InitFunction(/*configuration abstract type*/);
-   EcuM_Client_ptr_NvM->InitFunction(/*configuration abstract type*/);
+   infEcuMClient* gptrinfEcuMClient_Det = 0;
+   infEcuMClient* gptrinfEcuMClient_Dem = 0;
+   infEcuMClient* gptrinfEcuMClient_Fls = 0;
+   infEcuMClient* gptrinfEcuMClient_NvM = 0;
+
+   gptrinfEcuMClient_Det->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Dem->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Fls->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_NvM->InitFunction(/*configuration abstract type*/);
 }
 
 static FUNC(void, SWCSERVICEECUM_CODE) DriverInitOne(void){
-   EcuM_Client_ptr_Mcu->InitFunction(/*configuration abstract type*/);
-   EcuM_Client_ptr_Port->InitFunction(/*configuration abstract type*/);
-   EcuM_Client_ptr_Gpt->InitFunction(/*configuration abstract type*/);
-   EcuM_Client_ptr_Wdg->InitFunction(/*configuration abstract type*/);
-   EcuM_Client_ptr_WdgM->InitFunction(/*configuration abstract type*/);
-   EcuM_Client_ptr_Adc->InitFunction(/*configuration abstract type*/);
-   EcuM_Client_ptr_Icu->InitFunction(/*configuration abstract type*/);
-   EcuM_Client_ptr_Ocu->InitFunction(/*configuration abstract type*/);
+   infEcuMClient* gptrinfEcuMClient_Mcu = 0;
+   infEcuMClient* gptrinfEcuMClient_Port = 0;
+   infEcuMClient* gptrinfEcuMClient_Gpt = 0;
+   infEcuMClient* gptrinfEcuMClient_Wdg = 0;
+   infEcuMClient* gptrinfEcuMClient_WdgM = 0;
+   infEcuMClient* gptrinfEcuMClient_Adc = 0;
+   infEcuMClient* gptrinfEcuMClient_Icu = 0;
+   infEcuMClient* gptrinfEcuMClient_Ocu = 0;
+   infEcuMClient* gptrinfEcuMClient_Can = 0;
+   infEcuMClient* gptrinfEcuMClient_Eth = 0;
+   infEcuMClient* gptrinfEcuMClient_Fr = 0;
+   infEcuMClient* gptrinfEcuMClient_Lin = 0;
+   infEcuMClient* gptrinfEcuMClient_Pwm = 0;
+   infEcuMClient* gptrinfEcuMClient_Spi = 0;
 
-   EcuM_Client_ptr_Can->InitFunction(/*configuration abstract type*/);
-   EcuM_Client_ptr_Eth->InitFunction(/*configuration abstract type*/);
-   EcuM_Client_ptr_Fr->InitFunction(/*configuration abstract type*/);
-   EcuM_Client_ptr_Lin->InitFunction(/*configuration abstract type*/);
-   EcuM_Client_ptr_Pwm->InitFunction(/*configuration abstract type*/);
-   EcuM_Client_ptr_Spi->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Mcu->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Port->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Gpt->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Wdg->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_WdgM->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Adc->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Icu->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Ocu->InitFunction(/*configuration abstract type*/);
+
+   gptrinfEcuMClient_Can->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Eth->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Fr->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Lin->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Pwm->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Spi->InitFunction(/*configuration abstract type*/);
 /*
-   EcuM_Client_ptr_CanTrcv->InitFunction(configuration abstract type);
-   EcuM_Client_ptr_Com->InitFunction(configuration abstract type);
-   EcuM_Client_ptr_Nm->InitFunction(configuration abstract type);
-   EcuM_Client_ptr_EthSwt->InitFunction(configuration abstract type);
-   EcuM_Client_ptr_EthTrcv->InitFunction(configuration abstract type);
-   EcuM_Client_ptr_FrTrcv->InitFunction(configuration abstract type);
-   EcuM_Client_ptr_IoAbHw->InitFunction(configuration abstract type);
-   EcuM_Client_ptr_LinTrcv->InitFunction(configuration abstract type);
-   EcuM_Client_ptr_Os->InitFunction(configuration abstract type);
+   gptrinfEcuMClient_CanTrcv->InitFunction(configuration abstract type);
+   gptrinfEcuMClient_Com->InitFunction(configuration abstract type);
+   gptrinfEcuMClient_Nm->InitFunction(configuration abstract type);
+   gptrinfEcuMClient_EthSwt->InitFunction(configuration abstract type);
+   gptrinfEcuMClient_EthTrcv->InitFunction(configuration abstract type);
+   gptrinfEcuMClient_FrTrcv->InitFunction(configuration abstract type);
+   gptrinfEcuMClient_IoAbHw->InitFunction(configuration abstract type);
+   gptrinfEcuMClient_LinTrcv->InitFunction(configuration abstract type);
+   gptrinfEcuMClient_Os->InitFunction(configuration abstract type);
 */
 }
 
@@ -141,32 +161,32 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::MainFunction(void){
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPreOs(void){
    SetProgrammableInterrupts();
    DriverInitZero();
-   SwcServiceEcuM_Client_ptr_EcuM->DeterminePbConfiguration();
+   gptrinfEcuM_SwcServiceEcuM->DeterminePbConfiguration();
 
    //Check consistency of configuration data
 
    DriverInitOne();
-   SwcServiceEcuM_Client_ptr_EcuM->GetValidatedWakeupEvents();
+   gptrinfEcuM_SwcServiceEcuM->GetValidatedWakeupEvents();
 
    //Select default shutdown target
 
-   SwcServiceEcuM_Client_ptr_EcuM->LoopDetection();
+   gptrinfEcuM_SwcServiceEcuM->LoopDetection();
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPostOs(void){
-   EcuM_Client_ptr_SchM->Start();
-   EcuM_Client_ptr_BswM->InitFunction(/*TBD: configuration*/);
-   EcuM_Client_ptr_SchM->InitFunction(/*TBD: configuration*/);
-   EcuM_Client_ptr_SchM->StartTiming();
+   gptrinfSchM_EcuM->Start();
+   gptrinfEcuMClient_BswM->InitFunction(/*TBD: configuration*/);
+   gptrinfEcuMClient_SchM->InitFunction(/*TBD: configuration*/);
+   gptrinfSchM_EcuM->StartTiming();
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::OffPreOs(void){
    OnGoOffOne();
-   EcuM_Client_ptr_BswM->DeInitFunction();
-   EcuM_Client_ptr_SchM->DeInitFunction();
+   gptrinfEcuMClient_BswM->DeInitFunction();
+   gptrinfEcuMClient_SchM->DeInitFunction();
 
-   if(SwcServiceEcuM_Client_ptr_EcuM->GetPendingWakeupEvents()){
-      SwcServiceEcuM_Client_ptr_EcuM->SelectShutdownTarget();
+   if(gptrinfEcuM_SwcServiceEcuM->GetPendingWakeupEvents()){
+      gptrinfEcuM_SwcServiceEcuM->SelectShutdownTarget();
    }
 }
 

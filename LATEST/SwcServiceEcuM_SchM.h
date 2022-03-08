@@ -32,7 +32,7 @@
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-extern interface_SwcServiceEcuM_SchM *SchM_Client_ptr_SwcServiceEcuM;
+extern infSchMClient *gptrinfSchMClient_SwcServiceEcuM;
 
 /*****************************************************/
 /* FUNCTIONS                                         */

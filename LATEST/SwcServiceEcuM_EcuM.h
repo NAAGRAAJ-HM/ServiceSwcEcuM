@@ -20,7 +20,7 @@
 /*****************************************************/
 /* TYPEDEFS                                          */
 /*****************************************************/
-class interface_SwcServiceEcuM_EcuM{
+class infSwcServiceEcuM_EcuM{
    public:
 /*****************************************************/
 /* FUNCTIONS                                         */
@@ -42,8 +42,8 @@ class interface_SwcServiceEcuM_EcuM{
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-extern infEcuMClient         *gptrinfEcuMClient_SwcServiceEcuM;
-extern interface_SwcServiceEcuM_EcuM *EcuM_Client_ptr_SwcServiceEcuM;
+extern infEcuMClient*          gptrinfEcuMClient_SwcServiceEcuM;
+extern infSwcServiceEcuM_EcuM* gptrinfSwcServiceEcuM_EcuM;
 
 /*****************************************************/
 /* EOF                                               */
