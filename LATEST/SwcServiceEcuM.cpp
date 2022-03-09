@@ -58,11 +58,21 @@ infSwcServiceEcuM_EcuM* gptrinfSwcServiceEcuM_EcuM       = &SwcServiceEcuM;
 static FUNC(void, SWCSERVICEECUM_CODE) SetProgrammableInterrupts(void){
 }
 
+#include "CanIf_EcuM.h"
+#include "CryIf_EcuM.h"
+#include "Ea_EcuM.h"
+#include "EthIf_EcuM.h"
+#include "Fee_EcuM.h"
+#include "FrIf_EcuM.h"
+#include "LinIf_EcuM.h"
+#include "LinTp_EcuM.h"
+#include "MemIf_EcuM.h"
+#include "WdgIf_EcuM.h"
 #include "Adc_EcuM.h"
-#include "BswM_EcuM.h"
 #include "Can_EcuM.h"
-#include "Dem_EcuM.h"
-#include "Det_EcuM.h"
+#include "Cry_EcuM.h"
+#include "Dio_EcuM.h"
+#include "Eep_EcuM.h"
 #include "Eth_EcuM.h"
 #include "Fls_EcuM.h"
 #include "Fr_EcuM.h"
@@ -70,23 +80,37 @@ static FUNC(void, SWCSERVICEECUM_CODE) SetProgrammableInterrupts(void){
 #include "Icu_EcuM.h"
 #include "Lin_EcuM.h"
 #include "Mcu_EcuM.h"
-#include "NvM_EcuM.h"
 #include "Ocu_EcuM.h"
 #include "Port_EcuM.h"
 #include "Pwm_EcuM.h"
-#include "SchM_EcuM.h"
 #include "Spi_EcuM.h"
 #include "Wdg_EcuM.h"
+#include "BswM_EcuM.h"
+#include "Com_EcuM.h"
+#include "ComM_EcuM.h"
+#include "Csm_EcuM.h"
+#include "Dcm_EcuM.h"
+#include "Dem_EcuM.h"
+#include "Det_EcuM.h"
+#include "FiM_EcuM.h"
+#include "Nm_EcuM.h"
+#include "NvM_EcuM.h"
+#include "Os_EcuM.h"
+#include "PduR_EcuM.h"
+#include "SchM_EcuM.h"
+#include "SecOC_EcuM.h"
+#include "SokFm_EcuM.h"
+#include "StartUp_EcuM.h"
+#include "StbM_EcuM.h"
+#include "Vkms_EcuM.h"
 #include "WdgM_EcuM.h"
+#include "Rte_EcuM.h"
+#include "SwcServiceEcuM_EcuM.h"
+#include "SwcServiceOs_EcuM.h"
 
 #include "EcuM_SwcServiceEcuM.h"
 
 static FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero(void){
-   infEcuMClient* gptrinfEcuMClient_Det = 0;
-   infEcuMClient* gptrinfEcuMClient_Dem = 0;
-   infEcuMClient* gptrinfEcuMClient_Fls = 0;
-   infEcuMClient* gptrinfEcuMClient_NvM = 0;
-
    gptrinfEcuMClient_Det->InitFunction(/*configuration abstract type*/);
    gptrinfEcuMClient_Dem->InitFunction(/*configuration abstract type*/);
    gptrinfEcuMClient_Fls->InitFunction(/*configuration abstract type*/);
@@ -94,47 +118,55 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero(void){
 }
 
 static FUNC(void, SWCSERVICEECUM_CODE) DriverInitOne(void){
-   infEcuMClient* gptrinfEcuMClient_Mcu = 0;
-   infEcuMClient* gptrinfEcuMClient_Port = 0;
-   infEcuMClient* gptrinfEcuMClient_Gpt = 0;
-   infEcuMClient* gptrinfEcuMClient_Wdg = 0;
-   infEcuMClient* gptrinfEcuMClient_WdgM = 0;
-   infEcuMClient* gptrinfEcuMClient_Adc = 0;
-   infEcuMClient* gptrinfEcuMClient_Icu = 0;
-   infEcuMClient* gptrinfEcuMClient_Ocu = 0;
-   infEcuMClient* gptrinfEcuMClient_Can = 0;
-   infEcuMClient* gptrinfEcuMClient_Eth = 0;
-   infEcuMClient* gptrinfEcuMClient_Fr = 0;
-   infEcuMClient* gptrinfEcuMClient_Lin = 0;
-   infEcuMClient* gptrinfEcuMClient_Pwm = 0;
-   infEcuMClient* gptrinfEcuMClient_Spi = 0;
-
-   gptrinfEcuMClient_Mcu->InitFunction(/*configuration abstract type*/);
-   gptrinfEcuMClient_Port->InitFunction(/*configuration abstract type*/);
-   gptrinfEcuMClient_Gpt->InitFunction(/*configuration abstract type*/);
-   gptrinfEcuMClient_Wdg->InitFunction(/*configuration abstract type*/);
-   gptrinfEcuMClient_WdgM->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_CanIf->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_CryIf->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Ea->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_EthIf->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Fee->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_FrIf->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_LinIf->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_LinTp->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_MemIf->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_WdgIf->InitFunction(/*configuration abstract type*/);
    gptrinfEcuMClient_Adc->InitFunction(/*configuration abstract type*/);
-   gptrinfEcuMClient_Icu->InitFunction(/*configuration abstract type*/);
-   gptrinfEcuMClient_Ocu->InitFunction(/*configuration abstract type*/);
-
    gptrinfEcuMClient_Can->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Cry->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Dio->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Eep->InitFunction(/*configuration abstract type*/);
    gptrinfEcuMClient_Eth->InitFunction(/*configuration abstract type*/);
+// gptrinfEcuMClient_Fls->InitFunction(/*configuration abstract type*/);
    gptrinfEcuMClient_Fr->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Gpt->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Icu->InitFunction(/*configuration abstract type*/);
    gptrinfEcuMClient_Lin->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Mcu->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Ocu->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Port->InitFunction(/*configuration abstract type*/);
    gptrinfEcuMClient_Pwm->InitFunction(/*configuration abstract type*/);
    gptrinfEcuMClient_Spi->InitFunction(/*configuration abstract type*/);
-/*
-   gptrinfEcuMClient_CanTrcv->InitFunction(configuration abstract type);
-   gptrinfEcuMClient_Com->InitFunction(configuration abstract type);
-   gptrinfEcuMClient_Nm->InitFunction(configuration abstract type);
-   gptrinfEcuMClient_EthSwt->InitFunction(configuration abstract type);
-   gptrinfEcuMClient_EthTrcv->InitFunction(configuration abstract type);
-   gptrinfEcuMClient_FrTrcv->InitFunction(configuration abstract type);
-   gptrinfEcuMClient_IoAbHw->InitFunction(configuration abstract type);
-   gptrinfEcuMClient_LinTrcv->InitFunction(configuration abstract type);
-   gptrinfEcuMClient_Os->InitFunction(configuration abstract type);
-*/
+   gptrinfEcuMClient_Wdg->InitFunction(/*configuration abstract type*/);
+// gptrinfEcuMClient_BswM->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Com->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_ComM->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Csm->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Dcm->InitFunction(/*configuration abstract type*/);
+// gptrinfEcuMClient_Dem->InitFunction(/*configuration abstract type*/);
+// gptrinfEcuMClient_Det->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_FiM->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Nm->InitFunction(/*configuration abstract type*/);
+// gptrinfEcuMClient_NvM->InitFunction(/*configuration abstract type*/);
+// gptrinfEcuMClient_Os->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_PduR->InitFunction(/*configuration abstract type*/);
+// gptrinfEcuMClient_SchM->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_SecOC->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_SokFm->InitFunction(/*configuration abstract type*/);
+// gptrinfEcuMClient_StartUp->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_StbM->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Vkms->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_WdgM->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_Rte->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_SwcServiceEcuM->InitFunction(/*configuration abstract type*/);
+   gptrinfEcuMClient_SwcServiceOs->InitFunction(/*configuration abstract type*/);
 }
 
 static FUNC(void, SWCSERVICEECUM_CODE) OnGoOffOne(void){
