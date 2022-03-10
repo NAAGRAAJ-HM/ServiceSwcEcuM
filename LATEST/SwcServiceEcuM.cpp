@@ -7,8 +7,8 @@
 /* #INCLUDES                                         */
 /*****************************************************/
 #include "module.h"
-#include "SwcServiceEcuM_EcuM.h"
-#include "SwcServiceEcuM_SchM.h"
+#include "infSwcServiceEcuM_EcuM.h"
+#include "infSwcServiceEcuM_SchM.h"
 #include "SwcServiceEcuM_Unused.h"
 
 /*****************************************************/
@@ -29,6 +29,7 @@ class module_SwcServiceEcuM:
    public:
       FUNC(void, SWCSERVICEECUM_CODE) InitFunction   (void);
       FUNC(void, SWCSERVICEECUM_CODE) DeInitFunction (void);
+      FUNC(void, SWCSERVICEECUM_CODE) GetVersionInfo (void);
       FUNC(void, SWCSERVICEECUM_CODE) MainFunction   (void);
       FUNC(void, SWCSERVICEECUM_CODE) StartPreOs     (void);
       FUNC(void, SWCSERVICEECUM_CODE) StartPostOs    (void);
@@ -49,6 +50,7 @@ class module_SwcServiceEcuM:
 /*****************************************************/
 module_SwcServiceEcuM   SwcServiceEcuM;
 infEcuMClient*          gptrinfEcuMClient_SwcServiceEcuM = &SwcServiceEcuM;
+infDcmClient*           gptrinfDcmClient_SwcServiceEcuM  = &SwcServiceEcuM;
 infSchMClient*          gptrinfSchMClient_SwcServiceEcuM = &SwcServiceEcuM;
 infSwcServiceEcuM_EcuM* gptrinfSwcServiceEcuM_EcuM       = &SwcServiceEcuM;
 
@@ -185,6 +187,9 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::InitFunction(void){
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DeInitFunction(void){
+}
+
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::GetVersionInfo(void){
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::MainFunction(void){
