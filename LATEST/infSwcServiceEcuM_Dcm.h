@@ -1,6 +1,6 @@
 #pragma once
 /*****************************************************/
-/* File   : SwcServiceEcuM_SchM.h                    */
+/* File   : infSwcServiceEcuM_Dcm.h                  */
 /* Author : Naagraaj HM                              */
 /*****************************************************/
 
@@ -32,7 +32,7 @@
 /*****************************************************/
 /* OBJECTS                                           */
 /*****************************************************/
-extern infSchMClient* gptrinfSchMClient_SwcServiceEcuM;
+extern infDcmClient* gptrinfDcmClient_SwcServiceEcuM;
 
 /*****************************************************/
 /* FUNCTIONS                                         */

@@ -1,6 +1,6 @@
 #pragma once
 /*****************************************************/
-/* File   : SwcServiceEcuM_EcuM.h                    */
+/* File   : infSwcServiceEcuM_EcuM.h                 */
 /* Author : Naagraaj HM                              */
 /*****************************************************/
 
