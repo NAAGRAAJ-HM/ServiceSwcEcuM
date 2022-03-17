@@ -6,6 +6,8 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
+#include "infSwcServiceEcuM_Version.h"
+
 #include "module.h"
 #include "infSwcServiceEcuM_EcuM.h"
 #include "infSwcServiceEcuM_Dcm.h"
