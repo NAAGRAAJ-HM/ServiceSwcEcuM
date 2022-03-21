@@ -6,9 +6,8 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "infSwcServiceEcuM_Version.h"
-
 #include "module.h"
+#include "infSwcServiceEcuM_Version.h"
 #include "infSwcServiceEcuM_EcuM.h"
 #include "infSwcServiceEcuM_Dcm.h"
 #include "infSwcServiceEcuM_SchM.h"
@@ -223,9 +222,11 @@ static FUNC(void, SWCSERVICEECUM_CODE) SwitchOff(void){
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::InitFunction(void){
+   SwcServiceEcuM.IsInitDone = E_OK;
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DeInitFunction(void){
+   SwcServiceEcuM.IsInitDone = E_NOT_OK;
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::GetVersionInfo(void){
