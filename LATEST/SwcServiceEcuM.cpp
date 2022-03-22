@@ -7,7 +7,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "module.h"
-#include "infSwcServiceEcuM_Version.h"
+//#include "SwcServiceEcuM_Cfg.h"
 #include "infSwcServiceEcuM_EcuM.h"
 #include "infSwcServiceEcuM_Dcm.h"
 #include "infSwcServiceEcuM_SchM.h"
@@ -15,10 +15,19 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
+#define SWCSERVICEECUM_AR_RELEASE_MAJOR_VERSION                                4
+#define SWCSERVICEECUM_AR_RELEASE_MINOR_VERSION                                3
 
 /******************************************************************************/
 /* MACROS                                                                     */
 /******************************************************************************/
+#if(SWCSERVICEECUM_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION)
+   #error "Incompatible SWCSERVICEECUM_AR_RELEASE_MAJOR_VERSION!"
+#endif
+
+#if(SWCSERVICEECUM_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION)
+   #error "Incompatible SWCSERVICEECUM_AR_RELEASE_MINOR_VERSION!"
+#endif
 
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
@@ -230,6 +239,11 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DeInitFunction(void){
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::GetVersionInfo(void){
+#if(STD_ON == SwcServiceEcuM_DevErrorDetect)
+//TBD: API parameter check
+   Det_ReportError(
+   );
+#endif
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::MainFunction(void){
