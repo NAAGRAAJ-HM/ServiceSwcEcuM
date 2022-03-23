@@ -22,7 +22,7 @@
 /******************************************************************************/
 class infEcuMClient{
    protected:
-      Std_ReturnType IsInitDone = E_NOT_OK;
+      Std_TypeReturn IsInitDone = E_NOT_OK;
    public:
 /******************************************************************************/
 /* FUNCTIONS                                                                  */

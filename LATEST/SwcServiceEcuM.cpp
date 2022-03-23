@@ -45,6 +45,16 @@ class module_SwcServiceEcuM:
       FUNC(void, SWCSERVICEECUM_CODE) StartPostOs    (void);
       FUNC(void, SWCSERVICEECUM_CODE) OffPreOs       (void);
       FUNC(void, SWCSERVICEECUM_CODE) OffPostOs      (void);
+
+   private:
+      CONST(Std_TypeVersionInfo, SWCSERVICEECUM_CONST) VersionInfo = {
+            0x0000
+         ,  0xFFFF
+         ,  0x01
+         ,  '0'
+         ,  '1'
+         ,  '0'
+      };
 };
 
 /******************************************************************************/
