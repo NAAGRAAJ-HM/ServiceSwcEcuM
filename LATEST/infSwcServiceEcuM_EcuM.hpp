@@ -1,13 +1,13 @@
 #pragma once
 /******************************************************************************/
-/* File   : infSwcServiceEcuM_Dcm.h                                           */
+/* File   : infSwcServiceEcuM_EcuM.hpp                                        */
 /* Author : NAGARAJA HM (c) since 1982. All rights reserved.                  */
 /******************************************************************************/
 
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "Compiler_Cfg_SwcServiceEcuM.h"
+#include "CompilerCfg_SwcServiceEcuM.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -20,10 +20,22 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
+class infSwcServiceEcuM_EcuM{
+   public:
+/******************************************************************************/
+/* FUNCTIONS                                                                  */
+/******************************************************************************/
+      virtual FUNC(void, SWCSERVICEECUM_CODE) StartPreOs  (void) = 0;
+      virtual FUNC(void, SWCSERVICEECUM_CODE) StartPostOs (void) = 0;
+      virtual FUNC(void, SWCSERVICEECUM_CODE) OffPreOs    (void) = 0;
+      virtual FUNC(void, SWCSERVICEECUM_CODE) OffPostOs   (void) = 0;
+};
 
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
+extern CONSTP2VAR(infEcuMClient,          SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gptrinfEcuMClient_SwcServiceEcuM;
+extern CONSTP2VAR(infSwcServiceEcuM_EcuM, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gptrinfSwcServiceEcuM_EcuM;
 
 /******************************************************************************/
 /* PARAMS                                                                     */
@@ -31,11 +43,6 @@
 
 /******************************************************************************/
 /* OBJECTS                                                                    */
-/******************************************************************************/
-extern CONSTP2VAR(infDcmClient, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gptrinfDcmClient_SwcServiceEcuM;
-
-/******************************************************************************/
-/* FUNCTIONS                                                                  */
 /******************************************************************************/
 
 /******************************************************************************/

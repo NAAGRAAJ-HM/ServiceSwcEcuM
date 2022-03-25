@@ -6,11 +6,11 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "module.h"
-//#include "CfgSwcServiceEcuM.h"
-#include "infSwcServiceEcuM_EcuM.h"
-#include "infSwcServiceEcuM_Dcm.h"
-#include "infSwcServiceEcuM_SchM.h"
+#include "module.hpp"
+//#include "CfgSwcServiceEcuM.hpp"
+#include "infSwcServiceEcuM_EcuM.hpp"
+#include "infSwcServiceEcuM_Dcm.hpp"
+#include "infSwcServiceEcuM_SchM.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -97,10 +97,10 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
    }
 }
 
-#include "infDet_EcuM.h"
-#include "infDem_EcuM.h"
-#include "infFls_EcuM.h"
-#include "infNvM_EcuM.h"
+#include "infDet_EcuM.hpp"
+#include "infDem_EcuM.hpp"
+#include "infFls_EcuM.hpp"
+#include "infNvM_EcuM.hpp"
 
 static const CONSTP2VAR(infEcuMClient, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) laptrinfEcuMClient_DriverInitZero[] = {
       gptrinfEcuMClient_Det
@@ -119,52 +119,52 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero(void){
    );
 }
 
-#include "infCanIf_EcuM.h"
-#include "infCryIf_EcuM.h"
-#include "infEa_EcuM.h"
-#include "infEthIf_EcuM.h"
-#include "infFee_EcuM.h"
-#include "infFrIf_EcuM.h"
-#include "infLinIf_EcuM.h"
-#include "infLinTp_EcuM.h"
-#include "infMemIf_EcuM.h"
-#include "infWdgIf_EcuM.h"
-#include "infAdc_EcuM.h"
-#include "infCan_EcuM.h"
-#include "infCry_EcuM.h"
-#include "infDio_EcuM.h"
-#include "infEep_EcuM.h"
-#include "infEth_EcuM.h"
-#include "infFr_EcuM.h"
-#include "infGpt_EcuM.h"
-#include "infIcu_EcuM.h"
-#include "infLin_EcuM.h"
-#include "infMcu_EcuM.h"
-#include "infOcu_EcuM.h"
-#include "infPort_EcuM.h"
-#include "infPwm_EcuM.h"
-#include "infSpi_EcuM.h"
-#include "infWdg_EcuM.h"
-#include "infBswM_EcuM.h"
-#include "infCom_EcuM.h"
-#include "infComM_EcuM.h"
-#include "infCsm_EcuM.h"
-#include "infDcm_EcuM.h"
-#include "infEcuM_SwcServiceEcuM.h"
-#include "infFiM_EcuM.h"
-#include "infNm_EcuM.h"
-#include "infOs_EcuM.h"
-#include "infPduR_EcuM.h"
-#include "infSchM_EcuM.h"
-#include "infSecOC_EcuM.h"
-#include "infSokFm_EcuM.h"
-#include "infStartUp_EcuM.h"
-#include "infStbM_EcuM.h"
-#include "infVkms_EcuM.h"
-#include "infWdgM_EcuM.h"
-#include "infRte_EcuM.h"
-#include "infSwcServiceEcuM_EcuM.h"
-#include "infSwcServiceOs_EcuM.h"
+#include "infCanIf_EcuM.hpp"
+#include "infCryIf_EcuM.hpp"
+#include "infEa_EcuM.hpp"
+#include "infEthIf_EcuM.hpp"
+#include "infFee_EcuM.hpp"
+#include "infFrIf_EcuM.hpp"
+#include "infLinIf_EcuM.hpp"
+#include "infLinTp_EcuM.hpp"
+#include "infMemIf_EcuM.hpp"
+#include "infWdgIf_EcuM.hpp"
+#include "infAdc_EcuM.hpp"
+#include "infCan_EcuM.hpp"
+#include "infCry_EcuM.hpp"
+#include "infDio_EcuM.hpp"
+#include "infEep_EcuM.hpp"
+#include "infEth_EcuM.hpp"
+#include "infFr_EcuM.hpp"
+#include "infGpt_EcuM.hpp"
+#include "infIcu_EcuM.hpp"
+#include "infLin_EcuM.hpp"
+#include "infMcu_EcuM.hpp"
+#include "infOcu_EcuM.hpp"
+#include "infPort_EcuM.hpp"
+#include "infPwm_EcuM.hpp"
+#include "infSpi_EcuM.hpp"
+#include "infWdg_EcuM.hpp"
+#include "infBswM_EcuM.hpp"
+#include "infCom_EcuM.hpp"
+#include "infComM_EcuM.hpp"
+#include "infCsm_EcuM.hpp"
+#include "infDcm_EcuM.hpp"
+#include "infEcuM_SwcServiceEcuM.hpp"
+#include "infFiM_EcuM.hpp"
+#include "infNm_EcuM.hpp"
+#include "infOs_EcuM.hpp"
+#include "infPduR_EcuM.hpp"
+#include "infSchM_EcuM.hpp"
+#include "infSecOC_EcuM.hpp"
+#include "infSokFm_EcuM.hpp"
+#include "infStartUp_EcuM.hpp"
+#include "infStbM_EcuM.hpp"
+#include "infVkms_EcuM.hpp"
+#include "infWdgM_EcuM.hpp"
+#include "infRte_EcuM.hpp"
+#include "infSwcServiceEcuM_EcuM.hpp"
+#include "infSwcServiceOs_EcuM.hpp"
 
 static const CONSTP2VAR(infEcuMClient, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) laptrinfEcuMClient_DriverInitOne[] = {
       gptrinfEcuMClient_CanIf
@@ -297,7 +297,7 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::OffPostOs(void){
    SwitchOff();
 }
 
-#include "SwcServiceEcuM_Unused.h"
+#include "SwcServiceEcuM_Unused.hpp"
 
 FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Unused::EnableWakeupSources(void){
 }

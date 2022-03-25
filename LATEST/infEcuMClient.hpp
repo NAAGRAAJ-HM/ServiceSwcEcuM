@@ -1,13 +1,13 @@
 #pragma once
 /******************************************************************************/
-/* File   : infSwcServiceEcuM_EcuM.h                                          */
+/* File   : infEcuMClient.hpp                                                 */
 /* Author : NAGARAJA HM (c) since 1982. All rights reserved.                  */
 /******************************************************************************/
 
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "Compiler_Cfg_SwcServiceEcuM.h"
+#include "Std_Types.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -20,15 +20,16 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
-class infSwcServiceEcuM_EcuM{
+class infEcuMClient{
+   protected:
+      Std_TypeReturn IsInitDone = E_NOT_OK;
+
    public:
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-      virtual FUNC(void, SWCSERVICEECUM_CODE) StartPreOs  (void) = 0;
-      virtual FUNC(void, SWCSERVICEECUM_CODE) StartPostOs (void) = 0;
-      virtual FUNC(void, SWCSERVICEECUM_CODE) OffPreOs    (void) = 0;
-      virtual FUNC(void, SWCSERVICEECUM_CODE) OffPostOs   (void) = 0;
+      virtual void InitFunction   (void) = 0;
+      virtual void DeInitFunction (void) = 0;
 };
 
 /******************************************************************************/
@@ -42,8 +43,6 @@ class infSwcServiceEcuM_EcuM{
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-extern CONSTP2VAR(infEcuMClient,          SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gptrinfEcuMClient_SwcServiceEcuM;
-extern CONSTP2VAR(infSwcServiceEcuM_EcuM, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gptrinfSwcServiceEcuM_EcuM;
 
 /******************************************************************************/
 /* EOF                                                                        */
