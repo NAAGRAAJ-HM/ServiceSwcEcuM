@@ -297,7 +297,17 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::OffPostOs(void){
    SwitchOff();
 }
 
-#include "SwcServiceEcuM_Unused.hpp"
+class class_SwcServiceEcuM_Unused{
+   public:
+      FUNC(void, SWCSERVICEECUM_CODE) StartPreOs             (void);
+      FUNC(void, SWCSERVICEECUM_CODE) StartPostOs            (void);
+      FUNC(void, SWCSERVICEECUM_CODE) OffPreOs               (void);
+      FUNC(void, SWCSERVICEECUM_CODE) OffPostOs              (void);
+      FUNC(void, SWCSERVICEECUM_CODE) EnableWakeupSources    (void);
+      FUNC(void, SWCSERVICEECUM_CODE) GenerateRamHash        (void);
+      FUNC(void, SWCSERVICEECUM_CODE) CheckRamHash           (void);
+      FUNC(void, SWCSERVICEECUM_CODE) ErrorHook              (void);
+};
 
 FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Unused::EnableWakeupSources(void){
 }
