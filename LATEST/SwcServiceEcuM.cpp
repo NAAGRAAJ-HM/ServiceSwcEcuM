@@ -7,7 +7,6 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "module.hpp"
-//#include "CfgSwcServiceEcuM.hpp"
 #include "infSwcServiceEcuM_EcuM.hpp"
 #include "infSwcServiceEcuM_Dcm.hpp"
 #include "infSwcServiceEcuM_SchM.hpp"
@@ -37,42 +36,46 @@ class module_SwcServiceEcuM:
    ,  public infSwcServiceEcuM_EcuM
 {
    public:
+      module_SwcServiceEcuM(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
+      }
       FUNC(void, SWCSERVICEECUM_CODE) InitFunction   (void);
       FUNC(void, SWCSERVICEECUM_CODE) DeInitFunction (void);
-      FUNC(void, SWCSERVICEECUM_CODE) GetVersionInfo (void);
       FUNC(void, SWCSERVICEECUM_CODE) MainFunction   (void);
+
       FUNC(void, SWCSERVICEECUM_CODE) StartPreOs     (void);
       FUNC(void, SWCSERVICEECUM_CODE) StartPostOs    (void);
       FUNC(void, SWCSERVICEECUM_CODE) OffPreOs       (void);
       FUNC(void, SWCSERVICEECUM_CODE) OffPostOs      (void);
-
-   private:
-      CONST(Std_TypeVersionInfo, SWCSERVICEECUM_CONST) VersionInfo = {
-            0x0000
-         ,  0xFFFF
-         ,  0x01
-         ,  '0'
-         ,  '1'
-         ,  '0'
-      };
 };
+
+extern VAR(module_SwcServiceEcuM, SWCSERVICEECUM_VAR) SwcServiceEcuM;
 
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
-
-/******************************************************************************/
-/* PARAMS                                                                     */
-/******************************************************************************/
-
-/******************************************************************************/
-/* OBJECTS                                                                    */
-/******************************************************************************/
-VAR(module_SwcServiceEcuM, SWCSERVICEECUM_VAR) SwcServiceEcuM;
 CONSTP2VAR(infEcuMClient,          SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gptrinfEcuMClient_SwcServiceEcuM = &SwcServiceEcuM;
 CONSTP2VAR(infDcmClient,           SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gptrinfDcmClient_SwcServiceEcuM  = &SwcServiceEcuM;
 CONSTP2VAR(infSchMClient,          SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gptrinfSchMClient_SwcServiceEcuM = &SwcServiceEcuM;
 CONSTP2VAR(infSwcServiceEcuM_EcuM, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gptrinfSwcServiceEcuM_EcuM       = &SwcServiceEcuM;
+
+/******************************************************************************/
+/* PARAMS                                                                     */
+/******************************************************************************/
+//#include "CfgSwcServiceEcuM.hpp"
+
+/******************************************************************************/
+/* OBJECTS                                                                    */
+/******************************************************************************/
+VAR(module_SwcServiceEcuM, SWCSERVICEECUM_VAR) SwcServiceEcuM(
+   {
+         0x0000
+      ,  0xFFFF
+      ,  0x01
+      ,  '0'
+      ,  '1'
+      ,  '0'
+   }
+);
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
@@ -246,14 +249,6 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::InitFunction(void){
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DeInitFunction(void){
    SwcServiceEcuM.IsInitDone = E_NOT_OK;
-}
-
-FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::GetVersionInfo(void){
-#if(STD_ON == SwcServiceEcuM_DevErrorDetect)
-//TBD: API parameter check
-   Det_ReportError(
-   );
-#endif
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::MainFunction(void){
