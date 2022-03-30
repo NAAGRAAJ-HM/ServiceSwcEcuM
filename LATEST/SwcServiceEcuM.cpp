@@ -6,7 +6,7 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "module.hpp"
+#include "Module.hpp"
 #include "infSwcServiceEcuM_EcuM.hpp"
 #include "infSwcServiceEcuM_Dcm.hpp"
 #include "infSwcServiceEcuM_SchM.hpp"
@@ -38,6 +38,9 @@ class module_SwcServiceEcuM:
    public:
       module_SwcServiceEcuM(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
       }
+      FUNC(void, _CODE) InitFunction(
+         CONSTP2CONST(CfgModule_TypeAbstract, _CONFIG_DATA, _APPL_CONST) lptrCfgModule
+      );
       FUNC(void, SWCSERVICEECUM_CODE) InitFunction   (void);
       FUNC(void, SWCSERVICEECUM_CODE) DeInitFunction (void);
       FUNC(void, SWCSERVICEECUM_CODE) MainFunction   (void);
@@ -243,7 +246,19 @@ static FUNC(void, SWCSERVICEECUM_CODE) Reset(void){
 static FUNC(void, SWCSERVICEECUM_CODE) SwitchOff(void){
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::InitFunction(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::InitFunction(
+   CONSTP2CONST(CfgSwcServiceEcuM_Type, CFGSWCSERVICEECUM_CONFIG_DATA, CFGSWCSERVICEECUM_APPL_CONST) lptrCfgSwcServiceEcuM
+){
+   if(NULL_PTR == lptrCfgSwcServiceEcuM){
+#if(STD_ON == SwcServiceEcuM_DevErrorDetect)
+      Det_ReportError(
+      );
+#endif
+   }
+   else{
+// check lptrCfgSwcServiceEcuM for memory faults
+// use PBcfg_SwcServiceEcuM as back-up configuration
+   }
    SwcServiceEcuM.IsInitDone = E_OK;
 }
 
