@@ -38,10 +38,9 @@ class module_SwcServiceEcuM:
    public:
       module_SwcServiceEcuM(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
       }
-      FUNC(void, _CODE) InitFunction(
-         CONSTP2CONST(CfgModule_TypeAbstract, _CONFIG_DATA, _APPL_CONST) lptrCfgModule
+      FUNC(void, SWCSERVICEECUM_CODE) InitFunction(
+         CONSTP2CONST(CfgModule_TypeAbstract, SWCSERVICEECUM_CONFIG_DATA, SWCSERVICEECUM_APPL_CONST) lptrCfgModule
       );
-      FUNC(void, SWCSERVICEECUM_CODE) InitFunction   (void);
       FUNC(void, SWCSERVICEECUM_CODE) DeInitFunction (void);
       FUNC(void, SWCSERVICEECUM_CODE) MainFunction   (void);
 
@@ -98,7 +97,7 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
    ){
       lptrinfEcuMClient_Indexed = (P2VAR(infEcuMClient, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST))laptrinfEcuMClient_DriverInitList[luint8IndexEcuMClient];
       lptrinfEcuMClient_Indexed->InitFunction(
-         /*configuration abstract type*/
+         (const CfgModule_TypeAbstract*) NULL_PTR /* replace with configuration abstract type */
       );
    }
 }
@@ -247,23 +246,39 @@ static FUNC(void, SWCSERVICEECUM_CODE) SwitchOff(void){
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::InitFunction(
-   CONSTP2CONST(CfgSwcServiceEcuM_Type, CFGSWCSERVICEECUM_CONFIG_DATA, CFGSWCSERVICEECUM_APPL_CONST) lptrCfgSwcServiceEcuM
+   CONSTP2CONST(CfgModule_TypeAbstract, SWCSERVICEECUM_CONFIG_DATA, SWCSERVICEECUM_APPL_CONST) lptrCfgModule
 ){
-   if(NULL_PTR == lptrCfgSwcServiceEcuM){
+   if(E_OK == IsInitDone){
 #if(STD_ON == SwcServiceEcuM_DevErrorDetect)
       Det_ReportError(
       );
 #endif
    }
    else{
-// check lptrCfgSwcServiceEcuM for memory faults
+      if(NULL_PTR == lptrCfgModule){
+#if(STD_ON == SwcServiceEcuM_DevErrorDetect)
+         Det_ReportError(
+         );
+#endif
+      }
+      else{
+// check lptrCfgModule for memory faults
 // use PBcfg_SwcServiceEcuM as back-up configuration
+      }
+      IsInitDone = E_OK;
    }
-   SwcServiceEcuM.IsInitDone = E_OK;
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DeInitFunction(void){
-   SwcServiceEcuM.IsInitDone = E_NOT_OK;
+   if(E_OK != IsInitDone){
+#if(STD_ON == SwcServiceEcuM_DevErrorDetect)
+      Det_ReportError(
+      );
+#endif
+   }
+   else{
+      IsInitDone = E_NOT_OK;
+   }
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::MainFunction(void){
@@ -286,8 +301,15 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPreOs(void){
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPostOs(void){
    gptrinfSchM_EcuM->Start();
-   gptrinfEcuMClient_BswM->InitFunction(/*TBD: configuration*/);
-   gptrinfEcuMClient_SchM->InitFunction(/*TBD: configuration*/);
+
+   gptrinfEcuMClient_BswM->InitFunction(
+      (const CfgModule_TypeAbstract*) NULL_PTR /* replace with configuration abstract type */
+   );
+
+   gptrinfEcuMClient_SchM->InitFunction(
+      (const CfgModule_TypeAbstract*) NULL_PTR /* replace with configuration abstract type */
+   );
+
    gptrinfSchM_EcuM->StartTiming();
 }
 
