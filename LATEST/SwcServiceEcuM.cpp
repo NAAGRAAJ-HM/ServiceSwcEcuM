@@ -14,18 +14,18 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define SWCSERVICEECUM_AR_RELEASE_MAJOR_VERSION                                4
-#define SWCSERVICEECUM_AR_RELEASE_MINOR_VERSION                                3
+#define SWCSERVICEECUM_AR_RELEASE_VERSION_MAJOR                                4
+#define SWCSERVICEECUM_AR_RELEASE_VERSION_MINOR                                3
 
 /******************************************************************************/
 /* MACROS                                                                     */
 /******************************************************************************/
-#if(SWCSERVICEECUM_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION)
-   #error "Incompatible SWCSERVICEECUM_AR_RELEASE_MAJOR_VERSION!"
+#if(SWCSERVICEECUM_AR_RELEASE_VERSION_MAJOR != STD_AR_RELEASE_VERSION_MAJOR)
+   #error "Incompatible SWCSERVICEECUM_AR_RELEASE_VERSION_MAJOR!"
 #endif
 
-#if(SWCSERVICEECUM_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION)
-   #error "Incompatible SWCSERVICEECUM_AR_RELEASE_MINOR_VERSION!"
+#if(SWCSERVICEECUM_AR_RELEASE_VERSION_MINOR != STD_AR_RELEASE_VERSION_MINOR)
+   #error "Incompatible SWCSERVICEECUM_AR_RELEASE_VERSION_MINOR!"
 #endif
 
 /******************************************************************************/
@@ -70,8 +70,10 @@ CONSTP2VAR(infSwcServiceEcuM_EcuM, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gpt
 /******************************************************************************/
 VAR(module_SwcServiceEcuM, SWCSERVICEECUM_VAR) SwcServiceEcuM(
    {
-         0x0000
-      ,  0xFFFF
+         SWCSERVICEECUM_AR_RELEASE_VERSION_MAJOR
+      ,  SWCSERVICEECUM_AR_RELEASE_VERSION_MINOR
+      ,  0x00
+      ,  0xFF
       ,  0x01
       ,  '0'
       ,  '1'
@@ -85,9 +87,14 @@ VAR(module_SwcServiceEcuM, SWCSERVICEECUM_VAR) SwcServiceEcuM(
 static FUNC(void, SWCSERVICEECUM_CODE) SetProgrammableInterrupts(void){
 }
 
+typedef struct{
+   CONSTP2VAR(infEcuMClient, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) lptrinfEcuMClient_Module;
+   const CfgModule_TypeAbstract* PBcfgModule;
+}CfgEcuM_TypeDriverInitData;
+
 static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
-      const CONSTP2VAR(infEcuMClient, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) *laptrinfEcuMClient_DriverInitList
-   ,  uint8 luint8ListSize 
+      const CfgEcuM_TypeDriverInitData* const lptrDriverInitData
+   ,  uint8 luint8ListSize
 ){
    P2VAR(infEcuMClient, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) lptrinfEcuMClient_Indexed;
    for(
@@ -95,30 +102,77 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
       ;        luint8IndexEcuMClient < luint8ListSize 
       ;        luint8IndexEcuMClient ++
    ){
-      lptrinfEcuMClient_Indexed = (P2VAR(infEcuMClient, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST))laptrinfEcuMClient_DriverInitList[luint8IndexEcuMClient];
+      lptrinfEcuMClient_Indexed = lptrDriverInitData[luint8IndexEcuMClient];
       lptrinfEcuMClient_Indexed->InitFunction(
-         (const CfgModule_TypeAbstract*) NULL_PTR /* replace with configuration abstract type */
+         lptrDriverInitData[luint8IndexEcuMClient]
       );
    }
 }
+
+extern const CfgModule_TypeAbstract PBcfgAdc;
+extern const CfgModule_TypeAbstract PBcfgBswM;
+extern const CfgModule_TypeAbstract PBcfgCan;
+extern const CfgModule_TypeAbstract PBcfgCanIf;
+extern const CfgModule_TypeAbstract PBcfgCom;
+extern const CfgModule_TypeAbstract PBcfgComM;
+extern const CfgModule_TypeAbstract PBcfgCry;
+extern const CfgModule_TypeAbstract PBcfgCryIf;
+extern const CfgModule_TypeAbstract PBcfgCsm;
+extern const CfgModule_TypeAbstract PBcfgDcm;
+extern const CfgModule_TypeAbstract PBcfgDem;
+extern const CfgModule_TypeAbstract PBcfgDet;
+extern const CfgModule_TypeAbstract PBcfgDio;
+extern const CfgModule_TypeAbstract PBcfgEa;
+extern const CfgModule_TypeAbstract PBcfgEcuM;
+extern const CfgModule_TypeAbstract PBcfgEep;
+extern const CfgModule_TypeAbstract PBcfgEth;
+extern const CfgModule_TypeAbstract PBcfgEthIf;
+extern const CfgModule_TypeAbstract PBcfgFee;
+extern const CfgModule_TypeAbstract PBcfgFiM;
+extern const CfgModule_TypeAbstract PBcfgFls;
+extern const CfgModule_TypeAbstract PBcfgFr;
+extern const CfgModule_TypeAbstract PBcfgFrIf;
+extern const CfgModule_TypeAbstract PBcfgGpt;
+extern const CfgModule_TypeAbstract PBcfgIcu;
+extern const CfgModule_TypeAbstract PBcfgLin;
+extern const CfgModule_TypeAbstract PBcfgLinIf;
+extern const CfgModule_TypeAbstract PBcfgLinTp;
+extern const CfgModule_TypeAbstract PBcfgMcu;
+extern const CfgModule_TypeAbstract PBcfgMemIf;
+extern const CfgModule_TypeAbstract PBcfgNm;
+//extern const CfgModule_TypeAbstract PBcfgNvM;
+extern const CfgModule_TypeAbstract PBcfgOcu;
+extern const CfgModule_TypeAbstract PBcfgOs;
+extern const CfgModule_TypeAbstract PBcfgPduR;
+extern const CfgModule_TypeAbstract PBcfgPort;
+extern const CfgModule_TypeAbstract PBcfgPwm;
+extern const CfgModule_TypeAbstract PBcfgSchM;
+extern const CfgModule_TypeAbstract PBcfgSecOC;
+extern const CfgModule_TypeAbstract PBcfgSokFm;
+extern const CfgModule_TypeAbstract PBcfgSpi;
+extern const CfgModule_TypeAbstract PBcfgStbM;
+extern const CfgModule_TypeAbstract PBcfgVkms;
+extern const CfgModule_TypeAbstract PBcfgWdg;
+extern const CfgModule_TypeAbstract PBcfgWdgIf;
+extern const CfgModule_TypeAbstract PBcfgWdgM;
 
 #include "infDet_EcuM.hpp"
 #include "infDem_EcuM.hpp"
 #include "infFls_EcuM.hpp"
 #include "infNvM_EcuM.hpp"
 
-static const CONSTP2VAR(infEcuMClient, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) laptrinfEcuMClient_DriverInitZero[] = {
-      gptrinfEcuMClient_Det
-   ,  gptrinfEcuMClient_Dem
-   ,  gptrinfEcuMClient_Fls
-   ,  gptrinfEcuMClient_NvM
+static const CfgEcuM_TypeDriverInitData laDriverInitDataZero[] = {
+      {gptrinfEcuMClient_Det, &PBcfgDet}
+   ,  {gptrinfEcuMClient_Dem, &PBcfgDem}
+   ,  {gptrinfEcuMClient_Fls, &PBcfgFls}
+   ,  {gptrinfEcuMClient_NvM, &PBcfgNvM}
 };
 
 static FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero(void){
    DriverInitX(
-         laptrinfEcuMClient_DriverInitZero
+         laDriverInitDataZero
       ,  (
-               sizeof(laptrinfEcuMClient_DriverInitZero)
+               sizeof(laDriverInitDataZero)
             /  sizeof(CONSTP2VAR(infEcuMClient, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST))
          )
    );
@@ -171,56 +225,56 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero(void){
 #include "infSwcServiceEcuM_EcuM.hpp"
 #include "infSwcServiceOs_EcuM.hpp"
 
-static const CONSTP2VAR(infEcuMClient, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) laptrinfEcuMClient_DriverInitOne[] = {
-      gptrinfEcuMClient_CanIf
-   ,  gptrinfEcuMClient_CryIf
-   ,  gptrinfEcuMClient_Ea
-   ,  gptrinfEcuMClient_EthIf
-   ,  gptrinfEcuMClient_Fee
-   ,  gptrinfEcuMClient_FrIf
-   ,  gptrinfEcuMClient_LinIf
-   ,  gptrinfEcuMClient_LinTp
-   ,  gptrinfEcuMClient_MemIf
-   ,  gptrinfEcuMClient_WdgIf
-   ,  gptrinfEcuMClient_Adc
-   ,  gptrinfEcuMClient_Can
-   ,  gptrinfEcuMClient_Cry
-   ,  gptrinfEcuMClient_Dio
-   ,  gptrinfEcuMClient_Eep
-   ,  gptrinfEcuMClient_Eth
-// ,  gptrinfEcuMClient_Fls
-   ,  gptrinfEcuMClient_Fr
-   ,  gptrinfEcuMClient_Gpt
-   ,  gptrinfEcuMClient_Icu
-   ,  gptrinfEcuMClient_Lin
-   ,  gptrinfEcuMClient_Mcu
-   ,  gptrinfEcuMClient_Ocu
-   ,  gptrinfEcuMClient_Port
-   ,  gptrinfEcuMClient_Pwm
-   ,  gptrinfEcuMClient_Spi
-   ,  gptrinfEcuMClient_Wdg
-// ,  gptrinfEcuMClient_BswM
-   ,  gptrinfEcuMClient_Com
-   ,  gptrinfEcuMClient_ComM
-   ,  gptrinfEcuMClient_Csm
-   ,  gptrinfEcuMClient_Dcm
-// ,  gptrinfEcuMClient_Dem
-// ,  gptrinfEcuMClient_Det
-   ,  gptrinfEcuMClient_FiM
-   ,  gptrinfEcuMClient_Nm
-// ,  gptrinfEcuMClient_NvM
-// ,  gptrinfEcuMClient_Os
-   ,  gptrinfEcuMClient_PduR
-// ,  gptrinfEcuMClient_SchM
-   ,  gptrinfEcuMClient_SecOC
-   ,  gptrinfEcuMClient_SokFm
-// ,  gptrinfEcuMClient_StartUp
-   ,  gptrinfEcuMClient_StbM
-   ,  gptrinfEcuMClient_Vkms
-   ,  gptrinfEcuMClient_WdgM
-   ,  gptrinfEcuMClient_Rte
-   ,  gptrinfEcuMClient_SwcServiceEcuM
-   ,  gptrinfEcuMClient_SwcServiceOs
+static const CfgEcuM_TypeDriverInitData laDriverInitDataOne[] = {
+      {gptrinfEcuMClient_CanIf,          &PBcfgCanIf}
+   ,  {gptrinfEcuMClient_CryIf,          &PBcfgCryIf}
+   ,  {gptrinfEcuMClient_Ea,             &PBcfgEa}
+   ,  {gptrinfEcuMClient_EthIf,          &PBcfgEthIf}
+   ,  {gptrinfEcuMClient_Fee,            &PBcfgFee}
+   ,  {gptrinfEcuMClient_FrIf,           &PBcfgFrIf}
+   ,  {gptrinfEcuMClient_LinIf,          &PBcfgLinIf}
+   ,  {gptrinfEcuMClient_LinTp,          &PBcfgLinTp}
+   ,  {gptrinfEcuMClient_MemIf,          &PBcfgMemIf}
+   ,  {gptrinfEcuMClient_WdgIf,          &PBcfgWdgIf}
+   ,  {gptrinfEcuMClient_Adc,            &PBcfgAdc}
+   ,  {gptrinfEcuMClient_Can,            &PBcfgCan}
+   ,  {gptrinfEcuMClient_Cry,            &PBcfgCry}
+   ,  {gptrinfEcuMClient_Dio,            &PBcfgDio}
+   ,  {gptrinfEcuMClient_Eep,            &PBcfgEep}
+   ,  {gptrinfEcuMClient_Eth,            &PBcfgEth}
+// ,  {gptrinfEcuMClient_Fls,            &PBcfgFls}
+   ,  {gptrinfEcuMClient_Fr,             &PBcfgFr}
+   ,  {gptrinfEcuMClient_Gpt,            &PBcfgGpt}
+   ,  {gptrinfEcuMClient_Icu,            &PBcfgIcu}
+   ,  {gptrinfEcuMClient_Lin,            &PBcfgLin}
+   ,  {gptrinfEcuMClient_Mcu,            &PBcfgMcu}
+   ,  {gptrinfEcuMClient_Ocu,            &PBcfgOcu}
+   ,  {gptrinfEcuMClient_Port,           &PBcfgPort}
+   ,  {gptrinfEcuMClient_Pwm,            &PBcfgPwm}
+   ,  {gptrinfEcuMClient_Spi,            &PBcfgSpi}
+   ,  {gptrinfEcuMClient_Wdg,            &PBcfgWdg}
+// ,  {gptrinfEcuMClient_BswM,           &PBcfgBswM}
+   ,  {gptrinfEcuMClient_Com,            &PBcfgCom}
+   ,  {gptrinfEcuMClient_ComM,           &PBcfgComM}
+   ,  {gptrinfEcuMClient_Csm,            &PBcfgCsm}
+   ,  {gptrinfEcuMClient_Dcm,            &PBcfgDcm}
+// ,  {gptrinfEcuMClient_Dem,            &PBcfgDem}
+// ,  {gptrinfEcuMClient_Det,            &PBcfgDet}
+   ,  {gptrinfEcuMClient_FiM,            &PBcfgFiM}
+   ,  {gptrinfEcuMClient_Nm,             &PBcfgNm}
+// ,  {gptrinfEcuMClient_NvM,            &PBcfgNvM}
+// ,  {gptrinfEcuMClient_Os,             &PBcfgOs}
+   ,  {gptrinfEcuMClient_PduR,           &PBcfgPduR}
+// ,  {gptrinfEcuMClient_SchM,           &PBcfgSchM}
+   ,  {gptrinfEcuMClient_SecOC,          &PBcfgSecOC}
+   ,  {gptrinfEcuMClient_SokFm,          &PBcfgSokFm}
+// ,  {gptrinfEcuMClient_StartUp,        &PBcfgStartUp}
+   ,  {gptrinfEcuMClient_StbM,           &PBcfgStbM}
+   ,  {gptrinfEcuMClient_Vkms,           &PBcfgVkms}
+   ,  {gptrinfEcuMClient_WdgM,           &PBcfgWdgM}
+   ,  {gptrinfEcuMClient_Rte,            &PBcfgRte}
+   ,  {gptrinfEcuMClient_SwcServiceEcuM, &PBcfgSwcServiceEcuM}
+   ,  {gptrinfEcuMClient_SwcServiceOs,   &PBcfgSwcServiceOs}
 };
 
 static FUNC(void, SWCSERVICEECUM_CODE) DriverInitOne(void){
