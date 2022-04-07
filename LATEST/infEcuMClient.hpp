@@ -27,7 +27,8 @@ class infEcuMClient{
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-      Std_TypeReturn IsInitDone = E_NOT_OK;
+      Std_TypeReturn          IsInitDone = E_NOT_OK;
+      CfgModule_TypeAbstract* lptrCfg    = NULL_PTR;
 
    public:
 /******************************************************************************/
