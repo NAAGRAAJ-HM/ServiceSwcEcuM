@@ -89,22 +89,22 @@ static FUNC(void, SWCSERVICEECUM_CODE) SetProgrammableInterrupts(void){
 
 typedef struct{
    CONSTP2VAR(infEcuMClient, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) lptrinfEcuMClient_Module;
-   const CfgModule_TypeAbstract* PBcfgModule;
+   const CfgModule_TypeAbstract* ptrPBcfgModule;
 }CfgEcuM_TypeDriverInitData;
 
 static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
       const CfgEcuM_TypeDriverInitData* const lptrDriverInitData
    ,  uint8 luint8ListSize
 ){
-   P2VAR(infEcuMClient, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) lptrinfEcuMClient_Indexed;
+   P2CONST(CfgEcuM_TypeDriverInitData, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) DriverInitData_Indexed;
    for(
          uint8 luint8IndexEcuMClient = 0
       ;        luint8IndexEcuMClient < luint8ListSize 
       ;        luint8IndexEcuMClient ++
    ){
-      lptrinfEcuMClient_Indexed = lptrDriverInitData[luint8IndexEcuMClient];
-      lptrinfEcuMClient_Indexed->InitFunction(
-         lptrDriverInitData[luint8IndexEcuMClient]
+      DriverInitData_Indexed = &lptrDriverInitData[luint8IndexEcuMClient];
+      DriverInitData_Indexed->lptrinfEcuMClient_Module->InitFunction(
+         DriverInitData_Indexed->ptrPBcfgModule
       );
    }
 }
@@ -140,7 +140,7 @@ extern const CfgModule_TypeAbstract PBcfgLinTp;
 extern const CfgModule_TypeAbstract PBcfgMcu;
 extern const CfgModule_TypeAbstract PBcfgMemIf;
 extern const CfgModule_TypeAbstract PBcfgNm;
-//extern const CfgModule_TypeAbstract PBcfgNvM;
+extern const CfgModule_TypeAbstract PBcfgNvM;
 extern const CfgModule_TypeAbstract PBcfgOcu;
 extern const CfgModule_TypeAbstract PBcfgOs;
 extern const CfgModule_TypeAbstract PBcfgPduR;
@@ -272,17 +272,17 @@ static const CfgEcuM_TypeDriverInitData laDriverInitDataOne[] = {
    ,  {gptrinfEcuMClient_StbM,           &PBcfgStbM}
    ,  {gptrinfEcuMClient_Vkms,           &PBcfgVkms}
    ,  {gptrinfEcuMClient_WdgM,           &PBcfgWdgM}
-   ,  {gptrinfEcuMClient_Rte,            &PBcfgRte}
-   ,  {gptrinfEcuMClient_SwcServiceEcuM, &PBcfgSwcServiceEcuM}
-   ,  {gptrinfEcuMClient_SwcServiceOs,   &PBcfgSwcServiceOs}
+//   ,  {gptrinfEcuMClient_Rte,            &PBcfgRte}
+//   ,  {gptrinfEcuMClient_SwcServiceEcuM, &PBcfgSwcServiceEcuM}
+//   ,  {gptrinfEcuMClient_SwcServiceOs,   &PBcfgSwcServiceOs}
 };
 
 static FUNC(void, SWCSERVICEECUM_CODE) DriverInitOne(void){
    DriverInitX(
-         laptrinfEcuMClient_DriverInitOne
+         laDriverInitDataOne
       ,  (
-               sizeof(laptrinfEcuMClient_DriverInitOne)
-            /  sizeof(CONSTP2VAR(infEcuMClient, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST))
+               sizeof(laDriverInitDataOne)
+            /  sizeof(CONSTP2VAR(CfgEcuM_TypeDriverInitData, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST))
          )
    );
 }
@@ -324,7 +324,7 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::InitFunction(
          }
          else{
 // use PBcfgCanIf as back-up configuration
-            lptrCfg = &PBcfgSwcServiceEcuM;
+//            lptrCfg = PBcfgSwcServiceEcuM;
          }
       }
       IsInitDone = E_OK;
