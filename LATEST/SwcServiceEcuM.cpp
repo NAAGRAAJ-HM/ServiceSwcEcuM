@@ -103,6 +103,7 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
       ;        luint8IndexEcuMClient ++
    ){
       DriverInitData_Indexed = &lptrDriverInitData[luint8IndexEcuMClient];
+#if(STD_ON == SwcServiceEcuM_CheckNullPtr)
       if(
             NULL_PTR
          == (DriverInitData_Indexed->lptrinfEcuMClient_Module->InitFunction)
@@ -113,10 +114,13 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
 #endif
       }
       else{
+#endif
          DriverInitData_Indexed->lptrinfEcuMClient_Module->InitFunction(
             DriverInitData_Indexed->ptrPBcfgModule
          );
+#if(STD_ON == SwcServiceEcuM_CheckNullPtr)
       }
+#endif
    }
 }
 
