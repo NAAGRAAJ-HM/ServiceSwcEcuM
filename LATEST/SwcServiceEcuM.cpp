@@ -103,9 +103,20 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
       ;        luint8IndexEcuMClient ++
    ){
       DriverInitData_Indexed = &lptrDriverInitData[luint8IndexEcuMClient];
-      DriverInitData_Indexed->lptrinfEcuMClient_Module->InitFunction(
-         DriverInitData_Indexed->ptrPBcfgModule
-      );
+      if(
+            NULL_PTR
+         == (DriverInitData_Indexed->lptrinfEcuMClient_Module->InitFunction)
+      ){
+#if(STD_ON == SwcServiceEcuM_DevErrorDetect)
+         Det_ReportError(
+         );
+#endif
+      }
+      else{
+         DriverInitData_Indexed->lptrinfEcuMClient_Module->InitFunction(
+            DriverInitData_Indexed->ptrPBcfgModule
+         );
+      }
    }
 }
 
@@ -173,7 +184,7 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero(void){
          laDriverInitDataZero
       ,  (
                sizeof(laDriverInitDataZero)
-            /  sizeof(CONSTP2VAR(infEcuMClient, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST))
+            /  sizeof(CfgEcuM_TypeDriverInitData)
          )
    );
 }
@@ -282,7 +293,7 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitOne(void){
          laDriverInitDataOne
       ,  (
                sizeof(laDriverInitDataOne)
-            /  sizeof(CONSTP2VAR(CfgEcuM_TypeDriverInitData, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST))
+            /  sizeof(CfgEcuM_TypeDriverInitData)
          )
    );
 }
