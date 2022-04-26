@@ -39,6 +39,9 @@ class infEcuMClient{
       ) = 0;
 
       virtual FUNC(void, CFGSWCSERVICEECUM_CODE) DeInitFunction (void) = 0;
+
+      ERROR
+      Std_TypeReturn GetStatusInit(void);
 };
 
 /******************************************************************************/

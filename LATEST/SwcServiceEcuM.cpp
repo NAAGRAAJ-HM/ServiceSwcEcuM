@@ -31,9 +31,22 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
+class class_SwcServiceEcuM_Functionality{
+   public:
+      FUNC(void, SWCSERVICEECUM_CODE) StartPreOs             (void);
+      FUNC(void, SWCSERVICEECUM_CODE) StartPostOs            (void);
+      FUNC(void, SWCSERVICEECUM_CODE) OffPreOs               (void);
+      FUNC(void, SWCSERVICEECUM_CODE) OffPostOs              (void);
+      FUNC(void, SWCSERVICEECUM_CODE) EnableWakeupSources    (void);
+      FUNC(void, SWCSERVICEECUM_CODE) GenerateRamHash        (void);
+      FUNC(void, SWCSERVICEECUM_CODE) CheckRamHash           (void);
+      FUNC(void, SWCSERVICEECUM_CODE) ErrorHook              (void);
+};
+
 class module_SwcServiceEcuM:
       public abstract_module
    ,  public infSwcServiceEcuM_EcuM
+   ,  public class_SwcServiceEcuM_Functionality
 {
    public:
       module_SwcServiceEcuM(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
@@ -110,6 +123,10 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
       ){
 #if(STD_ON == SwcServiceEcuM_DevErrorDetect)
          Det_ReportError(
+      0 //TBD: IdModule
+   ,  0 //TBD: IdInstance
+   ,  0 //TBD: IdApi
+   ,  0 //TBD: IdError
          );
 #endif
       }
@@ -321,6 +338,10 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::InitFunction(
    if(E_OK == IsInitDone){
 #if(STD_ON == SwcServiceEcuM_DevErrorDetect)
       Det_ReportError(
+      0 //TBD: IdModule
+   ,  0 //TBD: IdInstance
+   ,  0 //TBD: IdApi
+   ,  0 //TBD: IdError
       );
 #endif
    }
@@ -329,6 +350,10 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::InitFunction(
       if(NULL_PTR == lptrCfgModule){
 #if(STD_ON == SwcServiceEcuM_DevErrorDetect)
          Det_ReportError(
+      0 //TBD: IdModule
+   ,  0 //TBD: IdInstance
+   ,  0 //TBD: IdApi
+   ,  0 //TBD: IdError
          );
 #endif
       }
@@ -353,6 +378,10 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DeInitFunction(void){
    if(E_OK != IsInitDone){
 #if(STD_ON == SwcServiceEcuM_DevErrorDetect)
       Det_ReportError(
+      0 //TBD: IdModule
+   ,  0 //TBD: IdInstance
+   ,  0 //TBD: IdApi
+   ,  0 //TBD: IdError
       );
 #endif
    }
@@ -369,6 +398,10 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::MainFunction(void){
    if(E_OK != IsInitDone){
 #if(STD_ON == SwcServiceEcuM_DevErrorDetect)
       Det_ReportError(
+      0 //TBD: IdModule
+   ,  0 //TBD: IdInstance
+   ,  0 //TBD: IdApi
+   ,  0 //TBD: IdError
       );
 #endif
    }
@@ -424,28 +457,16 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::OffPostOs(void){
    SwitchOff();
 }
 
-class class_SwcServiceEcuM_Unused{
-   public:
-      FUNC(void, SWCSERVICEECUM_CODE) StartPreOs             (void);
-      FUNC(void, SWCSERVICEECUM_CODE) StartPostOs            (void);
-      FUNC(void, SWCSERVICEECUM_CODE) OffPreOs               (void);
-      FUNC(void, SWCSERVICEECUM_CODE) OffPostOs              (void);
-      FUNC(void, SWCSERVICEECUM_CODE) EnableWakeupSources    (void);
-      FUNC(void, SWCSERVICEECUM_CODE) GenerateRamHash        (void);
-      FUNC(void, SWCSERVICEECUM_CODE) CheckRamHash           (void);
-      FUNC(void, SWCSERVICEECUM_CODE) ErrorHook              (void);
-};
-
-FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Unused::EnableWakeupSources(void){
+FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Functionality::EnableWakeupSources(void){
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Unused::GenerateRamHash(void){
+FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Functionality::GenerateRamHash(void){
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Unused::CheckRamHash(void){
+FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Functionality::CheckRamHash(void){
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Unused::ErrorHook(void){
+FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Functionality::ErrorHook(void){
 }
 
 // Go to sleep sequence
