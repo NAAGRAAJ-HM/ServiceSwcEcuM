@@ -1,15 +1,12 @@
 #pragma once
 /******************************************************************************/
-/* File   : infEcuMClient.hpp                                                 */
+/* File   : SwcServiceEcuM_core.hpp                                           */
 /* Author : NAGARAJA HM (c) since 1982. All rights reserved.                  */
 /******************************************************************************/
 
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "Std_Types.hpp"
-#include "CompilerCfg_CfgSwcServiceEcuM.hpp"
-#include "CfgModule.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -22,30 +19,16 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
-class infEcuMClient{
-   protected:
-/******************************************************************************/
-/* OBJECTS                                                                    */
-/******************************************************************************/
-//TBD: #if(STD_ON == SwcServiceEcuM_InitCheck)
-            Std_TypeReturn          IsInitDone{E_NOT_OK};
-//TBD: #endif
-      const CfgModule_TypeAbstract* lptrCfg{(CfgModule_TypeAbstract*)NULL_PTR};
-
+class class_SwcServiceEcuM_Functionality{
    public:
-/******************************************************************************/
-/* FUNCTIONS                                                                  */
-/******************************************************************************/
-      virtual FUNC(void, CFGSWCSERVICEECUM_CODE) InitFunction(
-         CONSTP2CONST(CfgModule_TypeAbstract, CFGSWCSERVICEECUM_CONFIG_DATA, CFGSWCSERVICEECUM_APPL_CONST) lptrCfgModule
-      ) = 0;
-
-      virtual FUNC(void, CFGSWCSERVICEECUM_CODE) DeInitFunction (void) = 0;
-
-//TBD: #if(STD_ON == SwcServiceEcuM_InitCheck)
-      Std_TypeReturn GetStatusInit(void);
-      void SetStatusInit(Std_TypeReturn);
-//TBD: #endif
+      FUNC(void, SWCSERVICEECUM_CODE) StartPreOs             (void);
+      FUNC(void, SWCSERVICEECUM_CODE) StartPostOs            (void);
+      FUNC(void, SWCSERVICEECUM_CODE) OffPreOs               (void);
+      FUNC(void, SWCSERVICEECUM_CODE) OffPostOs              (void);
+      FUNC(void, SWCSERVICEECUM_CODE) EnableWakeupSources    (void);
+      FUNC(void, SWCSERVICEECUM_CODE) GenerateRamHash        (void);
+      FUNC(void, SWCSERVICEECUM_CODE) CheckRamHash           (void);
+      FUNC(void, SWCSERVICEECUM_CODE) ErrorHook              (void);
 };
 
 /******************************************************************************/
@@ -54,6 +37,14 @@ class infEcuMClient{
 
 /******************************************************************************/
 /* PARAMS                                                                     */
+/******************************************************************************/
+
+/******************************************************************************/
+/* OBJECTS                                                                    */
+/******************************************************************************/
+
+/******************************************************************************/
+/* FUNCTIONS                                                                  */
 /******************************************************************************/
 
 /******************************************************************************/

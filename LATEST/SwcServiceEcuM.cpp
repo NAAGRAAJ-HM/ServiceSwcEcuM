@@ -31,18 +31,6 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
-class class_SwcServiceEcuM_Functionality{
-   public:
-      FUNC(void, SWCSERVICEECUM_CODE) StartPreOs             (void);
-      FUNC(void, SWCSERVICEECUM_CODE) StartPostOs            (void);
-      FUNC(void, SWCSERVICEECUM_CODE) OffPreOs               (void);
-      FUNC(void, SWCSERVICEECUM_CODE) OffPostOs              (void);
-      FUNC(void, SWCSERVICEECUM_CODE) EnableWakeupSources    (void);
-      FUNC(void, SWCSERVICEECUM_CODE) GenerateRamHash        (void);
-      FUNC(void, SWCSERVICEECUM_CODE) CheckRamHash           (void);
-      FUNC(void, SWCSERVICEECUM_CODE) ErrorHook              (void);
-};
-
 class module_SwcServiceEcuM:
       public abstract_module
    ,  public infSwcServiceEcuM_EcuM
@@ -487,6 +475,16 @@ FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Functionality::ErrorHook(vo
 
 // Go to wake-up validation sequence
 // ...
+
+Std_TypeReturn infEcuMClient::GetStatusInit(void){
+   return IsInitDone;
+}
+
+void infEcuMClient::SetStatusInit(
+   Std_TypeReturn lStatusInit
+){
+   IsInitDone = lStatusInit;
+}
 
 /******************************************************************************/
 /* EOF                                                                        */
