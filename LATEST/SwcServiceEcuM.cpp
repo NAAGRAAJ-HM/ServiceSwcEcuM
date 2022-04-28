@@ -7,6 +7,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "Module.hpp"
+#include "SwcServiceEcuM_core.hpp"
 #include "infSwcServiceEcuM_EcuM.hpp"
 #include "infSwcServiceEcuM_Dcm.hpp"
 #include "infSwcServiceEcuM_SchM.hpp"
