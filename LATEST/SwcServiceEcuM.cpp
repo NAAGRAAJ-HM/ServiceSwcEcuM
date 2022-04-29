@@ -7,10 +7,9 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "Module.hpp"
+//#include "CfgSwcServiceEcuM.hpp"
 #include "SwcServiceEcuM_core.hpp"
-#include "infSwcServiceEcuM_EcuM.hpp"
-#include "infSwcServiceEcuM_Dcm.hpp"
-#include "infSwcServiceEcuM_SchM.hpp"
+#include "infSwcServiceEcuM.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -34,6 +33,7 @@
 /******************************************************************************/
 class module_SwcServiceEcuM:
       public abstract_module
+      //TBD: move to infxxx.hpp ?
    ,  public infSwcServiceEcuM_EcuM
    ,  public class_SwcServiceEcuM_Functionality
 {
@@ -45,11 +45,7 @@ class module_SwcServiceEcuM:
       );
       FUNC(void, SWCSERVICEECUM_CODE) DeInitFunction (void);
       FUNC(void, SWCSERVICEECUM_CODE) MainFunction   (void);
-
-      FUNC(void, SWCSERVICEECUM_CODE) StartPreOs     (void);
-      FUNC(void, SWCSERVICEECUM_CODE) StartPostOs    (void);
-      FUNC(void, SWCSERVICEECUM_CODE) OffPreOs       (void);
-      FUNC(void, SWCSERVICEECUM_CODE) OffPostOs      (void);
+      SWCSERVICEECUM_CORE_FUNCTIONALITIES
 };
 
 extern VAR(module_SwcServiceEcuM, SWCSERVICEECUM_VAR) SwcServiceEcuM;
@@ -65,7 +61,6 @@ CONSTP2VAR(infSwcServiceEcuM_EcuM, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gpt
 /******************************************************************************/
 /* PARAMS                                                                     */
 /******************************************************************************/
-//#include "CfgSwcServiceEcuM.hpp"
 
 /******************************************************************************/
 /* OBJECTS                                                                    */
