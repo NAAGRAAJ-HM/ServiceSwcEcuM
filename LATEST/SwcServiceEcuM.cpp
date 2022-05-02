@@ -441,16 +441,16 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::OffPostOs(void){
    SwitchOff();
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Functionality::EnableWakeupSources(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::EnableWakeupSources(void){
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Functionality::GenerateRamHash(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::GenerateRamHash(void){
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Functionality::CheckRamHash(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::CheckRamHash(void){
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) class_SwcServiceEcuM_Functionality::ErrorHook(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::ErrorHook(void){
 }
 
 // Go to sleep sequence
