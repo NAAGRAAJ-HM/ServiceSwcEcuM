@@ -350,7 +350,7 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::InitFunction(
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  0 //TBD: IdError
+         ,  SWCSERVICEECUM_E_UNINIT
       );
 #endif
    }
@@ -370,7 +370,7 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DeInitFunction(void){
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  0 //TBD: IdError
+         ,  SWCSERVICEECUM_E_UNINIT
       );
 #endif
    }
@@ -389,7 +389,7 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::MainFunction(void){
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  0 //TBD: IdError
+         ,  SWCSERVICEECUM_E_UNINIT
       );
 #endif
    }
