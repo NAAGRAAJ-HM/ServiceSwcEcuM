@@ -23,15 +23,6 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 class infEcuMClient{
-   protected:
-/******************************************************************************/
-/* OBJECTS                                                                    */
-/******************************************************************************/
-//TBD: #if(STD_ON == SwcServiceEcuM_InitCheck)
-            Std_TypeReturn          IsInitDone{E_NOT_OK};
-//TBD: #endif
-      const CfgModule_TypeAbstract* lptrCfg{(CfgModule_TypeAbstract*)NULL_PTR};
-
    public:
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
@@ -41,11 +32,6 @@ class infEcuMClient{
       ) = 0;
 
       virtual FUNC(void, CFGSWCSERVICEECUM_CODE) DeInitFunction (void) = 0;
-
-//TBD: #if(STD_ON == SwcServiceEcuM_InitCheck)
-      Std_TypeReturn GetStatusInit(void);
-      void SetStatusInit(Std_TypeReturn);
-//TBD: #endif
 };
 
 /******************************************************************************/

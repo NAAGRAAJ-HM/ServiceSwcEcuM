@@ -7,7 +7,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "Module.hpp"
-//#include "CfgSwcServiceEcuM.hpp"
+#include "CfgSwcServiceEcuM.hpp"
 #include "SwcServiceEcuM_core.hpp"
 #include "infSwcServiceEcuM.hpp"
 
@@ -37,6 +37,13 @@ class module_SwcServiceEcuM:
    ,  public infSwcServiceEcuM_EcuM
    ,  public class_SwcServiceEcuM_Functionality
 {
+   private:
+/******************************************************************************/
+/* OBJECTS                                                                    */
+/******************************************************************************/
+            Std_TypeReturn          IsInitDone{E_NOT_OK};
+      const CfgModule_TypeAbstract* lptrCfg{(CfgModule_TypeAbstract*)NULL_PTR};
+
    public:
       module_SwcServiceEcuM(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
       }
@@ -326,7 +333,7 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::InitFunction(
             lptrCfg = lptrCfgModule;
          }
          else{
-            lptrCfg = PBcfgSwcServiceEcuM;
+            lptrCfg = &PBcfgSwcServiceEcuM;
          }
       }
       else{
@@ -469,16 +476,6 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::ErrorHook(void){
 
 // Go to wake-up validation sequence
 // ...
-
-Std_TypeReturn infEcuMClient::GetStatusInit(void){
-   return IsInitDone;
-}
-
-void infEcuMClient::SetStatusInit(
-   Std_TypeReturn lStatusInit
-){
-   IsInitDone = lStatusInit;
-}
 
 /******************************************************************************/
 /* EOF                                                                        */
