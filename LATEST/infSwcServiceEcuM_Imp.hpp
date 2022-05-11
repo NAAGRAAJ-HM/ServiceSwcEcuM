@@ -1,16 +1,12 @@
 #pragma once
 /******************************************************************************/
-/* File   : infSwcServiceEcuM.hpp                                             */
+/* File   : infSwcServiceEcuM_Imp.hpp                                         */
 /* Author : NAGARAJA HM (c) since 1982. All rights reserved.                  */
 /******************************************************************************/
 
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "infSwcServiceEcuM_EcuM.hpp"
-#include "infSwcServiceEcuM_Dcm.hpp"
-#include "infSwcServiceEcuM_Det.hpp"
-#include "infSwcServiceEcuM_SchM.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */

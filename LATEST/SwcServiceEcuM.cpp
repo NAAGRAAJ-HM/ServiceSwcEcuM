@@ -9,7 +9,7 @@
 #include "Module.hpp"
 #include "CfgSwcServiceEcuM.hpp"
 #include "SwcServiceEcuM_core.hpp"
-#include "infSwcServiceEcuM.hpp"
+#include "infSwcServiceEcuM_Exp.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -32,6 +32,7 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 class module_SwcServiceEcuM:
+   INTERFACES_EXPORTED_SWCSERVICEECUM
       public abstract_module
       //TBD: move to infxxx.hpp ?
    ,  public infSwcServiceEcuM_EcuM
