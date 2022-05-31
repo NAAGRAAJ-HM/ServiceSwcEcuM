@@ -32,10 +32,8 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 class module_SwcServiceEcuM:
-   INTERFACES_EXPORTED_SWCSERVICEECUM
-      public abstract_module
-      //TBD: move to infxxx.hpp ?
-   ,  public infSwcServiceEcuM_EcuM
+      INTERFACES_EXPORTED_SWCSERVICEECUM
+   ,  public abstract_module
    ,  public class_SwcServiceEcuM_Functionality
 {
    private:
@@ -428,15 +426,8 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPreOs(void){
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPostOs(void){
    gptrinfSchM_EcuM->Start();
-
-   gptrinfEcuMClient_BswM->InitFunction(
-      (const CfgModule_TypeAbstract*) NULL_PTR /* replace with configuration abstract type */
-   );
-
-   gptrinfEcuMClient_SchM->InitFunction(
-      (const CfgModule_TypeAbstract*) NULL_PTR /* replace with configuration abstract type */
-   );
-
+   gptrinfEcuMClient_BswM->InitFunction(&PBcfgBswM);
+   gptrinfEcuMClient_SchM->InitFunction(&PBcfgSchM);
    gptrinfSchM_EcuM->StartTiming();
 }
 
