@@ -73,6 +73,10 @@ CONSTP2VAR(infSwcServiceEcuM_EcuM, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gpt
 /******************************************************************************/
 VAR(module_SwcServiceEcuM, SWCSERVICEECUM_VAR) SwcServiceEcuM(
    {
+#if(STD_ON == _ReSIM)
+// char strModuleName[6];
+#else
+#endif
          SWCSERVICEECUM_AR_RELEASE_VERSION_MAJOR
       ,  SWCSERVICEECUM_AR_RELEASE_VERSION_MINOR
       ,  0x00
@@ -135,6 +139,7 @@ extern const CfgModule_TypeAbstract PBcfgAdc;
 extern const CfgModule_TypeAbstract PBcfgBswM;
 extern const CfgModule_TypeAbstract PBcfgCan;
 extern const CfgModule_TypeAbstract PBcfgCanIf;
+//extern const CfgModule_TypeAbstract PBcfgCanTp;
 extern const CfgModule_TypeAbstract PBcfgCom;
 extern const CfgModule_TypeAbstract PBcfgComM;
 extern const CfgModule_TypeAbstract PBcfgCry;
@@ -201,6 +206,7 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero(void){
 }
 
 #include "infCanIf_EcuM.hpp"
+//#include "infCanTp_EcuM.hpp"
 #include "infCryIf_EcuM.hpp"
 #include "infEa_EcuM.hpp"
 #include "infEthIf_EcuM.hpp"
@@ -249,6 +255,7 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero(void){
 
 static const CfgEcuM_TypeDriverInitData laDriverInitDataOne[] = {
       {gptrinfEcuMClient_CanIf,          &PBcfgCanIf}
+// ,  {gptrinfEcuMClient_CanTp,          &PBcfgCanTp}
    ,  {gptrinfEcuMClient_CryIf,          &PBcfgCryIf}
    ,  {gptrinfEcuMClient_Ea,             &PBcfgEa}
    ,  {gptrinfEcuMClient_EthIf,          &PBcfgEthIf}
