@@ -74,10 +74,6 @@ CONSTP2VAR(infSwcServiceEcuM_EcuM, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gpt
 /******************************************************************************/
 VAR(module_SwcServiceEcuM, SWCSERVICEECUM_VAR) SwcServiceEcuM(
    {
-#if(STD_ON == _ReSIM)
-         "SwcServiceEcuM",
-#else
-#endif
          SWCSERVICEECUM_AR_RELEASE_VERSION_MAJOR
       ,  SWCSERVICEECUM_AR_RELEASE_VERSION_MINOR
       ,  0x00
