@@ -132,6 +132,7 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
    }
 }
 
+//TBD: Move to Cfg
 extern const CfgModule_TypeAbstract PBcfgAdc;
 extern const CfgModule_TypeAbstract PBcfgBswM;
 extern const CfgModule_TypeAbstract PBcfgCan;
@@ -209,6 +210,7 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero(void){
    );
 }
 
+//TBD: Move to Cfg
 #include "infCanIf_EcuM.hpp"
 #include "infCanTp_EcuM.hpp"
 #include "infCryIf_EcuM.hpp"
@@ -264,6 +266,7 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero(void){
 #include "infSwcServiceEcuM_EcuM.hpp"
 #include "infSwcServiceOs_EcuM.hpp"
 
+//TBD: Move to Cfg
 static const CfgEcuM_TypeDriverInitData laDriverInitDataOne[] = {
       {gptrinfEcuMClient_CanIf,          &PBcfgCanIf}
    ,  {gptrinfEcuMClient_CanTp,          &PBcfgCanTp}
