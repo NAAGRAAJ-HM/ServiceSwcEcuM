@@ -88,7 +88,9 @@ VAR(module_SwcServiceEcuM, SWCSERVICEECUM_VAR) SwcServiceEcuM(
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-static FUNC(void, SWCSERVICEECUM_CODE) SetProgrammableInterrupts(void){
+static FUNC(void, SWCSERVICEECUM_CODE) SetProgrammableInterrupts(
+   void
+){
 }
 
 typedef struct{
@@ -200,7 +202,9 @@ static const CfgEcuM_TypeDriverInitData laDriverInitDataZero[] = {
    ,  {gptrinfEcuMClient_NvM, &PBcfgNvM}
 };
 
-static FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero(void){
+static FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero(
+   void
+){
    DriverInitX(
          laDriverInitDataZero
       ,  (
@@ -327,7 +331,9 @@ static const CfgEcuM_TypeDriverInitData laDriverInitDataOne[] = {
 // ,  {gptrinfEcuMClient_SwcServiceOs,   &PBcfgSwcServiceOs}
 };
 
-static FUNC(void, SWCSERVICEECUM_CODE) DriverInitOne(void){
+static FUNC(void, SWCSERVICEECUM_CODE) DriverInitOne(
+   void
+){
    DriverInitX(
          laDriverInitDataOne
       ,  (
@@ -337,16 +343,24 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitOne(void){
    );
 }
 
-static FUNC(void, SWCSERVICEECUM_CODE) OnGoOffOne(void){
+static FUNC(void, SWCSERVICEECUM_CODE) OnGoOffOne(
+   void
+){
 }
 
-static FUNC(void, SWCSERVICEECUM_CODE) OnGoOffTwo(void){
+static FUNC(void, SWCSERVICEECUM_CODE) OnGoOffTwo(
+   void
+){
 }
 
-static FUNC(void, SWCSERVICEECUM_CODE) Reset(void){
+static FUNC(void, SWCSERVICEECUM_CODE) Reset(
+   void
+){
 }
 
-static FUNC(void, SWCSERVICEECUM_CODE) SwitchOff(void){
+static FUNC(void, SWCSERVICEECUM_CODE) SwitchOff(
+   void
+){
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::InitFunction(
@@ -392,7 +406,9 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::InitFunction(
 #endif
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DeInitFunction(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DeInitFunction(
+   void
+){
 #if(STD_ON == SwcServiceEcuM_InitCheck)
    if(
          E_OK
@@ -415,7 +431,9 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DeInitFunction(void){
 #endif
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::MainFunction(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::MainFunction(
+   void
+){
 #if(STD_ON == SwcServiceEcuM_InitCheck)
    if(
          E_OK
@@ -437,7 +455,9 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::MainFunction(void){
 #endif
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPreOs(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPreOs(
+   void
+){
    SetProgrammableInterrupts();
    DriverInitZero();
    gptrinfEcuM_SwcServiceEcuM->DeterminePbConfiguration();
@@ -452,14 +472,18 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPreOs(void){
    gptrinfEcuM_SwcServiceEcuM->LoopDetection();
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPostOs(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPostOs(
+   void
+){
    gptrinfSchM_EcuM->Start();
    gptrinfEcuMClient_BswM->InitFunction(&PBcfgBswM);
    gptrinfEcuMClient_SchM->InitFunction(&PBcfgSchM);
    gptrinfSchM_EcuM->StartTiming();
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::OffPreOs(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::OffPreOs(
+   void
+){
    OnGoOffOne();
    gptrinfEcuMClient_BswM->DeInitFunction();
    gptrinfEcuMClient_SchM->DeInitFunction();
@@ -469,22 +493,32 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::OffPreOs(void){
    }
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::OffPostOs(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::OffPostOs(
+   void
+){
    OnGoOffTwo();
    Reset();
    SwitchOff();
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::EnableWakeupSources(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::EnableWakeupSources(
+   void
+){
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::GenerateRamHash(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::GenerateRamHash(
+   void
+){
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::CheckRamHash(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::CheckRamHash(
+   void
+){
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::ErrorHook(void){
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::ErrorHook(
+   void
+){
 }
 
 // Go to sleep sequence
