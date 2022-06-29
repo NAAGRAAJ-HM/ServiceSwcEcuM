@@ -41,12 +41,8 @@ class module_SwcServiceEcuM:
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-            Std_TypeReturn          IsInitDone{E_NOT_OK};
-      const CfgModule_TypeAbstract* lptrCfg{(CfgModule_TypeAbstract*)NULL_PTR};
 
    public:
-      module_SwcServiceEcuM(Std_TypeVersionInfo lVersionInfo) : abstract_module(lVersionInfo){
-      }
       FUNC(void, SWCSERVICEECUM_CODE) InitFunction(
          CONSTP2CONST(CfgModule_TypeAbstract, SWCSERVICEECUM_CONFIG_DATA, SWCSERVICEECUM_APPL_CONST) lptrCfgModule
       );
@@ -72,18 +68,7 @@ CONSTP2VAR(infSwcServiceEcuM_EcuM, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gpt
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-VAR(module_SwcServiceEcuM, SWCSERVICEECUM_VAR) SwcServiceEcuM(
-   {
-         SWCSERVICEECUM_AR_RELEASE_VERSION_MAJOR
-      ,  SWCSERVICEECUM_AR_RELEASE_VERSION_MINOR
-      ,  0x00
-      ,  0xFF
-      ,  0x01
-      ,  '0'
-      ,  '1'
-      ,  '0'
-   }
-);
+VAR(module_SwcServiceEcuM, SWCSERVICEECUM_VAR) SwcServiceEcuM;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
