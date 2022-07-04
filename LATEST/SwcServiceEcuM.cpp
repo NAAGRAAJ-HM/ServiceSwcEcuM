@@ -133,13 +133,13 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
 #include "infEcuM_SwcServiceEcuM.hpp"
 
 static const CfgEcuM_TypeDriverInitData laDriverInitDataZero[] = {
-      {gptrinfEcuMClient_Det,   &(CfgGen.CfgDet)}
-   ,  {gptrinfEcuMClient_Dem,   &(CfgGen.CfgDem)}
-   ,  {gptrinfEcuMClient_Fls,   &(CfgGen.CfgFls)}
-   ,  {gptrinfEcuMClient_Fee,   &(CfgGen.CfgFee)}
-   ,  {gptrinfEcuMClient_MemIf, &(CfgGen.CfgMemIf)}
-   ,  {gptrinfEcuMClient_NvM,   &(CfgGen.CfgNvM)}
-// ,  {gptrinfEcuMClient_EcuM,  &(CfgGen.CfgEcuM)}
+      {gptrinfEcuMClient_Det,   &(CfgGen_NvM.CfgDet)}
+   ,  {gptrinfEcuMClient_Dem,   &(CfgGen_NvM.CfgDem)}
+   ,  {gptrinfEcuMClient_Fls,   &(CfgGen_NvM.CfgFls)}
+   ,  {gptrinfEcuMClient_Fee,   &(CfgGen_NvM.CfgFee)}
+   ,  {gptrinfEcuMClient_MemIf, &(CfgGen_NvM.CfgMemIf)}
+   ,  {gptrinfEcuMClient_NvM,   &(CfgGen_NvM.CfgNvM)}
+// ,  {gptrinfEcuMClient_EcuM,  &(CfgGen_NvM.CfgEcuM)}
 };
 
 static FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero(
@@ -209,64 +209,64 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero(
 
 //TBD: Move to Cfg
 static const CfgEcuM_TypeDriverInitData laDriverInitDataOne[] = {
-      {gptrinfEcuMClient_CanIf,          &(CfgGen.CfgCanIf)}
-   ,  {gptrinfEcuMClient_CanTp,          &(CfgGen.CfgCanTp)}
-   ,  {gptrinfEcuMClient_CryIf,          &(CfgGen.CfgCryIf)}
-   ,  {gptrinfEcuMClient_Ea,             &(CfgGen.CfgEa)}
-   ,  {gptrinfEcuMClient_EthIf,          &(CfgGen.CfgEthIf)}
-// ,  {gptrinfEcuMClient_Fee,            &(CfgGen.CfgFee)}
-   ,  {gptrinfEcuMClient_FrIf,           &(CfgGen.CfgFrIf)}
-   ,  {gptrinfEcuMClient_FrTp,           &(CfgGen.CfgFrTp)}
-   ,  {gptrinfEcuMClient_J1939Tp,        &(CfgGen.CfgJ1939Tp)}
-   ,  {gptrinfEcuMClient_LinIf,          &(CfgGen.CfgLinIf)}
-   ,  {gptrinfEcuMClient_LinTp,          &(CfgGen.CfgLinTp)}
-// ,  {gptrinfEcuMClient_MemIf,          &(CfgGen.CfgMemIf)}
-   ,  {gptrinfEcuMClient_WdgIf,          &(CfgGen.CfgWdgIf)}
-   ,  {gptrinfEcuMClient_Adc,            &(CfgGen.CfgAdc)}
-   ,  {gptrinfEcuMClient_Can,            &(CfgGen.CfgCan)}
-   ,  {gptrinfEcuMClient_Cry,            &(CfgGen.CfgCry)}
-   ,  {gptrinfEcuMClient_Dio,            &(CfgGen.CfgDio)}
-   ,  {gptrinfEcuMClient_Eep,            &(CfgGen.CfgEep)}
-   ,  {gptrinfEcuMClient_Eth,            &(CfgGen.CfgEth)}
-// ,  {gptrinfEcuMClient_Fls,            &(CfgGen.CfgFls)}
-   ,  {gptrinfEcuMClient_Fr,             &(CfgGen.CfgFr)}
-   ,  {gptrinfEcuMClient_Gpt,            &(CfgGen.CfgGpt)}
-   ,  {gptrinfEcuMClient_Icu,            &(CfgGen.CfgIcu)}
-   ,  {gptrinfEcuMClient_Lin,            &(CfgGen.CfgLin)}
-   ,  {gptrinfEcuMClient_Mcu,            &(CfgGen.CfgMcu)}
-   ,  {gptrinfEcuMClient_Ocu,            &(CfgGen.CfgOcu)}
-   ,  {gptrinfEcuMClient_Port,           &(CfgGen.CfgPort)}
-   ,  {gptrinfEcuMClient_Pwm,            &(CfgGen.CfgPwm)}
-   ,  {gptrinfEcuMClient_Spi,            &(CfgGen.CfgSpi)}
-   ,  {gptrinfEcuMClient_Wdg,            &(CfgGen.CfgWdg)}
-// ,  {gptrinfEcuMClient_BswM,           &(CfgGen.CfgBswM)}
-   ,  {gptrinfEcuMClient_CanNm,          &(CfgGen.CfgCanNm)}
-   ,  {gptrinfEcuMClient_CanSm,          &(CfgGen.CfgCanSm)}
-   ,  {gptrinfEcuMClient_Com,            &(CfgGen.CfgCom)}
-   ,  {gptrinfEcuMClient_ComM,           &(CfgGen.CfgComM)}
-   ,  {gptrinfEcuMClient_Csm,            &(CfgGen.CfgCsm)}
-   ,  {gptrinfEcuMClient_Dcm,            &(CfgGen.CfgDcm)}
-// ,  {gptrinfEcuMClient_Dem,            &(CfgGen.CfgDem)}
-// ,  {gptrinfEcuMClient_Det,            &(CfgGen.CfgDet)}
-   ,  {gptrinfEcuMClient_Dlt,            &(CfgGen.CfgDlt)}
-// ,  {gptrinfEcuMClient_EcuM,           &(CfgGen.CfgEcuM)}
-   ,  {gptrinfEcuMClient_FiM,            &(CfgGen.CfgFiM)}
-   ,  {gptrinfEcuMClient_FrNm,           &(CfgGen.CfgFrNm)}
-   ,  {gptrinfEcuMClient_IpduM,          &(CfgGen.CfgIpduM)}
-   ,  {gptrinfEcuMClient_Nm,             &(CfgGen.CfgNm)}
-// ,  {gptrinfEcuMClient_NvM,            &(CfgGen.CfgNvM)}
-// ,  {gptrinfEcuMClient_Os,             &(CfgGen.CfgOs)}
-   ,  {gptrinfEcuMClient_PduR,           &(CfgGen.CfgPduR)}
-// ,  {gptrinfEcuMClient_SchM,           &(CfgGen.CfgSchM)}
-   ,  {gptrinfEcuMClient_SecOC,          &(CfgGen.CfgSecOC)}
-   ,  {gptrinfEcuMClient_SokFm,          &(CfgGen.CfgSokFm)}
-// ,  {gptrinfEcuMClient_StartUp,        &(CfgGen.CfgStartUp)}
-   ,  {gptrinfEcuMClient_StbM,           &(CfgGen.CfgStbM)}
-   ,  {gptrinfEcuMClient_Vkms,           &(CfgGen.CfgVkms)}
-   ,  {gptrinfEcuMClient_WdgM,           &(CfgGen.CfgWdgM)}
-// ,  {gptrinfEcuMClient_Rte,            &(CfgGen.CfgRte)}
-// ,  {gptrinfEcuMClient_SwcServiceEcuM, &(CfgGen.CfgSwcServiceEcuM)}
-// ,  {gptrinfEcuMClient_SwcServiceOs,   &(CfgGen.CfgSwcServiceOs)}
+      {gptrinfEcuMClient_CanIf,          &(CfgGen_NvM.CfgCanIf)}
+   ,  {gptrinfEcuMClient_CanTp,          &(CfgGen_NvM.CfgCanTp)}
+   ,  {gptrinfEcuMClient_CryIf,          &(CfgGen_NvM.CfgCryIf)}
+   ,  {gptrinfEcuMClient_Ea,             &(CfgGen_NvM.CfgEa)}
+   ,  {gptrinfEcuMClient_EthIf,          &(CfgGen_NvM.CfgEthIf)}
+// ,  {gptrinfEcuMClient_Fee,            &(CfgGen_NvM.CfgFee)}
+   ,  {gptrinfEcuMClient_FrIf,           &(CfgGen_NvM.CfgFrIf)}
+   ,  {gptrinfEcuMClient_FrTp,           &(CfgGen_NvM.CfgFrTp)}
+   ,  {gptrinfEcuMClient_J1939Tp,        &(CfgGen_NvM.CfgJ1939Tp)}
+   ,  {gptrinfEcuMClient_LinIf,          &(CfgGen_NvM.CfgLinIf)}
+   ,  {gptrinfEcuMClient_LinTp,          &(CfgGen_NvM.CfgLinTp)}
+// ,  {gptrinfEcuMClient_MemIf,          &(CfgGen_NvM.CfgMemIf)}
+   ,  {gptrinfEcuMClient_WdgIf,          &(CfgGen_NvM.CfgWdgIf)}
+   ,  {gptrinfEcuMClient_Adc,            &(CfgGen_NvM.CfgAdc)}
+   ,  {gptrinfEcuMClient_Can,            &(CfgGen_NvM.CfgCan)}
+   ,  {gptrinfEcuMClient_Cry,            &(CfgGen_NvM.CfgCry)}
+   ,  {gptrinfEcuMClient_Dio,            &(CfgGen_NvM.CfgDio)}
+   ,  {gptrinfEcuMClient_Eep,            &(CfgGen_NvM.CfgEep)}
+   ,  {gptrinfEcuMClient_Eth,            &(CfgGen_NvM.CfgEth)}
+// ,  {gptrinfEcuMClient_Fls,            &(CfgGen_NvM.CfgFls)}
+   ,  {gptrinfEcuMClient_Fr,             &(CfgGen_NvM.CfgFr)}
+   ,  {gptrinfEcuMClient_Gpt,            &(CfgGen_NvM.CfgGpt)}
+   ,  {gptrinfEcuMClient_Icu,            &(CfgGen_NvM.CfgIcu)}
+   ,  {gptrinfEcuMClient_Lin,            &(CfgGen_NvM.CfgLin)}
+   ,  {gptrinfEcuMClient_Mcu,            &(CfgGen_NvM.CfgMcu)}
+   ,  {gptrinfEcuMClient_Ocu,            &(CfgGen_NvM.CfgOcu)}
+   ,  {gptrinfEcuMClient_Port,           &(CfgGen_NvM.CfgPort)}
+   ,  {gptrinfEcuMClient_Pwm,            &(CfgGen_NvM.CfgPwm)}
+   ,  {gptrinfEcuMClient_Spi,            &(CfgGen_NvM.CfgSpi)}
+   ,  {gptrinfEcuMClient_Wdg,            &(CfgGen_NvM.CfgWdg)}
+// ,  {gptrinfEcuMClient_BswM,           &(CfgGen_NvM.CfgBswM)}
+   ,  {gptrinfEcuMClient_CanNm,          &(CfgGen_NvM.CfgCanNm)}
+   ,  {gptrinfEcuMClient_CanSm,          &(CfgGen_NvM.CfgCanSm)}
+   ,  {gptrinfEcuMClient_Com,            &(CfgGen_NvM.CfgCom)}
+   ,  {gptrinfEcuMClient_ComM,           &(CfgGen_NvM.CfgComM)}
+   ,  {gptrinfEcuMClient_Csm,            &(CfgGen_NvM.CfgCsm)}
+   ,  {gptrinfEcuMClient_Dcm,            &(CfgGen_NvM.CfgDcm)}
+// ,  {gptrinfEcuMClient_Dem,            &(CfgGen_NvM.CfgDem)}
+// ,  {gptrinfEcuMClient_Det,            &(CfgGen_NvM.CfgDet)}
+   ,  {gptrinfEcuMClient_Dlt,            &(CfgGen_NvM.CfgDlt)}
+// ,  {gptrinfEcuMClient_EcuM,           &(CfgGen_NvM.CfgEcuM)}
+   ,  {gptrinfEcuMClient_FiM,            &(CfgGen_NvM.CfgFiM)}
+   ,  {gptrinfEcuMClient_FrNm,           &(CfgGen_NvM.CfgFrNm)}
+   ,  {gptrinfEcuMClient_IpduM,          &(CfgGen_NvM.CfgIpduM)}
+   ,  {gptrinfEcuMClient_Nm,             &(CfgGen_NvM.CfgNm)}
+// ,  {gptrinfEcuMClient_NvM,            &(CfgGen_NvM.CfgNvM)}
+// ,  {gptrinfEcuMClient_Os,             &(CfgGen_NvM.CfgOs)}
+   ,  {gptrinfEcuMClient_PduR,           &(CfgGen_NvM.CfgPduR)}
+// ,  {gptrinfEcuMClient_SchM,           &(CfgGen_NvM.CfgSchM)}
+   ,  {gptrinfEcuMClient_SecOC,          &(CfgGen_NvM.CfgSecOC)}
+   ,  {gptrinfEcuMClient_SokFm,          &(CfgGen_NvM.CfgSokFm)}
+// ,  {gptrinfEcuMClient_StartUp,        &(CfgGen_NvM.CfgStartUp)}
+   ,  {gptrinfEcuMClient_StbM,           &(CfgGen_NvM.CfgStbM)}
+   ,  {gptrinfEcuMClient_Vkms,           &(CfgGen_NvM.CfgVkms)}
+   ,  {gptrinfEcuMClient_WdgM,           &(CfgGen_NvM.CfgWdgM)}
+// ,  {gptrinfEcuMClient_Rte,            &(CfgGen_NvM.CfgRte)}
+// ,  {gptrinfEcuMClient_SwcServiceEcuM, &(CfgGen_NvM.CfgSwcServiceEcuM)}
+// ,  {gptrinfEcuMClient_SwcServiceOs,   &(CfgGen_NvM.CfgSwcServiceOs)}
 };
 
 static FUNC(void, SWCSERVICEECUM_CODE) DriverInitOne(
@@ -409,8 +409,8 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPostOs(
    void
 ){
    gptrinfSchM_EcuM->Start();
-   gptrinfEcuMClient_BswM->InitFunction((&CfgGen.CfgBswM));
-   gptrinfEcuMClient_SchM->InitFunction((&CfgGen.CfgSchM));
+   gptrinfEcuMClient_BswM->InitFunction((&CfgGen_NvM.CfgBswM));
+   gptrinfEcuMClient_SchM->InitFunction((&CfgGen_NvM.CfgSchM));
    gptrinfSchM_EcuM->StartTiming();
 }
 
