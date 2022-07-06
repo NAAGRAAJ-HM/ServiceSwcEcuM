@@ -7,9 +7,7 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "Module.hpp"
-#include "CfgSwcServiceEcuM.hpp"
-#include "SwcServiceEcuM_core.hpp"
-#include "infSwcServiceEcuM_Exp.hpp"
+#include "SwcServiceEcuM.hpp"
 #include "infSwcServiceEcuM_Imp.hpp"
 
 /******************************************************************************/
@@ -32,26 +30,6 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
-class module_SwcServiceEcuM:
-      INTERFACES_EXPORTED_SWCSERVICEECUM
-   ,  public abstract_module
-   ,  public class_SwcServiceEcuM_Functionality
-{
-   private:
-/******************************************************************************/
-/* OBJECTS                                                                    */
-/******************************************************************************/
-
-   public:
-      FUNC(void, SWCSERVICEECUM_CODE) InitFunction(
-         CONSTP2CONST(CfgModule_TypeAbstract, SWCSERVICEECUM_CONFIG_DATA, SWCSERVICEECUM_APPL_CONST) lptrCfgModule
-      );
-      FUNC(void, SWCSERVICEECUM_CODE) DeInitFunction (void);
-      FUNC(void, SWCSERVICEECUM_CODE) MainFunction   (void);
-      SWCSERVICEECUM_CORE_FUNCTIONALITIES
-};
-
-extern VAR(module_SwcServiceEcuM, SWCSERVICEECUM_VAR) SwcServiceEcuM;
 
 /******************************************************************************/
 /* CONSTS                                                                     */
