@@ -34,8 +34,7 @@
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
-CONSTP2VAR(infEcuMClient,          SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gptrinfEcuMClient_SwcServiceEcuM = &SwcServiceEcuM;
-CONSTP2VAR(infSwcServiceEcuM_EcuM, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gptrinfSwcServiceEcuM_EcuM       = &SwcServiceEcuM;
+CONSTP2VAR(infSwcServiceEcuM_EcuM, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gptrinfSwcServiceEcuM_EcuM = &SwcServiceEcuM;
 
 /******************************************************************************/
 /* PARAMS                                                                     */
@@ -53,11 +52,6 @@ static FUNC(void, SWCSERVICEECUM_CODE) SetProgrammableInterrupts(
    void
 ){
 }
-
-typedef struct{
-   CONSTP2VAR(infEcuMClient, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) lptrinfEcuMClient_Module;
-   const CfgModule_TypeAbstract* ptrPBcfgModule;
-}CfgEcuM_TypeDriverInitData;
 
 static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
       const CfgEcuM_TypeDriverInitData* const lptrDriverInitData
@@ -95,163 +89,26 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
    }
 }
 
-//TBD: Move to Cfg
-
 #include "CfgGen.hpp"
-
-//TBD: Move to Cfg
-#include "infDet_EcuM.hpp"
-#include "infDem_EcuM.hpp"
-#include "infFls_EcuM.hpp"
-#include "infFee_EcuM.hpp"
-#include "infMemIf_EcuM.hpp"
-#include "infNvM_EcuM.hpp"
-#include "infEcuM_SwcServiceEcuM.hpp"
-
-static const CfgEcuM_TypeDriverInitData laDriverInitDataZero[] = {
-      {gptrinfEcuMClient_Det,   &(CfgGen_NvM.CfgDet)}
-   ,  {gptrinfEcuMClient_Dem,   &(CfgGen_NvM.CfgDem)}
-   ,  {gptrinfEcuMClient_Fls,   &(CfgGen_NvM.CfgFls)}
-   ,  {gptrinfEcuMClient_Fee,   &(CfgGen_NvM.CfgFee)}
-   ,  {gptrinfEcuMClient_MemIf, &(CfgGen_NvM.CfgMemIf)}
-   ,  {gptrinfEcuMClient_NvM,   &(CfgGen_NvM.CfgNvM)}
-// ,  {gptrinfEcuMClient_EcuM,  &(CfgGen_NvM.CfgEcuM)}
-};
-
 static FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero(
    void
 ){
    DriverInitX(
-         laDriverInitDataZero
+         CfgGen_NvM.CfgSwcServiceEcuM.laDriverInitDataZero //TBD: lptrCfg
       ,  (
-               sizeof(laDriverInitDataZero)
+               sizeof(CfgGen_NvM.CfgSwcServiceEcuM.laDriverInitDataZero)
             /  sizeof(CfgEcuM_TypeDriverInitData)
          )
    );
 }
 
-//TBD: Move to Cfg
-#include "infCanIf_EcuM.hpp"
-#include "infCanTp_EcuM.hpp"
-#include "infCryIf_EcuM.hpp"
-#include "infEa_EcuM.hpp"
-#include "infEthIf_EcuM.hpp"
-#include "infFrIf_EcuM.hpp"
-#include "infFrTp_EcuM.hpp"
-#include "infJ1939Tp_EcuM.hpp"
-#include "infLinIf_EcuM.hpp"
-#include "infLinTp_EcuM.hpp"
-#include "infWdgIf_EcuM.hpp"
-#include "infAdc_EcuM.hpp"
-#include "infCan_EcuM.hpp"
-#include "infCry_EcuM.hpp"
-#include "infDio_EcuM.hpp"
-#include "infEep_EcuM.hpp"
-#include "infEth_EcuM.hpp"
-#include "infFr_EcuM.hpp"
-#include "infGpt_EcuM.hpp"
-#include "infIcu_EcuM.hpp"
-#include "infLin_EcuM.hpp"
-#include "infMcu_EcuM.hpp"
-#include "infOcu_EcuM.hpp"
-#include "infPort_EcuM.hpp"
-#include "infPwm_EcuM.hpp"
-#include "infSpi_EcuM.hpp"
-#include "infWdg_EcuM.hpp"
-#include "infBswM_EcuM.hpp"
-#include "infCanNm_EcuM.hpp"
-#include "infCanSm_EcuM.hpp"
-#include "infCom_EcuM.hpp"
-#include "infComM_EcuM.hpp"
-#include "infCsm_EcuM.hpp"
-#include "infDcm_EcuM.hpp"
-#include "infDlt_EcuM.hpp"
-#include "infFiM_EcuM.hpp"
-#include "infFrNm_EcuM.hpp"
-#include "infIpduM_EcuM.hpp"
-#include "infNm_EcuM.hpp"
-#include "infOs_EcuM.hpp"
-#include "infPduR_EcuM.hpp"
-#include "infSchM_EcuM.hpp"
-#include "infSecOC_EcuM.hpp"
-#include "infSokFm_EcuM.hpp"
-#include "infStartUp_EcuM.hpp"
-#include "infStbM_EcuM.hpp"
-#include "infVkms_EcuM.hpp"
-#include "infWdgM_EcuM.hpp"
-#include "infRte_EcuM.hpp"
-#include "infSwcServiceEcuM_EcuM.hpp"
-#include "infSwcServiceOs_EcuM.hpp"
-
-//TBD: Move to Cfg
-static const CfgEcuM_TypeDriverInitData laDriverInitDataOne[] = {
-      {gptrinfEcuMClient_CanIf,          &(CfgGen_NvM.CfgCanIf)}
-   ,  {gptrinfEcuMClient_CanTp,          &(CfgGen_NvM.CfgCanTp)}
-   ,  {gptrinfEcuMClient_CryIf,          &(CfgGen_NvM.CfgCryIf)}
-   ,  {gptrinfEcuMClient_Ea,             &(CfgGen_NvM.CfgEa)}
-   ,  {gptrinfEcuMClient_EthIf,          &(CfgGen_NvM.CfgEthIf)}
-// ,  {gptrinfEcuMClient_Fee,            &(CfgGen_NvM.CfgFee)}
-   ,  {gptrinfEcuMClient_FrIf,           &(CfgGen_NvM.CfgFrIf)}
-   ,  {gptrinfEcuMClient_FrTp,           &(CfgGen_NvM.CfgFrTp)}
-   ,  {gptrinfEcuMClient_J1939Tp,        &(CfgGen_NvM.CfgJ1939Tp)}
-   ,  {gptrinfEcuMClient_LinIf,          &(CfgGen_NvM.CfgLinIf)}
-   ,  {gptrinfEcuMClient_LinTp,          &(CfgGen_NvM.CfgLinTp)}
-// ,  {gptrinfEcuMClient_MemIf,          &(CfgGen_NvM.CfgMemIf)}
-   ,  {gptrinfEcuMClient_WdgIf,          &(CfgGen_NvM.CfgWdgIf)}
-   ,  {gptrinfEcuMClient_Adc,            &(CfgGen_NvM.CfgAdc)}
-   ,  {gptrinfEcuMClient_Can,            &(CfgGen_NvM.CfgCan)}
-   ,  {gptrinfEcuMClient_Cry,            &(CfgGen_NvM.CfgCry)}
-   ,  {gptrinfEcuMClient_Dio,            &(CfgGen_NvM.CfgDio)}
-   ,  {gptrinfEcuMClient_Eep,            &(CfgGen_NvM.CfgEep)}
-   ,  {gptrinfEcuMClient_Eth,            &(CfgGen_NvM.CfgEth)}
-// ,  {gptrinfEcuMClient_Fls,            &(CfgGen_NvM.CfgFls)}
-   ,  {gptrinfEcuMClient_Fr,             &(CfgGen_NvM.CfgFr)}
-   ,  {gptrinfEcuMClient_Gpt,            &(CfgGen_NvM.CfgGpt)}
-   ,  {gptrinfEcuMClient_Icu,            &(CfgGen_NvM.CfgIcu)}
-   ,  {gptrinfEcuMClient_Lin,            &(CfgGen_NvM.CfgLin)}
-   ,  {gptrinfEcuMClient_Mcu,            &(CfgGen_NvM.CfgMcu)}
-   ,  {gptrinfEcuMClient_Ocu,            &(CfgGen_NvM.CfgOcu)}
-   ,  {gptrinfEcuMClient_Port,           &(CfgGen_NvM.CfgPort)}
-   ,  {gptrinfEcuMClient_Pwm,            &(CfgGen_NvM.CfgPwm)}
-   ,  {gptrinfEcuMClient_Spi,            &(CfgGen_NvM.CfgSpi)}
-   ,  {gptrinfEcuMClient_Wdg,            &(CfgGen_NvM.CfgWdg)}
-// ,  {gptrinfEcuMClient_BswM,           &(CfgGen_NvM.CfgBswM)}
-   ,  {gptrinfEcuMClient_CanNm,          &(CfgGen_NvM.CfgCanNm)}
-   ,  {gptrinfEcuMClient_CanSm,          &(CfgGen_NvM.CfgCanSm)}
-   ,  {gptrinfEcuMClient_Com,            &(CfgGen_NvM.CfgCom)}
-   ,  {gptrinfEcuMClient_ComM,           &(CfgGen_NvM.CfgComM)}
-   ,  {gptrinfEcuMClient_Csm,            &(CfgGen_NvM.CfgCsm)}
-   ,  {gptrinfEcuMClient_Dcm,            &(CfgGen_NvM.CfgDcm)}
-// ,  {gptrinfEcuMClient_Dem,            &(CfgGen_NvM.CfgDem)}
-// ,  {gptrinfEcuMClient_Det,            &(CfgGen_NvM.CfgDet)}
-   ,  {gptrinfEcuMClient_Dlt,            &(CfgGen_NvM.CfgDlt)}
-// ,  {gptrinfEcuMClient_EcuM,           &(CfgGen_NvM.CfgEcuM)}
-   ,  {gptrinfEcuMClient_FiM,            &(CfgGen_NvM.CfgFiM)}
-   ,  {gptrinfEcuMClient_FrNm,           &(CfgGen_NvM.CfgFrNm)}
-   ,  {gptrinfEcuMClient_IpduM,          &(CfgGen_NvM.CfgIpduM)}
-   ,  {gptrinfEcuMClient_Nm,             &(CfgGen_NvM.CfgNm)}
-// ,  {gptrinfEcuMClient_NvM,            &(CfgGen_NvM.CfgNvM)}
-// ,  {gptrinfEcuMClient_Os,             &(CfgGen_NvM.CfgOs)}
-   ,  {gptrinfEcuMClient_PduR,           &(CfgGen_NvM.CfgPduR)}
-// ,  {gptrinfEcuMClient_SchM,           &(CfgGen_NvM.CfgSchM)}
-   ,  {gptrinfEcuMClient_SecOC,          &(CfgGen_NvM.CfgSecOC)}
-   ,  {gptrinfEcuMClient_SokFm,          &(CfgGen_NvM.CfgSokFm)}
-// ,  {gptrinfEcuMClient_StartUp,        &(CfgGen_NvM.CfgStartUp)}
-   ,  {gptrinfEcuMClient_StbM,           &(CfgGen_NvM.CfgStbM)}
-   ,  {gptrinfEcuMClient_Vkms,           &(CfgGen_NvM.CfgVkms)}
-   ,  {gptrinfEcuMClient_WdgM,           &(CfgGen_NvM.CfgWdgM)}
-// ,  {gptrinfEcuMClient_Rte,            &(CfgGen_NvM.CfgRte)}
-// ,  {gptrinfEcuMClient_SwcServiceEcuM, &(CfgGen_NvM.CfgSwcServiceEcuM)}
-// ,  {gptrinfEcuMClient_SwcServiceOs,   &(CfgGen_NvM.CfgSwcServiceOs)}
-};
-
 static FUNC(void, SWCSERVICEECUM_CODE) DriverInitOne(
    void
 ){
    DriverInitX(
-         laDriverInitDataOne
+         CfgGen_NvM.CfgSwcServiceEcuM.laDriverInitDataOne //TBD: lptrCfg
       ,  (
-               sizeof(laDriverInitDataOne)
+               sizeof(CfgGen_NvM.CfgSwcServiceEcuM.laDriverInitDataOne)
             /  sizeof(CfgEcuM_TypeDriverInitData)
          )
    );
@@ -385,8 +242,8 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPostOs(
    void
 ){
    gptrinfSchM_EcuM->Start();
-   gptrinfEcuMClient_BswM->InitFunction((&CfgGen_NvM.CfgBswM));
-   gptrinfEcuMClient_SchM->InitFunction((&CfgGen_NvM.CfgSchM));
+   CfgGen_NvM.CfgSwcServiceEcuM.laDriverInitDataOne[IndexEcuMClient_BswM].lptrinfEcuMClient_Module->InitFunction((&CfgGen_NvM.CfgBswM));//TBD: lptrCfg
+   CfgGen_NvM.CfgSwcServiceEcuM.laDriverInitDataOne[IndexEcuMClient_SchM].lptrinfEcuMClient_Module->InitFunction((&CfgGen_NvM.CfgSchM));
    gptrinfSchM_EcuM->StartTiming();
 }
 
@@ -394,8 +251,8 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::OffPreOs(
    void
 ){
    OnGoOffOne();
-   gptrinfEcuMClient_BswM->DeInitFunction();
-   gptrinfEcuMClient_SchM->DeInitFunction();
+   CfgGen_NvM.CfgSwcServiceEcuM.laDriverInitDataOne[IndexEcuMClient_BswM].lptrinfEcuMClient_Module->DeInitFunction();//TBD: lptrCfg
+   CfgGen_NvM.CfgSwcServiceEcuM.laDriverInitDataOne[IndexEcuMClient_SchM].lptrinfEcuMClient_Module->DeInitFunction();
 
    if(gptrinfEcuM_SwcServiceEcuM->GetPendingWakeupEvents()){
       gptrinfEcuM_SwcServiceEcuM->SelectShutdownTarget();
