@@ -27,15 +27,19 @@ class module_SwcServiceEcuM:
    ,  public abstract_module
    ,  public class_SwcServiceEcuM_Functionality
 {
-   private:
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
+   private:
 
-   public:
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
+   private:
+      FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero (void);
+      FUNC(void, SWCSERVICEECUM_CODE) DriverInitOne  (void);
+
+   public:
       FUNC(void, SWCSERVICEECUM_CODE) InitFunction(
          CONSTP2CONST(CfgModule_TypeAbstract, SWCSERVICEECUM_CONFIG_DATA, SWCSERVICEECUM_APPL_CONST) lptrCfgModule
       );

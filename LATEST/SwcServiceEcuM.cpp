@@ -89,26 +89,25 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
    }
 }
 
-#include "CfgGen.hpp"
-static FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero(
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DriverInitZero(
    void
 ){
    DriverInitX(
-         CfgGen_NvM.CfgSwcServiceEcuM.laDriverInitDataZero //TBD: lptrCfg
+         ((CfgSwcServiceEcuM_Type*)lptrCfg)->laDriverInitDataZero
       ,  (
-               sizeof(CfgGen_NvM.CfgSwcServiceEcuM.laDriverInitDataZero)
+               sizeof(((CfgSwcServiceEcuM_Type*)lptrCfg)->laDriverInitDataZero)
             /  sizeof(CfgEcuM_TypeDriverInitData)
          )
    );
 }
 
-static FUNC(void, SWCSERVICEECUM_CODE) DriverInitOne(
+FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DriverInitOne(
    void
 ){
    DriverInitX(
-         CfgGen_NvM.CfgSwcServiceEcuM.laDriverInitDataOne //TBD: lptrCfg
+         ((CfgSwcServiceEcuM_Type*)lptrCfg)->laDriverInitDataOne
       ,  (
-               sizeof(CfgGen_NvM.CfgSwcServiceEcuM.laDriverInitDataOne)
+               sizeof(((CfgSwcServiceEcuM_Type*)lptrCfg)->laDriverInitDataOne)
             /  sizeof(CfgEcuM_TypeDriverInitData)
          )
    );
@@ -242,8 +241,12 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPostOs(
    void
 ){
    gptrinfSchM_EcuM->Start();
-   CfgGen_NvM.CfgSwcServiceEcuM.laDriverInitDataOne[IndexEcuMClient_BswM].lptrinfEcuMClient_Module->InitFunction((&CfgGen_NvM.CfgBswM));//TBD: lptrCfg
-   CfgGen_NvM.CfgSwcServiceEcuM.laDriverInitDataOne[IndexEcuMClient_SchM].lptrinfEcuMClient_Module->InitFunction((&CfgGen_NvM.CfgSchM));
+   ((CfgSwcServiceEcuM_Type*)lptrCfg)->laDriverInitDataOne[IndexEcuMClient_BswM].lptrinfEcuMClient_Module->InitFunction(
+      ((CfgSwcServiceEcuM_Type*)lptrCfg)->laDriverInitDataOne[IndexEcuMClient_BswM].ptrPBcfgModule
+   );//TBD: Simplify
+   ((CfgSwcServiceEcuM_Type*)lptrCfg)->laDriverInitDataOne[IndexEcuMClient_SchM].lptrinfEcuMClient_Module->InitFunction(
+      ((CfgSwcServiceEcuM_Type*)lptrCfg)->laDriverInitDataOne[IndexEcuMClient_SchM].ptrPBcfgModule
+   );//TBD: Simplify
    gptrinfSchM_EcuM->StartTiming();
 }
 
@@ -251,8 +254,8 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::OffPreOs(
    void
 ){
    OnGoOffOne();
-   CfgGen_NvM.CfgSwcServiceEcuM.laDriverInitDataOne[IndexEcuMClient_BswM].lptrinfEcuMClient_Module->DeInitFunction();//TBD: lptrCfg
-   CfgGen_NvM.CfgSwcServiceEcuM.laDriverInitDataOne[IndexEcuMClient_SchM].lptrinfEcuMClient_Module->DeInitFunction();
+   ((CfgSwcServiceEcuM_Type*)lptrCfg)->laDriverInitDataOne[IndexEcuMClient_BswM].lptrinfEcuMClient_Module->DeInitFunction();//TBD: Simplify
+   ((CfgSwcServiceEcuM_Type*)lptrCfg)->laDriverInitDataOne[IndexEcuMClient_SchM].lptrinfEcuMClient_Module->DeInitFunction();//TBD: Simplify
 
    if(gptrinfEcuM_SwcServiceEcuM->GetPendingWakeupEvents()){
       gptrinfEcuM_SwcServiceEcuM->SelectShutdownTarget();
