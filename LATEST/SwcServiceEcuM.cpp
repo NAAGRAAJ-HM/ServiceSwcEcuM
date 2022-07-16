@@ -88,16 +88,13 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
    }
 }
 
-#include "CfgGen.hpp"
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DriverInitZero(
    void
 ){
-   CfgSwcServiceEcuM_Type* lptrCfg = (CfgSwcServiceEcuM_Type*)&(PBcfgGen_ROM.CfgSwcServiceEcuM);
-
    DriverInitX(
-         lptrCfg->u8SizeDriverInitData_Zero
-      ,  lptrCfg->aptrinfEcuMClient_Zero
-      ,  lptrCfg->aptrCfgModule_Zero
+         ((CfgSwcServiceEcuM_Type*)lptrCfg)->u8SizeDriverInitData_Zero
+      ,  ((CfgSwcServiceEcuM_Type*)lptrCfg)->aptrinfEcuMClient_Zero
+      ,  ((CfgSwcServiceEcuM_Type*)lptrCfg)->aptrCfgModule_Zero
    );
 }
 
@@ -218,9 +215,12 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::MainFunction(
 #endif
 }
 
+#include "CfgGen.hpp"
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPreOs(
    void
 ){
+   lptrCfg = (CfgSwcServiceEcuM_Type*)&(PBcfgGen_ROM.CfgSwcServiceEcuM);
+
    SetProgrammableInterrupts();
    DriverInitZero();
    gptrinfEcuM_SwcServiceEcuM->DeterminePbConfiguration();
@@ -239,12 +239,6 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPostOs(
    void
 ){
    gptrinfSchM_EcuM->Start();
-   ((((CfgSwcServiceEcuM_Type*)lptrCfg)->aptrinfEcuMClient_One)[IndexEcuMClient_BswM])->InitFunction(
-      (((CfgSwcServiceEcuM_Type*)lptrCfg)->aptrCfgModule_One)[IndexEcuMClient_BswM]
-   );//TBD: Simplify
-   ((((CfgSwcServiceEcuM_Type*)lptrCfg)->aptrinfEcuMClient_One)[IndexEcuMClient_SchM])->InitFunction(
-      (((CfgSwcServiceEcuM_Type*)lptrCfg)->aptrCfgModule_One)[IndexEcuMClient_SchM]
-   );//TBD: Simplify
    gptrinfSchM_EcuM->StartTiming();
 }
 
