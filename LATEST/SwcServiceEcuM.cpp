@@ -34,7 +34,6 @@
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
-CONSTP2VAR(infSwcServiceEcuM_EcuM, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gptrinfSwcServiceEcuM_EcuM = &SwcServiceEcuM;
 
 /******************************************************************************/
 /* PARAMS                                                                     */
@@ -223,7 +222,7 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPreOs(
 
    SetProgrammableInterrupts();
    DriverInitZero();
-   gptrinfEcuM_SwcServiceEcuM->DeterminePbConfiguration();
+   ((CfgSwcServiceEcuM_Type*)lptrCfg)->ptrinfEcuM_SwcServiceEcuM->DeterminePbConfiguration();
 
    //Check consistency of configuration data
 
@@ -238,7 +237,7 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPreOs(
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPostOs(
    void
 ){
-   gptrinfSchM_EcuM->Start();
+   ((CfgSwcServiceEcuM_Type*)lptrCfg)->ptrinfSchM_EcuM->Start();
    gptrinfSchM_EcuM->StartTiming();
 }
 
@@ -249,8 +248,8 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::OffPreOs(
    ((((CfgSwcServiceEcuM_Type*)lptrCfg)->aptrinfEcuMClient_One)[IndexEcuMClient_BswM])->DeInitFunction();//TBD: Simplify
    ((((CfgSwcServiceEcuM_Type*)lptrCfg)->aptrinfEcuMClient_One)[IndexEcuMClient_SchM])->DeInitFunction();//TBD: Simplify
 
-   if(gptrinfEcuM_SwcServiceEcuM->GetPendingWakeupEvents()){
-      gptrinfEcuM_SwcServiceEcuM->SelectShutdownTarget();
+   if(((CfgSwcServiceEcuM_Type*)lptrCfg)->ptrinfEcuM_SwcServiceEcuM->GetPendingWakeupEvents()){
+      ((CfgSwcServiceEcuM_Type*)lptrCfg)->ptrinfEcuM_SwcServiceEcuM->SelectShutdownTarget();
    }
 }
 
