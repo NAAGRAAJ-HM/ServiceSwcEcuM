@@ -34,7 +34,6 @@ class infSwcServiceEcuM_EcuM{
 /******************************************************************************/
 /* CONSTS                                                                     */
 /******************************************************************************/
-extern CONSTP2VAR(infSwcServiceEcuM_EcuM, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONST) gptrinfSwcServiceEcuM_EcuM;
 
 /******************************************************************************/
 /* PARAMS                                                                     */
