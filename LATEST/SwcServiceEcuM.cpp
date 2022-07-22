@@ -8,7 +8,6 @@
 /******************************************************************************/
 #include "Module.hpp"
 #include "SwcServiceEcuM.hpp"
-#include "infSwcServiceEcuM_Imp.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -91,9 +90,9 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DriverInitZero(
    void
 ){
    DriverInitX(
-         ((CfgSwcServiceEcuM_Type*)lptrCfg)->u8SizeDriverInitData_Zero
-      ,  ((CfgSwcServiceEcuM_Type*)lptrCfg)->aptrinfEcuMClient_Zero
-      ,  ((CfgSwcServiceEcuM_Type*)lptrCfg)->aptrCfgModule_Zero
+         lptrConstSwcServiceEcuM->u8SizeDriverInitData_Zero
+      ,  lptrConstSwcServiceEcuM->aptrinfEcuMClient_Zero
+      ,  lptrConstSwcServiceEcuM->aptrCfgModule_Zero
    );
 }
 
@@ -101,9 +100,9 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DriverInitOne(
    void
 ){
    DriverInitX(
-         ((CfgSwcServiceEcuM_Type*)lptrCfg)->u8SizeDriverInitData_One
-      ,  ((CfgSwcServiceEcuM_Type*)lptrCfg)->aptrinfEcuMClient_One
-      ,  ((CfgSwcServiceEcuM_Type*)lptrCfg)->aptrCfgModule_One
+         lptrConstSwcServiceEcuM->u8SizeDriverInitData_One
+      ,  lptrConstSwcServiceEcuM->aptrinfEcuMClient_One
+      ,  lptrConstSwcServiceEcuM->aptrCfgModule_One
    );
 }
 
@@ -222,34 +221,34 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPreOs(
 
    SetProgrammableInterrupts();
    DriverInitZero();
-   ((CfgSwcServiceEcuM_Type*)lptrCfg)->ptrinfEcuM_SwcServiceEcuM->DeterminePbConfiguration();
+   lptrConstSwcServiceEcuM->ptrinfEcuM_SwcServiceEcuM->DeterminePbConfiguration();
 
    //Check consistency of configuration data
 
    DriverInitOne();
-   gptrinfEcuM_SwcServiceEcuM->GetValidatedWakeupEvents();
+   lptrConstSwcServiceEcuM->ptrinfEcuM_SwcServiceEcuM->GetValidatedWakeupEvents();
 
    //Select default shutdown target
 
-   gptrinfEcuM_SwcServiceEcuM->LoopDetection();
+   lptrConstSwcServiceEcuM->ptrinfEcuM_SwcServiceEcuM->LoopDetection();
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPostOs(
    void
 ){
-   ((CfgSwcServiceEcuM_Type*)lptrCfg)->ptrinfSchM_EcuM->Start();
-   gptrinfSchM_EcuM->StartTiming();
+   lptrConstSwcServiceEcuM->ptrinfSchM_EcuM->Start();
+   lptrConstSwcServiceEcuM->ptrinfSchM_EcuM->StartTiming();
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::OffPreOs(
    void
 ){
    OnGoOffOne();
-   ((((CfgSwcServiceEcuM_Type*)lptrCfg)->aptrinfEcuMClient_One)[IndexEcuMClient_BswM])->DeInitFunction();//TBD: Simplify
-   ((((CfgSwcServiceEcuM_Type*)lptrCfg)->aptrinfEcuMClient_One)[IndexEcuMClient_SchM])->DeInitFunction();//TBD: Simplify
+   ((lptrConstSwcServiceEcuM->aptrinfEcuMClient_One)[IndexEcuMClient_BswM])->DeInitFunction();//TBD: Simplify
+   ((lptrConstSwcServiceEcuM->aptrinfEcuMClient_One)[IndexEcuMClient_SchM])->DeInitFunction();//TBD: Simplify
 
-   if(((CfgSwcServiceEcuM_Type*)lptrCfg)->ptrinfEcuM_SwcServiceEcuM->GetPendingWakeupEvents()){
-      ((CfgSwcServiceEcuM_Type*)lptrCfg)->ptrinfEcuM_SwcServiceEcuM->SelectShutdownTarget();
+   if(lptrConstSwcServiceEcuM->ptrinfEcuM_SwcServiceEcuM->GetPendingWakeupEvents()){
+      lptrConstSwcServiceEcuM->ptrinfEcuM_SwcServiceEcuM->SelectShutdownTarget();
    }
 }
 

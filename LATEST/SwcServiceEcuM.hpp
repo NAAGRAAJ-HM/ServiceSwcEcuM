@@ -7,6 +7,7 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
+#include "ConstSwcServiceEcuM.hpp"
 #include "CfgSwcServiceEcuM.hpp"
 #include "SwcServiceEcuM_core.hpp"
 #include "infSwcServiceEcuM_Exp.hpp"
@@ -27,10 +28,11 @@ class module_SwcServiceEcuM:
    ,  public abstract_module
    ,  public class_SwcServiceEcuM_Functionality
 {
+   private:
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-   private:
+      ConstSwcServiceEcuM_Type* lptrConstSwcServiceEcuM;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
