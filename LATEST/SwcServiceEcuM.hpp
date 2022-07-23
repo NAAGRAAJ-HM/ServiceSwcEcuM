@@ -32,7 +32,7 @@ class module_SwcServiceEcuM:
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-      ConstSwcServiceEcuM_Type* lptrConstSwcServiceEcuM;
+      const ConstSwcServiceEcuM_Type* lptrConst;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */

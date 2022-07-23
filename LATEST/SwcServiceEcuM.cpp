@@ -52,14 +52,14 @@ static FUNC(void, SWCSERVICEECUM_CODE) SetProgrammableInterrupts(
 }
 
 static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
-      uint8                   lu8SizeDriverInitData
-   ,  infEcuMClient*          laptrinfEcuMClient[]
-   ,  CfgModule_TypeAbstract* laptrCfgModule[]
+      uint8                          lu8SizeDriverInitData
+   ,  infEcuMClient*          const* laptrinfEcuMClient
+   ,  CfgModule_TypeAbstract* const* laptrCfgModule
 ){
    for(
-         uint8 lu8IndexEcuMClient = 0
-      ;        lu8IndexEcuMClient < lu8SizeDriverInitData
-      ;        lu8IndexEcuMClient ++
+      uint8 lu8IndexEcuMClient = 0;
+            lu8IndexEcuMClient < lu8SizeDriverInitData;
+            lu8IndexEcuMClient ++
    ){
 #if(STD_ON == SwcServiceEcuM_CheckNullPtr)
       if(
@@ -86,13 +86,16 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
    }
 }
 
+#include "Const.hpp"
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DriverInitZero(
    void
 ){
+   lptrConst = &(Const.ConstSwcServiceEcuM);
+
    DriverInitX(
-         lptrConstSwcServiceEcuM->u8SizeDriverInitData_Zero
-      ,  lptrConstSwcServiceEcuM->aptrinfEcuMClient_Zero
-      ,  lptrConstSwcServiceEcuM->aptrCfgModule_Zero
+         lptrConst->u8SizeDriverInitData_Zero
+      ,  &(lptrConst->aptrinfEcuMClient_Zero[0])
+      ,  &(lptrConst->aptrCfgModule_Zero[0])
    );
 }
 
@@ -100,9 +103,9 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DriverInitOne(
    void
 ){
    DriverInitX(
-         lptrConstSwcServiceEcuM->u8SizeDriverInitData_One
-      ,  lptrConstSwcServiceEcuM->aptrinfEcuMClient_One
-      ,  lptrConstSwcServiceEcuM->aptrCfgModule_One
+         lptrConst->u8SizeDriverInitData_One
+      ,  &(lptrConst->aptrinfEcuMClient_One[0])
+      ,  &(lptrConst->aptrCfgModule_One[0])
    );
 }
 
@@ -221,34 +224,34 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPreOs(
 
    SetProgrammableInterrupts();
    DriverInitZero();
-   lptrConstSwcServiceEcuM->ptrinfEcuM_SwcServiceEcuM->DeterminePbConfiguration();
+   ((ConstSwcServiceEcuM_Type*)lptrConst)->ptrinfEcuM_SwcServiceEcuM->DeterminePbConfiguration();
 
    //Check consistency of configuration data
 
    DriverInitOne();
-   lptrConstSwcServiceEcuM->ptrinfEcuM_SwcServiceEcuM->GetValidatedWakeupEvents();
+   lptrConst->ptrinfEcuM_SwcServiceEcuM->GetValidatedWakeupEvents();
 
    //Select default shutdown target
 
-   lptrConstSwcServiceEcuM->ptrinfEcuM_SwcServiceEcuM->LoopDetection();
+   lptrConst->ptrinfEcuM_SwcServiceEcuM->LoopDetection();
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::StartPostOs(
    void
 ){
-   lptrConstSwcServiceEcuM->ptrinfSchM_EcuM->Start();
-   lptrConstSwcServiceEcuM->ptrinfSchM_EcuM->StartTiming();
+   lptrConst->ptrinfSchM_EcuM->Start();
+   lptrConst->ptrinfSchM_EcuM->StartTiming();
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::OffPreOs(
    void
 ){
    OnGoOffOne();
-   ((lptrConstSwcServiceEcuM->aptrinfEcuMClient_One)[IndexEcuMClient_BswM])->DeInitFunction();//TBD: Simplify
-   ((lptrConstSwcServiceEcuM->aptrinfEcuMClient_One)[IndexEcuMClient_SchM])->DeInitFunction();//TBD: Simplify
+   ((lptrConst->aptrinfEcuMClient_One)[IndexEcuMClient_BswM])->DeInitFunction();//TBD: Simplify
+   ((lptrConst->aptrinfEcuMClient_One)[IndexEcuMClient_SchM])->DeInitFunction();//TBD: Simplify
 
-   if(lptrConstSwcServiceEcuM->ptrinfEcuM_SwcServiceEcuM->GetPendingWakeupEvents()){
-      lptrConstSwcServiceEcuM->ptrinfEcuM_SwcServiceEcuM->SelectShutdownTarget();
+   if(lptrConst->ptrinfEcuM_SwcServiceEcuM->GetPendingWakeupEvents()){
+      lptrConst->ptrinfEcuM_SwcServiceEcuM->SelectShutdownTarget();
    }
 }
 
