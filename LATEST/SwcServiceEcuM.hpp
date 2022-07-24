@@ -32,7 +32,7 @@ class module_SwcServiceEcuM:
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-      const ConstSwcServiceEcuM_Type* lptrConst;
+      const ConstSwcServiceEcuM_Type* lptrConst = (ConstSwcServiceEcuM_Type*)NULL_PTR;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
@@ -43,7 +43,8 @@ class module_SwcServiceEcuM:
 
    public:
       FUNC(void, SWCSERVICEECUM_CODE) InitFunction(
-         CONSTP2CONST(CfgModule_TypeAbstract, SWCSERVICEECUM_CONFIG_DATA, SWCSERVICEECUM_APPL_CONST) lptrCfgModule
+            CONSTP2CONST(ConstModule_TypeAbstract, SWCSERVICEECUM_CONST,       SWCSERVICEECUM_APPL_CONST) lptrConstModule
+         ,  CONSTP2CONST(CfgModule_TypeAbstract,   SWCSERVICEECUM_CONFIG_DATA, SWCSERVICEECUM_APPL_CONST) lptrCfgModule
       );
       FUNC(void, SWCSERVICEECUM_CODE) DeInitFunction (void);
       FUNC(void, SWCSERVICEECUM_CODE) MainFunction   (void);

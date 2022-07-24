@@ -8,7 +8,9 @@
 /* #INCLUDES                                                                  */
 /******************************************************************************/
 #include "Std_Types.hpp"
-#include "CompilerCfg_CfgSwcServiceEcuM.hpp"
+#include "CompilerCfg_SwcServiceEcuM.hpp"
+
+#include "ConstModule.hpp"
 #include "CfgModule.hpp"
 
 /******************************************************************************/
@@ -27,11 +29,12 @@ class infEcuMClient{
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-      virtual FUNC(void, CFGSWCSERVICEECUM_CODE) InitFunction(
-         CONSTP2CONST(CfgModule_TypeAbstract, CFGSWCSERVICEECUM_CONFIG_DATA, CFGSWCSERVICEECUM_APPL_CONST) lptrCfgModule
+      virtual FUNC(void, SWCSERVICEECUM_CODE) InitFunction(
+            CONSTP2CONST(ConstModule_TypeAbstract, SWCSERVICEECUM_CONST,       SWCSERVICEECUM_APPL_CONST) lptrConstModule
+         ,  CONSTP2CONST(CfgModule_TypeAbstract,   SWCSERVICEECUM_CONFIG_DATA, SWCSERVICEECUM_APPL_CONST) lptrCfgModule
       ) = 0;
 
-      virtual FUNC(void, CFGSWCSERVICEECUM_CODE) DeInitFunction (void) = 0;
+      virtual FUNC(void, SWCSERVICEECUM_CODE) DeInitFunction (void) = 0;
 };
 
 /******************************************************************************/

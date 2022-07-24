@@ -52,9 +52,10 @@ static FUNC(void, SWCSERVICEECUM_CODE) SetProgrammableInterrupts(
 }
 
 static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
-      uint8                          lu8SizeDriverInitData
-   ,  infEcuMClient*          const* laptrinfEcuMClient
-   ,  CfgModule_TypeAbstract* const* laptrCfgModule
+      uint8                            lu8SizeDriverInitData
+   ,  infEcuMClient*            const* laptrinfEcuMClient
+   ,  ConstModule_TypeAbstract* const* laptrConstModule
+   ,  CfgModule_TypeAbstract*   const* laptrCfgModule
 ){
    for(
       uint8 lu8IndexEcuMClient = 0;
@@ -68,7 +69,8 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
       ){
 #endif
          laptrinfEcuMClient[lu8IndexEcuMClient]->InitFunction(
-            laptrCfgModule[lu8IndexEcuMClient]
+               laptrConstModule[lu8IndexEcuMClient]
+            ,  laptrCfgModule[lu8IndexEcuMClient]
          );
 #if(STD_ON == SwcServiceEcuM_CheckNullPtr)
       }
@@ -95,6 +97,7 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DriverInitZero(
    DriverInitX(
          lptrConst->u8SizeDriverInitData_Zero
       ,  &(lptrConst->aptrinfEcuMClient_Zero[0])
+      ,  &(lptrConst->aptrConstModule_Zero[0])
       ,  &(lptrConst->aptrCfgModule_Zero[0])
    );
 }
@@ -105,6 +108,7 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::DriverInitOne(
    DriverInitX(
          lptrConst->u8SizeDriverInitData_One
       ,  &(lptrConst->aptrinfEcuMClient_One[0])
+      ,  &(lptrConst->aptrConstModule_One[0])
       ,  &(lptrConst->aptrCfgModule_One[0])
    );
 }
@@ -130,7 +134,8 @@ static FUNC(void, SWCSERVICEECUM_CODE) SwitchOff(
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::InitFunction(
-   CONSTP2CONST(CfgModule_TypeAbstract, SWCSERVICEECUM_CONFIG_DATA, SWCSERVICEECUM_APPL_CONST) lptrCfgModule
+      CONSTP2CONST(ConstModule_TypeAbstract, SWCSERVICEECUM_CONST,       SWCSERVICEECUM_APPL_CONST) lptrConstModule
+   ,  CONSTP2CONST(CfgModule_TypeAbstract,   SWCSERVICEECUM_CONFIG_DATA, SWCSERVICEECUM_APPL_CONST) lptrCfgModule
 ){
 #if(STD_ON == SwcServiceEcuM_InitCheck)
    if(
@@ -138,8 +143,12 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::InitFunction(
       != IsInitDone
    ){
 #endif
-      if(NULL_PTR != lptrCfgModule){
-         lptrCfg = lptrCfgModule;
+      if(
+            (NULL_PTR != lptrConstModule)
+         && (NULL_PTR != lptrCfgModule)
+      ){
+         lptrConst = lptrConstModule;
+         lptrCfg   = lptrCfgModule;
       }
       else{
 #if(STD_ON == SwcServiceEcuM_DevErrorDetect)
