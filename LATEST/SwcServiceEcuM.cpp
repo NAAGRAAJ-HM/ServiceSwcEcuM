@@ -52,10 +52,10 @@ static FUNC(void, SWCSERVICEECUM_CODE) SetProgrammableInterrupts(
 }
 
 static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
-      uint8                            lu8SizeDriverInitData
-   ,  infEcuMClient*            const* laptrinfEcuMClient
-   ,  ConstModule_TypeAbstract* const* laptrConstModule
-   ,  CfgModule_TypeAbstract*   const* laptrCfgModule
+            uint8                            lu8SizeDriverInitData
+   ,        infEcuMClient*            const* laptrinfEcuMClient
+   ,  const ConstModule_TypeAbstract* const* laptrConstModule
+   ,        CfgModule_TypeAbstract*   const* laptrCfgModule
 ){
    for(
       uint8 lu8IndexEcuMClient = 0;
@@ -147,7 +147,7 @@ FUNC(void, SWCSERVICEECUM_CODE) module_SwcServiceEcuM::InitFunction(
             (NULL_PTR != lptrConstModule)
          && (NULL_PTR != lptrCfgModule)
       ){
-         lptrConst = lptrConstModule;
+         lptrConst = (const ConstSwcServiceEcuM_Type*)lptrConstModule;
          lptrCfg   = lptrCfgModule;
       }
       else{
