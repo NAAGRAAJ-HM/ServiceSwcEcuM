@@ -13,7 +13,7 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define INTERFACES_EXPORTED_SWCSERVICEECUM         public infServiceSwcEcuM_ServiceEcuM
+#define INTERFACES_EXMCALPORTED_SERVICESWCECUM         public infServiceSwcEcuM_ServiceEcuM
 
 /******************************************************************************/
 /* MACROS                                                                     */

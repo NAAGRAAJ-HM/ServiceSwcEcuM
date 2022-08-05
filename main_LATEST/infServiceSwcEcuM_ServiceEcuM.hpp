@@ -25,10 +25,10 @@ class infServiceSwcEcuM_ServiceEcuM{
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-      virtual FUNC(void, SWCSERVICEECUM_CODE) StartPreServiceOs  (void) = 0;
-      virtual FUNC(void, SWCSERVICEECUM_CODE) StartPostServiceOs (void) = 0;
-      virtual FUNC(void, SWCSERVICEECUM_CODE) OffPreServiceOs    (void) = 0;
-      virtual FUNC(void, SWCSERVICEECUM_CODE) OffPostServiceOs   (void) = 0;
+      virtual FUNC(void, SERVICESWCECUM_CODE) StartPreServiceOs  (void) = 0;
+      virtual FUNC(void, SERVICESWCECUM_CODE) StartPostServiceOs (void) = 0;
+      virtual FUNC(void, SERVICESWCECUM_CODE) OffPreServiceOs    (void) = 0;
+      virtual FUNC(void, SERVICESWCECUM_CODE) OffPostServiceOs   (void) = 0;
 };
 
 /******************************************************************************/

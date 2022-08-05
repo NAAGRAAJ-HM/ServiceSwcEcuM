@@ -29,12 +29,12 @@ class infServiceEcuMClient{
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-      virtual FUNC(void, SWCSERVICEECUM_CODE) InitFunction(
-            CONSTP2CONST(ConstModule_TypeAbstract, SWCSERVICEECUM_CONST,       SWCSERVICEECUM_APPL_CONST) lptrConstModule
-         ,  CONSTP2CONST(CfgModule_TypeAbstract,   SWCSERVICEECUM_CONFIG_DATA, SWCSERVICEECUM_APPL_CONST) lptrCfgModule
+      virtual FUNC(void, SERVICESWCECUM_CODE) InitFunction(
+            CONSTP2CONST(ConstModule_TypeAbstract, SERVICESWCECUM_CONST,       SERVICESWCECUM_APPL_CONST) lptrConstModule
+         ,  CONSTP2CONST(CfgModule_TypeAbstract,   SERVICESWCECUM_CONFIG_DATA, SERVICESWCECUM_APPL_CONST) lptrCfgModule
       ) = 0;
 
-      virtual FUNC(void, SWCSERVICEECUM_CODE) DeInitFunction (void) = 0;
+      virtual FUNC(void, SERVICESWCECUM_CODE) DeInitFunction (void) = 0;
 };
 
 /******************************************************************************/

@@ -24,7 +24,7 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 class module_ServiceSwcEcuM:
-      INTERFACES_EXPORTED_SWCSERVICEECUM
+      INTERFACES_EXMCALPORTED_SERVICESWCECUM
    ,  public abstract_module
    ,  public class_ServiceSwcEcuM_Functionality
 {
@@ -38,17 +38,17 @@ class module_ServiceSwcEcuM:
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
    private:
-      FUNC(void, SWCSERVICEECUM_CODE) DriverInitZero (void);
-      FUNC(void, SWCSERVICEECUM_CODE) DriverInitOne  (void);
+      FUNC(void, SERVICESWCECUM_CODE) DriverInitZero (void);
+      FUNC(void, SERVICESWCECUM_CODE) DriverInitOne  (void);
 
    public:
-      FUNC(void, SWCSERVICEECUM_CODE) InitFunction(
-            CONSTP2CONST(ConstModule_TypeAbstract, SWCSERVICEECUM_CONST,       SWCSERVICEECUM_APPL_CONST) lptrConstModule
-         ,  CONSTP2CONST(CfgModule_TypeAbstract,   SWCSERVICEECUM_CONFIG_DATA, SWCSERVICEECUM_APPL_CONST) lptrCfgModule
+      FUNC(void, SERVICESWCECUM_CODE) InitFunction(
+            CONSTP2CONST(ConstModule_TypeAbstract, SERVICESWCECUM_CONST,       SERVICESWCECUM_APPL_CONST) lptrConstModule
+         ,  CONSTP2CONST(CfgModule_TypeAbstract,   SERVICESWCECUM_CONFIG_DATA, SERVICESWCECUM_APPL_CONST) lptrCfgModule
       );
-      FUNC(void, SWCSERVICEECUM_CODE) DeInitFunction (void);
-      FUNC(void, SWCSERVICEECUM_CODE) MainFunction   (void);
-      SWCSERVICEECUM_CORE_FUNCTIONALITIES
+      FUNC(void, SERVICESWCECUM_CODE) DeInitFunction (void);
+      FUNC(void, SERVICESWCECUM_CODE) MainFunction   (void);
+      SERVICESWCECUM_CORE_FUNCTIONALITIES
 };
 
 /******************************************************************************/
@@ -62,7 +62,7 @@ class module_ServiceSwcEcuM:
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-extern VAR(module_ServiceSwcEcuM, SWCSERVICEECUM_VAR) ServiceSwcEcuM;
+extern VAR(module_ServiceSwcEcuM, SERVICESWCECUM_VAR) ServiceSwcEcuM;
 
 /******************************************************************************/
 /* EOF                                                                        */

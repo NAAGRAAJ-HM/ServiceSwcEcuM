@@ -12,25 +12,25 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define SWCSERVICEECUM_CORE_FUNCTIONALITIES                                    \
-              FUNC(void, SWCSERVICEECUM_CODE) StartPreServiceOs             (void);     \
-              FUNC(void, SWCSERVICEECUM_CODE) StartPostServiceOs            (void);     \
-              FUNC(void, SWCSERVICEECUM_CODE) OffPreServiceOs               (void);     \
-              FUNC(void, SWCSERVICEECUM_CODE) OffPostServiceOs              (void);     \
-              FUNC(void, SWCSERVICEECUM_CODE) EnableWakeupSources    (void);     \
-              FUNC(void, SWCSERVICEECUM_CODE) GenerateRamHash        (void);     \
-              FUNC(void, SWCSERVICEECUM_CODE) CheckRamHash           (void);     \
-              FUNC(void, SWCSERVICEECUM_CODE) ErrorHook              (void);     \
+#define SERVICESWCECUM_CORE_FUNCTIONALITIES                                    \
+              FUNC(void, SERVICESWCECUM_CODE) StartPreServiceOs             (void);     \
+              FUNC(void, SERVICESWCECUM_CODE) StartPostServiceOs            (void);     \
+              FUNC(void, SERVICESWCECUM_CODE) OffPreServiceOs               (void);     \
+              FUNC(void, SERVICESWCECUM_CODE) OffPostServiceOs              (void);     \
+              FUNC(void, SERVICESWCECUM_CODE) EnableWakeupSources    (void);     \
+              FUNC(void, SERVICESWCECUM_CODE) GenerateRamHash        (void);     \
+              FUNC(void, SERVICESWCECUM_CODE) CheckRamHash           (void);     \
+              FUNC(void, SERVICESWCECUM_CODE) ErrorHook              (void);     \
 
-#define SWCSERVICEECUM_CORE_FUNCTIONALITIES_VIRTUAL                            \
-      virtual FUNC(void, SWCSERVICEECUM_CODE) StartPreServiceOs             (void) = 0; \
-      virtual FUNC(void, SWCSERVICEECUM_CODE) StartPostServiceOs            (void) = 0; \
-      virtual FUNC(void, SWCSERVICEECUM_CODE) OffPreServiceOs               (void) = 0; \
-      virtual FUNC(void, SWCSERVICEECUM_CODE) OffPostServiceOs              (void) = 0; \
-      virtual FUNC(void, SWCSERVICEECUM_CODE) EnableWakeupSources    (void) = 0; \
-      virtual FUNC(void, SWCSERVICEECUM_CODE) GenerateRamHash        (void) = 0; \
-      virtual FUNC(void, SWCSERVICEECUM_CODE) CheckRamHash           (void) = 0; \
-      virtual FUNC(void, SWCSERVICEECUM_CODE) ErrorHook              (void) = 0; \
+#define SERVICESWCECUM_CORE_FUNCTIONALITIES_VIRTUAL                            \
+      virtual FUNC(void, SERVICESWCECUM_CODE) StartPreServiceOs             (void) = 0; \
+      virtual FUNC(void, SERVICESWCECUM_CODE) StartPostServiceOs            (void) = 0; \
+      virtual FUNC(void, SERVICESWCECUM_CODE) OffPreServiceOs               (void) = 0; \
+      virtual FUNC(void, SERVICESWCECUM_CODE) OffPostServiceOs              (void) = 0; \
+      virtual FUNC(void, SERVICESWCECUM_CODE) EnableWakeupSources    (void) = 0; \
+      virtual FUNC(void, SERVICESWCECUM_CODE) GenerateRamHash        (void) = 0; \
+      virtual FUNC(void, SERVICESWCECUM_CODE) CheckRamHash           (void) = 0; \
+      virtual FUNC(void, SERVICESWCECUM_CODE) ErrorHook              (void) = 0; \
 
 /******************************************************************************/
 /* MACROS                                                                     */
@@ -41,7 +41,7 @@
 /******************************************************************************/
 class class_ServiceSwcEcuM_Functionality{
    public:
-      SWCSERVICEECUM_CORE_FUNCTIONALITIES_VIRTUAL
+      SERVICESWCECUM_CORE_FUNCTIONALITIES_VIRTUAL
 };
 
 /******************************************************************************/

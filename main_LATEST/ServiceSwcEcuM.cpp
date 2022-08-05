@@ -12,18 +12,18 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define SWCSERVICEECUM_AR_RELEASE_VERSION_MAJOR                                4
-#define SWCSERVICEECUM_AR_RELEASE_VERSION_MINOR                                3
+#define SERVICESWCECUM_AR_RELEASE_VERSION_MAJOR                                4
+#define SERVICESWCECUM_AR_RELEASE_VERSION_MINOR                                3
 
 /******************************************************************************/
 /* MACROS                                                                     */
 /******************************************************************************/
-#if(SWCSERVICEECUM_AR_RELEASE_VERSION_MAJOR != STD_AR_RELEASE_VERSION_MAJOR)
-   #error "Incompatible SWCSERVICEECUM_AR_RELEASE_VERSION_MAJOR!"
+#if(SERVICESWCECUM_AR_RELEASE_VERSION_MAJOR != STD_AR_RELEASE_VERSION_MAJOR)
+   #error "Incompatible SERVICESWCECUM_AR_RELEASE_VERSION_MAJOR!"
 #endif
 
-#if(SWCSERVICEECUM_AR_RELEASE_VERSION_MINOR != STD_AR_RELEASE_VERSION_MINOR)
-   #error "Incompatible SWCSERVICEECUM_AR_RELEASE_VERSION_MINOR!"
+#if(SERVICESWCECUM_AR_RELEASE_VERSION_MINOR != STD_AR_RELEASE_VERSION_MINOR)
+   #error "Incompatible SERVICESWCECUM_AR_RELEASE_VERSION_MINOR!"
 #endif
 
 /******************************************************************************/
@@ -41,17 +41,17 @@
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-VAR(module_ServiceSwcEcuM, SWCSERVICEECUM_VAR) ServiceSwcEcuM;
+VAR(module_ServiceSwcEcuM, SERVICESWCECUM_VAR) ServiceSwcEcuM;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-static FUNC(void, SWCSERVICEECUM_CODE) SetProgrammableInterrupts(
+static FUNC(void, SERVICESWCECUM_CODE) SetProgrammableInterrupts(
    void
 ){
 }
 
-static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
+static FUNC(void, SERVICESWCECUM_CODE) DriverInitX(
             uint8                            lu8SizeDriverInitData
    ,        infServiceEcuMClient*            const* laptrinfServiceEcuMClient
    ,  const ConstModule_TypeAbstract* const* laptrConstModule
@@ -89,7 +89,7 @@ static FUNC(void, SWCSERVICEECUM_CODE) DriverInitX(
 }
 
 #include "Const.hpp"
-FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::DriverInitZero(
+FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::DriverInitZero(
    void
 ){
    lptrConst = &(Const.ConstServiceSwcEcuM);
@@ -102,7 +102,7 @@ FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::DriverInitZero(
    );
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::DriverInitOne(
+FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::DriverInitOne(
    void
 ){
    DriverInitX(
@@ -113,29 +113,29 @@ FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::DriverInitOne(
    );
 }
 
-static FUNC(void, SWCSERVICEECUM_CODE) OnGoOffOne(
+static FUNC(void, SERVICESWCECUM_CODE) OnGoOffOne(
    void
 ){
 }
 
-static FUNC(void, SWCSERVICEECUM_CODE) OnGoOffTwo(
+static FUNC(void, SERVICESWCECUM_CODE) OnGoOffTwo(
    void
 ){
 }
 
-static FUNC(void, SWCSERVICEECUM_CODE) Reset(
+static FUNC(void, SERVICESWCECUM_CODE) Reset(
    void
 ){
 }
 
-static FUNC(void, SWCSERVICEECUM_CODE) SwitchOff(
+static FUNC(void, SERVICESWCECUM_CODE) SwitchOff(
    void
 ){
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::InitFunction(
-      CONSTP2CONST(ConstModule_TypeAbstract, SWCSERVICEECUM_CONST,       SWCSERVICEECUM_APPL_CONST) lptrConstModule
-   ,  CONSTP2CONST(CfgModule_TypeAbstract,   SWCSERVICEECUM_CONFIG_DATA, SWCSERVICEECUM_APPL_CONST) lptrCfgModule
+FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::InitFunction(
+      CONSTP2CONST(ConstModule_TypeAbstract, SERVICESWCECUM_CONST,       SERVICESWCECUM_APPL_CONST) lptrConstModule
+   ,  CONSTP2CONST(CfgModule_TypeAbstract,   SERVICESWCECUM_CONFIG_DATA, SERVICESWCECUM_APPL_CONST) lptrCfgModule
 ){
 #if(STD_ON == ServiceSwcEcuM_InitCheck)
    if(
@@ -169,14 +169,14 @@ FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::InitFunction(
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  SWCSERVICEECUM_E_UNINIT
+         ,  SERVICESWCECUM_E_UNINIT
       );
 #endif
    }
 #endif
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::DeInitFunction(
+FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::DeInitFunction(
    void
 ){
 #if(STD_ON == ServiceSwcEcuM_InitCheck)
@@ -194,14 +194,14 @@ FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::DeInitFunction(
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  SWCSERVICEECUM_E_UNINIT
+         ,  SERVICESWCECUM_E_UNINIT
       );
 #endif
    }
 #endif
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::MainFunction(
+FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::MainFunction(
    void
 ){
 #if(STD_ON == ServiceSwcEcuM_InitCheck)
@@ -218,7 +218,7 @@ FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::MainFunction(
             0 //TBD: IdModule
          ,  0 //TBD: IdInstance
          ,  0 //TBD: IdApi
-         ,  SWCSERVICEECUM_E_UNINIT
+         ,  SERVICESWCECUM_E_UNINIT
       );
 #endif
    }
@@ -226,7 +226,7 @@ FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::MainFunction(
 }
 
 #include "Cfg.hpp"
-FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::StartPreServiceOs(
+FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::StartPreServiceOs(
    void
 ){
    lptrCfg = (CfgServiceSwcEcuM_Type*)&(PBcfgGen_ROM.CfgServiceSwcEcuM);
@@ -245,14 +245,14 @@ FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::StartPreServiceOs(
    lptrConst->ptrinfServiceEcuM_ServiceSwcEcuM->LoopServiceDetection();
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::StartPostServiceOs(
+FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::StartPostServiceOs(
    void
 ){
    lptrConst->ptrinfServiceSchM_ServiceEcuM->Start();
    lptrConst->ptrinfServiceSchM_ServiceEcuM->StartTiming();
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::OffPreServiceOs(
+FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::OffPreServiceOs(
    void
 ){
    OnGoOffOne();
@@ -264,7 +264,7 @@ FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::OffPreServiceOs(
    }
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::OffPostServiceOs(
+FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::OffPostServiceOs(
    void
 ){
    OnGoOffTwo();
@@ -272,22 +272,22 @@ FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::OffPostServiceOs(
    SwitchOff();
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::EnableWakeupSources(
+FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::EnableWakeupSources(
    void
 ){
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::GenerateRamHash(
+FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::GenerateRamHash(
    void
 ){
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::CheckRamHash(
+FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::CheckRamHash(
    void
 ){
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) module_ServiceSwcEcuM::ErrorHook(
+FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::ErrorHook(
    void
 ){
 }
