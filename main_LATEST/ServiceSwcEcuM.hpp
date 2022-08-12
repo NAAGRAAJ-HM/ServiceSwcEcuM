@@ -24,7 +24,7 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 class module_ServiceSwcEcuM:
-      INTERFACES_EXMCALPORTED_SERVICESWCECUM
+      INTERFACES_EXPORTED_SERVICESWCECUM
    ,  public abstract_module
    ,  public class_ServiceSwcEcuM_Functionality
 {
