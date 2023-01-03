@@ -89,11 +89,11 @@ static FUNC(void, SERVICESWCECUM_CODE) DriverInitX(
 }
 
 #include "Const.hpp"
-FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::DriverInitZero(
-   void
-){
-   lptrConst = &(Const.ConstServiceSwcEcuM);
+#include "ReSimFm.hpp"
+FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::DriverInitZero(void){
+   ReSim.InitFunction();
 
+   lptrConst = &(Const.ConstServiceSwcEcuM);
    DriverInitX(
          lptrConst->u8SizeDriverInitData_Zero
       ,  &(lptrConst->aptrinfServiceEcuMClient_Zero[0])
@@ -102,9 +102,7 @@ FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::DriverInitZero(
    );
 }
 
-FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::DriverInitOne(
-   void
-){
+FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::DriverInitOne(void){
    DriverInitX(
          lptrConst->u8SizeDriverInitData_One
       ,  &(lptrConst->aptrinfServiceEcuMClient_One[0])
