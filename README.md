@@ -1,2 +1,2 @@
 # Swc_EcuM
-Application software component
+Service software component for ECU mode manager
