@@ -15,10 +15,8 @@
 /******************************************************************************/
 #define CONSTSERVICESWCECUM_AR_RELEASE_VERSION_MAJOR                           4
 #define CONSTSERVICESWCECUM_AR_RELEASE_VERSION_MINOR                           3
-#define IndexServiceEcuMClient_ServiceBswM                                    49
-#define IndexServiceEcuMClient_ServiceSchM                                    50
-#define SizeDriverInitData_One                                                51
-#define SizeDriverInitData_Zero                                                7
+//#define SizeDriverInitData_One                                                51
+//#define SizeDriverInitData_Zero                                                7
 
 #define Const_DefaultInit_ConstServiceSwcEcuM                                                                                  \
    ,  {                                                                                                                        \

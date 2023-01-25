@@ -5,8 +5,16 @@
 /******************************************************************************/
 
 /******************************************************************************/
+/* #INCLUDES                                                                  */
+/******************************************************************************/
+#include "infServiceEcuMClient.hpp"
+#include "infServiceSwcEcuM_Imp.hpp"
+
+/******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
+#define IndexServiceEcuMClient_ServiceBswM                                    49
+#define IndexServiceEcuMClient_ServiceSchM                                    50
 #define SizeDriverInitData_One                                                51
 #define SizeDriverInitData_Zero                                                7
 

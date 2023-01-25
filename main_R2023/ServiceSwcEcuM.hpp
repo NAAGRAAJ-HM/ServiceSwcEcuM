@@ -7,7 +7,7 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "ConstServiceSwcEcuM.hpp"
+#include "infServiceSwcEcuM_ServiceNvM_Types.hpp"
 #include "CfgServiceSwcEcuM.hpp"
 #include "ServiceSwcEcuM_core.hpp"
 #include "infServiceSwcEcuM_Exp.hpp"
