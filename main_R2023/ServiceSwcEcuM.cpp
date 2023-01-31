@@ -12,19 +12,10 @@
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
-#define SERVICESWCECUM_AR_RELEASE_VERSION_MAJOR                                4
-#define SERVICESWCECUM_AR_RELEASE_VERSION_MINOR                                3
 
 /******************************************************************************/
 /* MACROS                                                                     */
 /******************************************************************************/
-#if(SERVICESWCECUM_AR_RELEASE_VERSION_MAJOR != STD_AR_RELEASE_VERSION_MAJOR)
-   #error "Incompatible SERVICESWCECUM_AR_RELEASE_VERSION_MAJOR!"
-#endif
-
-#if(SERVICESWCECUM_AR_RELEASE_VERSION_MINOR != STD_AR_RELEASE_VERSION_MINOR)
-   #error "Incompatible SERVICESWCECUM_AR_RELEASE_VERSION_MINOR!"
-#endif
 
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
@@ -88,26 +79,26 @@ static FUNC(void, SERVICESWCECUM_CODE) DriverInitX(
    }
 }
 
-#include "Const.hpp"
+#include "infServiceNvM_ServiceEcuM.hpp"
 #include "ReSimFm.hpp"
 FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::DriverInitZero(void){
    ReSim.InitFunction();
 
-   lptrConst = &(Const.ConstServiceSwcEcuM);
+   lptrNvMBlocksRom = &(NvM_BlocksRom.NvM_BlocksRom_ServiceSwcEcuM); // TBD: OOPS concepts
    DriverInitX(
-         lptrConst->u8SizeDriverInitData_Zero
-      ,  &(lptrConst->aptrinfServiceEcuMClient_Zero[0])
-      ,  &(lptrConst->aptrConstModule_Zero[0])
-      ,  &(lptrConst->aptrCfgModule_Zero[0])
+         ((NvM_BlocksRom_ServiceSwcEcuM_Type*)lptrNvMBlocksRom)->u8SizeDriverInitData_Zero
+      ,  &(((NvM_BlocksRom_ServiceSwcEcuM_Type*)lptrNvMBlocksRom)->aptrinfServiceEcuMClient_Zero[0])
+      ,  &(((NvM_BlocksRom_ServiceSwcEcuM_Type*)lptrNvMBlocksRom)->aptrConstModule_Zero[0])
+      ,  &(((NvM_BlocksRom_ServiceSwcEcuM_Type*)lptrNvMBlocksRom)->aptrCfgModule_Zero[0])
    );
 }
 
 FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::DriverInitOne(void){
    DriverInitX(
-         lptrConst->u8SizeDriverInitData_One
-      ,  &(lptrConst->aptrinfServiceEcuMClient_One[0])
-      ,  &(lptrConst->aptrConstModule_One[0])
-      ,  &(lptrConst->aptrCfgModule_One[0])
+         ((NvM_BlocksRom_ServiceSwcEcuM_Type*)lptrNvMBlocksRom)->u8SizeDriverInitData_One
+      ,  &(((NvM_BlocksRom_ServiceSwcEcuM_Type*)lptrNvMBlocksRom)->aptrinfServiceEcuMClient_One[0])
+      ,  &(((NvM_BlocksRom_ServiceSwcEcuM_Type*)lptrNvMBlocksRom)->aptrConstModule_One[0])
+      ,  &(((NvM_BlocksRom_ServiceSwcEcuM_Type*)lptrNvMBlocksRom)->aptrCfgModule_One[0])
    );
 }
 
@@ -132,7 +123,7 @@ static FUNC(void, SERVICESWCECUM_CODE) SwitchOff(
 }
 
 FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::InitFunction(
-      CONSTP2CONST(ConstModule_TypeAbstract, SERVICESWCECUM_CONST,       SERVICESWCECUM_APPL_CONST) lptrConstModule
+      CONSTP2CONST(ConstModule_TypeAbstract, SERVICESWCECUM_CONST,       SERVICESWCECUM_APPL_CONST) lptrNvMBlocksRomModule
    ,  CONSTP2CONST(CfgModule_TypeAbstract,   SERVICESWCECUM_CONFIG_DATA, SERVICESWCECUM_APPL_CONST) lptrCfgModule
 ){
 #if(STD_ON == ServiceSwcEcuM_InitCheck)
@@ -142,10 +133,10 @@ FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::InitFunction(
    ){
 #endif
       if(
-            (NULL_PTR != lptrConstModule)
+            (NULL_PTR != lptrNvMBlocksRomModule)
          && (NULL_PTR != lptrCfgModule)
       ){
-         lptrConst = (const ConstServiceSwcEcuM_Type*)lptrConstModule;
+         lptrNvMBlocksRom = lptrNvMBlocksRomModule;
          lptrCfg   = lptrCfgModule;
       }
       else{
@@ -231,34 +222,34 @@ FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::StartPreServiceOs(
 
    SetProgrammableInterrupts();
    DriverInitZero();
-   ((ConstServiceSwcEcuM_Type*)lptrConst)->ptrinfServiceEcuM_ServiceSwcEcuM->ServiceDeterminePbConfiguration();
+   ((NvM_BlocksRom_ServiceSwcEcuM_Type*)lptrNvMBlocksRom)->ptrinfServiceEcuM_ServiceSwcEcuM->ServiceDeterminePbConfiguration();
 
    //Check consistency of configuration data
 
    DriverInitOne();
-   lptrConst->ptrinfServiceEcuM_ServiceSwcEcuM->GetValidatedWakeupEvents();
+   ((NvM_BlocksRom_ServiceSwcEcuM_Type*)lptrNvMBlocksRom)->ptrinfServiceEcuM_ServiceSwcEcuM->GetValidatedWakeupEvents();
 
    //Select default shutdown target
 
-   lptrConst->ptrinfServiceEcuM_ServiceSwcEcuM->LoopServiceDetection();
+   ((NvM_BlocksRom_ServiceSwcEcuM_Type*)lptrNvMBlocksRom)->ptrinfServiceEcuM_ServiceSwcEcuM->LoopServiceDetection();
 }
 
 FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::StartPostServiceOs(
    void
 ){
-   lptrConst->ptrinfServiceSchM_ServiceEcuM->Start();
-   lptrConst->ptrinfServiceSchM_ServiceEcuM->StartTiming();
+   ((NvM_BlocksRom_ServiceSwcEcuM_Type*)lptrNvMBlocksRom)->ptrinfServiceSchM_ServiceEcuM->Start();
+   ((NvM_BlocksRom_ServiceSwcEcuM_Type*)lptrNvMBlocksRom)->ptrinfServiceSchM_ServiceEcuM->StartTiming();
 }
 
 FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::OffPreServiceOs(
    void
 ){
    OnGoOffOne();
-   ((lptrConst->aptrinfServiceEcuMClient_One)[IndexServiceEcuMClient_ServiceBswM])->DeInitFunction();//TBD: Simplify
-   ((lptrConst->aptrinfServiceEcuMClient_One)[IndexServiceEcuMClient_ServiceSchM])->DeInitFunction();//TBD: Simplify
+   ((((NvM_BlocksRom_ServiceSwcEcuM_Type*)lptrNvMBlocksRom)->aptrinfServiceEcuMClient_One)[IndexServiceEcuMClient_ServiceBswM])->DeInitFunction();//TBD: Simplify
+   ((((NvM_BlocksRom_ServiceSwcEcuM_Type*)lptrNvMBlocksRom)->aptrinfServiceEcuMClient_One)[IndexServiceEcuMClient_ServiceSchM])->DeInitFunction();//TBD: Simplify
 
-   if(lptrConst->ptrinfServiceEcuM_ServiceSwcEcuM->GetPendingWakeupEvents()){
-      lptrConst->ptrinfServiceEcuM_ServiceSwcEcuM->SelectShutdownTarget();
+   if(((NvM_BlocksRom_ServiceSwcEcuM_Type*)lptrNvMBlocksRom)->ptrinfServiceEcuM_ServiceSwcEcuM->GetPendingWakeupEvents()){
+      ((NvM_BlocksRom_ServiceSwcEcuM_Type*)lptrNvMBlocksRom)->ptrinfServiceEcuM_ServiceSwcEcuM->SelectShutdownTarget();
    }
 }
 

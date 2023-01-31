@@ -30,7 +30,7 @@ class infServiceEcuMClient{
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
       virtual FUNC(void, SERVICESWCECUM_CODE) InitFunction(
-            CONSTP2CONST(ConstModule_TypeAbstract, SERVICESWCECUM_CONST,       SERVICESWCECUM_APPL_CONST) lptrConstModule
+            CONSTP2CONST(ConstModule_TypeAbstract, SERVICESWCECUM_CONST,       SERVICESWCECUM_APPL_CONST) lptrNvMBlocksRomModule
          ,  CONSTP2CONST(CfgModule_TypeAbstract,   SERVICESWCECUM_CONFIG_DATA, SERVICESWCECUM_APPL_CONST) lptrCfgModule
       ) = 0;
 

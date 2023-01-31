@@ -32,7 +32,7 @@ class module_ServiceSwcEcuM:
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-      const ConstServiceSwcEcuM_Type* lptrConst = (ConstServiceSwcEcuM_Type*)NULL_PTR;
+      const ConstModule_TypeAbstract* lptrNvMBlocksRom = (ConstModule_TypeAbstract*)NULL_PTR;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
@@ -43,7 +43,7 @@ class module_ServiceSwcEcuM:
 
    public:
       FUNC(void, SERVICESWCECUM_CODE) InitFunction(
-            CONSTP2CONST(ConstModule_TypeAbstract, SERVICESWCECUM_CONST,       SERVICESWCECUM_APPL_CONST) lptrConstModule
+            CONSTP2CONST(ConstModule_TypeAbstract, SERVICESWCECUM_CONST,       SERVICESWCECUM_APPL_CONST) lptrNvMBlocksRomModule
          ,  CONSTP2CONST(CfgModule_TypeAbstract,   SERVICESWCECUM_CONFIG_DATA, SERVICESWCECUM_APPL_CONST) lptrCfgModule
       );
       FUNC(void, SERVICESWCECUM_CODE) DeInitFunction (void);
