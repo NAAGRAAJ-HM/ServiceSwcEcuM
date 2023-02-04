@@ -214,11 +214,15 @@ FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::MainFunction(
 #endif
 }
 
-#include "Cfg.hpp"
+extern const NvM_BlocksRom_Type NvM_BlocksRom;  //TBD: move to header
+extern const NvM_BlocksNv_Type NvM_BlocksNvRom; //TBD: move to header
+extern       NvM_BlocksNv_Type NvM_BlocksNvRam; //TBD: move to header
+extern const NvM_BlocksNv_Type Fls_Blocks;      //TBD: move to header
+
 FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::StartPreServiceOs(
    void
 ){
-   lptrCfg = (CfgServiceSwcEcuM_Type*)&(PBcfgGen_ROM.CfgServiceSwcEcuM);
+   lptrCfg = (NvM_BlocksNv_ServiceSwcEcuM_Type*)&(NvM_BlocksNvRom.NvM_BlocksNv_ServiceSwcEcuM);
 
    SetProgrammableInterrupts();
    DriverInitZero();

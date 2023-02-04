@@ -24,9 +24,6 @@
 class NvM_BlocksRom_ServiceSwcEcuM_Type:
       public ConstModule_TypeAbstract
 {
-/******************************************************************************/
-/* CONSTS                                                                     */
-/******************************************************************************/
    public:
       uint8                           u8SizeDriverInitData_One;
       infServiceEcuMClient*           aptrinfServiceEcuMClient_One     [SizeDriverInitData_One];
@@ -38,6 +35,11 @@ class NvM_BlocksRom_ServiceSwcEcuM_Type:
       CfgModule_TypeAbstract*         aptrCfgModule_Zero               [SizeDriverInitData_Zero];
       infServiceEcuM_ServiceSwcEcuM*  ptrinfServiceEcuM_ServiceSwcEcuM;
       infServiceSchM_ServiceEcuM*     ptrinfServiceSchM_ServiceEcuM;
+};
+
+class NvM_BlocksNv_ServiceSwcEcuM_Type:
+      public CfgModule_TypeAbstract
+{
 };
 
 /******************************************************************************/
