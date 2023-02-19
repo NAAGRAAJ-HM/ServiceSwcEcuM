@@ -81,8 +81,10 @@ static FUNC(void, SERVICESWCECUM_CODE) DriverInitX(
 
 #include "infServiceNvM_ServiceEcuM.hpp"
 #include "ReSimFm.hpp"
+#include "ReSimCmd.hpp"
 FUNC(void, SERVICESWCECUM_CODE) module_ServiceSwcEcuM::DriverInitZero(void){
-   ReSim.InitFunction();
+// ReSim.InitFunction(); TBD: Enable ReSimFm again
+   ReSimCmd_InitFunction();
 
    lptrNvMBlocksRom = &(NvM_BlocksRom.NvM_BlocksRom_ServiceSwcEcuM); // TBD: OOPS concepts
    DriverInitX(

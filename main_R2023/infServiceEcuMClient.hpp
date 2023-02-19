@@ -1,6 +1,6 @@
 #pragma once
 /******************************************************************************/
-/* File   : infServiceEcuMClient.hpp                                                 */
+/* File   : infServiceEcuMClient.hpp                                          */
 /* Author : NAGARAJA HM (c) since 1982. All rights reserved.                  */
 /******************************************************************************/
 
