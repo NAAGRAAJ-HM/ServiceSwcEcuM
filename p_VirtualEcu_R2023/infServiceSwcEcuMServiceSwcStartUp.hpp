@@ -1,6 +1,6 @@
 #pragma once
 /******************************************************************************/
-/* File   : infServiceSwcEcuM_ServiceStartUp.hpp                              */
+/* File   : infServiceSwcEcuMServiceSwcStartUp.hpp                            */
 /* Author : NAGARAJA HM (c) since 1982. All rights reserved.                  */
 /******************************************************************************/
 
@@ -12,8 +12,8 @@
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-extern FUNC(void, SERVICESWCECUM_CODE) ServiceSwcEcuM_InitFunction   (void);
-extern FUNC(void, SERVICESWCECUM_CODE) ServiceSwcEcuM_DeInitFunction (void);
+extern FUNC(void, SERVICESWCECUM_CODE) infServiceSwcEcuMServiceSwcStartUp_InitFunction   (void);
+extern FUNC(void, SERVICESWCECUM_CODE) infServiceSwcEcuMServiceSwcStartUp_DeInitFunction (void);
 
 /******************************************************************************/
 /* EOF                                                                        */

@@ -9,9 +9,8 @@
 #include "Std_Types.hpp"
 
 #include "ServiceSwcEcuM.hpp"
-#include "infServiceSwcEcuM_ServiceStartUp.hpp"
-
 #include "CalloutStubsServiceSwcEcuM.hpp"
+#include "infServiceSwcEcuMServiceSwcStartUp.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -46,7 +45,7 @@ VAR(ServiceSwcEcuM_TypeContext, SERVICESWCECUM_VAR) ServiceSwcEcuM_Context;
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-FUNC(void, SERVICESWCECUM_CODE) ServiceSwcEcuM_InitFunction(void){
+FUNC(void, SERVICESWCECUM_CODE) infServiceSwcEcuMServiceSwcStartUp_InitFunction(void){
 #if(CfgServiceSwcEcuM_EnableInterrupts == STD_ON)
                                                    CalloutStubsServiceSwcEcuM_SetProgrammableInterrupts();
 #endif
@@ -66,7 +65,7 @@ FUNC(void, SERVICESWCECUM_CODE) ServiceSwcEcuM_InitFunction(void){
                                                    CalloutStubsServiceSwcEcuM_StartOs();
 }
 
-FUNC(void, SERVICESWCECUM_CODE) ServiceSwcEcuM_DeInitFunction(void){
+FUNC(void, SERVICESWCECUM_CODE) infServiceSwcEcuMServiceSwcStartUp_DeInitFunction(void){
    // TBD: ReSim.DeInitFunction();
 }
 
