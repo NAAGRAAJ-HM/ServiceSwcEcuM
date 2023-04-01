@@ -1,6 +1,6 @@
 #pragma once
 /******************************************************************************/
-/* File   : ServiceSwcEcuM.hpp                                                */
+/* File   : SwcServiceEcuM.hpp                                                */
 /* Author : NAGARAJA HM (c) since 1982. All rights reserved.                  */
 /******************************************************************************/
 

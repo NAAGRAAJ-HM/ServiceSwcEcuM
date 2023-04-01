@@ -1,5 +1,5 @@
 /******************************************************************************/
-/* File   : ServiceSwcEcuM.cpp                                                */
+/* File   : SwcServiceEcuM.cpp                                                */
 /* Author : NAGARAJA HM (c) since 1982. All rights reserved.                  */
 /******************************************************************************/
 
@@ -8,9 +8,9 @@
 /******************************************************************************/
 #include "Std_Types.hpp"
 
-#include "ServiceSwcEcuM.hpp"
-#include "CalloutStubsServiceSwcEcuM.hpp"
-#include "infServiceSwcEcuMServiceSwcStartUp.hpp"
+#include "SwcServiceEcuM.hpp"
+#include "CalloutStubsSwcServiceEcuM.hpp"
+#include "infSwcServiceEcuMSwcServiceStartUp.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -24,10 +24,10 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 typedef struct{
-         ServiceSwcEcuM_TypeShutdownTarget ShutdownTarget;
-   const CfgServiceSwcEcuM_Type*           CfgServiceSwcEcuM_lptr;
+         SwcServiceEcuM_TypeShutdownTarget ShutdownTarget;
+   const CfgSwcServiceEcuM_Type*           CfgSwcServiceEcuM_lptr;
          Std_TypeReturn                    bIsInitDone;
-}ServiceSwcEcuM_TypeContext;
+}SwcServiceEcuM_TypeContext;
 
 /******************************************************************************/
 /* CONSTS                                                                     */
@@ -40,32 +40,32 @@ typedef struct{
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-VAR(ServiceSwcEcuM_TypeContext, SERVICESWCECUM_VAR) ServiceSwcEcuM_Context;
+VAR(SwcServiceEcuM_TypeContext, SWCSERVICEECUM_VAR) SwcServiceEcuM_Context;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-FUNC(void, SERVICESWCECUM_CODE) infServiceSwcEcuMServiceSwcStartUp_InitFunction(void){
-#if(CfgServiceSwcEcuM_EnableInterrupts == STD_ON)
-                                                   CalloutStubsServiceSwcEcuM_SetProgrammableInterrupts();
+FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceStartUp_InitFunction(void){
+#if(CfgSwcServiceEcuM_EnableInterrupts == STD_ON)
+                                                   CalloutStubsSwcServiceEcuM_SetProgrammableInterrupts();
 #endif
-                                                   CalloutStubsServiceSwcEcuM_DriverInitZero();
-   ServiceSwcEcuM_Context.CfgServiceSwcEcuM_lptr = CalloutStubsServiceSwcEcuM_PbConfigurationDetermine();
-                                                   CalloutStubsServiceSwcEcuM_CheckPbConfiguration();
-                                                   CalloutStubsServiceSwcEcuM_DriverInitOne(ServiceSwcEcuM_Context.CfgServiceSwcEcuM_lptr);
-                                                   CalloutStubsServiceSwcEcuM_SetDefinedMcuWakeupSource();
+                                                   CalloutStubsSwcServiceEcuM_DriverInitZero();
+   SwcServiceEcuM_Context.CfgSwcServiceEcuM_lptr = CalloutStubsSwcServiceEcuM_PbConfigurationDetermine();
+                                                   CalloutStubsSwcServiceEcuM_CheckPbConfiguration();
+                                                   CalloutStubsSwcServiceEcuM_DriverInitOne(SwcServiceEcuM_Context.CfgSwcServiceEcuM_lptr);
+                                                   CalloutStubsSwcServiceEcuM_SetDefinedMcuWakeupSource();
 
-   ServiceSwcEcuM_Context.ShutdownTarget.Mode                         = ServiceSwcEcuM_Context.CfgServiceSwcEcuM_lptr->DefaultShutdownTarget.Mode;
-   ServiceSwcEcuM_Context.ShutdownTarget.Target                       = ServiceSwcEcuM_Context.CfgServiceSwcEcuM_lptr->DefaultShutdownTarget.Target;
-   ServiceSwcEcuM_Context.ShutdownTarget.Cause                        = ServiceSwcEcuM_Context.CfgServiceSwcEcuM_lptr->DefaultShutdownTarget.Cause;
-   ServiceSwcEcuM_Context.ShutdownTarget.ValidatedWakeupEvents.bReset = 1;
-   ServiceSwcEcuM_Context.bIsInitDone                                 = E_OK;
+   SwcServiceEcuM_Context.ShutdownTarget.Mode                         = SwcServiceEcuM_Context.CfgSwcServiceEcuM_lptr->DefaultShutdownTarget.Mode;
+   SwcServiceEcuM_Context.ShutdownTarget.Target                       = SwcServiceEcuM_Context.CfgSwcServiceEcuM_lptr->DefaultShutdownTarget.Target;
+   SwcServiceEcuM_Context.ShutdownTarget.Cause                        = SwcServiceEcuM_Context.CfgSwcServiceEcuM_lptr->DefaultShutdownTarget.Cause;
+   SwcServiceEcuM_Context.ShutdownTarget.ValidatedWakeupEvents.bReset = 1;
+   SwcServiceEcuM_Context.bIsInitDone                                 = E_OK;
 
-                                                   CalloutStubsServiceSwcEcuM_SwitchOsAppMode();
-                                                   CalloutStubsServiceSwcEcuM_StartOs();
+                                                   CalloutStubsSwcServiceEcuM_SwitchOsAppMode();
+                                                   CalloutStubsSwcServiceEcuM_StartOs();
 }
 
-FUNC(void, SERVICESWCECUM_CODE) infServiceSwcEcuMServiceSwcStartUp_DeInitFunction(void){
+FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceStartUp_DeInitFunction(void){
    // TBD: ReSim.DeInitFunction();
 }
 
