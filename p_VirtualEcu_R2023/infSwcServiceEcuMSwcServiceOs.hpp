@@ -1,6 +1,6 @@
 #pragma once
 /******************************************************************************/
-/* File   : infSwcServiceEcuMSwcServiceStartUp.hpp                            */
+/* File   : infSwcServiceEcuMSwcServiceOs.hpp                                 */
 /*                                                                            */
 /* Author : Raajnaag HULIYAPURADA MATA                                        */
 /*                                                                            */
@@ -29,8 +29,7 @@
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-extern FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceStartUp_InitFunction   (void);
-extern FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceStartUp_DeInitFunction (void);
+extern FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceOs_StartupTwo(void);
 
 /******************************************************************************/
 /* EOF                                                                        */

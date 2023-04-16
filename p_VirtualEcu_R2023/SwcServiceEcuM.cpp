@@ -1,7 +1,7 @@
 /******************************************************************************/
 /* File   : SwcServiceEcuM.cpp                                                */
 /*                                                                            */
-/* Author : Nagaraja HULIYAPURADA MATA                                        */
+/* Author : Raajnaag HULIYAPURADA MATA                                        */
 /*                                                                            */
 /* License / Warranty / Terms and Conditions                                  */
 /*                                                                            */
@@ -13,10 +13,10 @@
 /* certain responsibilities, if you distribute copies of the software, or if  */
 /* you modify it: responsibilities to respect the freedom of others.          */
 /*                                                                            */
-/* All rights reserved. Copyright © 1982 Nagaraja HULIYAPURADA MATA           */
+/* All rights reserved. Copyright © 1982 Raajnaag HULIYAPURADA MATA           */
 /*                                                                            */
 /* Always refer latest software version from:                                 */
-/* https://github.com/NagarajaHuliyapuradaMata?tab=repositories               */
+/* https://github.com/RaajnaagHuliyapuradaMata?tab=repositories               */
 /*                                                                            */
 /******************************************************************************/
 
@@ -28,6 +28,8 @@
 #include "SwcServiceEcuM.hpp"
 #include "CalloutStubsSwcServiceEcuM.hpp"
 #include "infSwcServiceEcuMSwcServiceStartUp.hpp"
+
+#include "infSwcServiceOsSwcServiceEcuM.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -41,10 +43,10 @@
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
 typedef struct{
-         SwcServiceEcuM_TypeShutdownTarget ShutdownTarget;
-   const CfgSwcServiceEcuM_Type*           CfgSwcServiceEcuM_lptr;
-         Std_TypeReturn                    bIsInitDone;
-}SwcServiceEcuM_TypeContext;
+         SwcServiceEcuM_tstTargetShutdown ShutdownTarget;
+   const CfgSwcServiceEcuM_tst*           CfgSwcServiceEcuM_lptr;
+         Std_TypeReturn                   bIsInitDone;
+}SwcServiceEcuM_tstContext;
 
 /******************************************************************************/
 /* CONSTS                                                                     */
@@ -57,7 +59,7 @@ typedef struct{
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-VAR(SwcServiceEcuM_TypeContext, SWCSERVICEECUM_VAR) SwcServiceEcuM_Context;
+VAR(SwcServiceEcuM_tstContext, SWCSERVICEECUM_VAR) SwcServiceEcuM_Context;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
@@ -69,7 +71,6 @@ FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceStartUp_InitFunction(
                                                    CalloutStubsSwcServiceEcuM_DriverInitZero();
    SwcServiceEcuM_Context.CfgSwcServiceEcuM_lptr = CalloutStubsSwcServiceEcuM_PbConfigurationDetermine();
                                                    CalloutStubsSwcServiceEcuM_CheckPbConfiguration();
-                                                   CalloutStubsSwcServiceEcuM_DriverInitOne(SwcServiceEcuM_Context.CfgSwcServiceEcuM_lptr);
                                                    CalloutStubsSwcServiceEcuM_SetDefinedMcuWakeupSource();
 
    SwcServiceEcuM_Context.ShutdownTarget.Mode                         = SwcServiceEcuM_Context.CfgSwcServiceEcuM_lptr->DefaultShutdownTarget.Mode;
@@ -78,12 +79,16 @@ FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceStartUp_InitFunction(
    SwcServiceEcuM_Context.ShutdownTarget.ValidatedWakeupEvents.bReset = 1;
    SwcServiceEcuM_Context.bIsInitDone                                 = E_OK;
 
-                                                   CalloutStubsSwcServiceEcuM_SwitchOsAppMode();
-                                                   CalloutStubsSwcServiceEcuM_StartOs();
+   CalloutStubsSwcServiceEcuM_SwitchOsAppMode();
+   infSwcServiceOsSwcServiceEcuM_Start();
 }
 
 FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceStartUp_DeInitFunction(void){
    // TBD: ReSim.DeInitFunction();
+}
+
+FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceOs_StartupTwo(void){
+   CalloutStubsSwcServiceEcuM_DriverInitOne(SwcServiceEcuM_Context.CfgSwcServiceEcuM_lptr);
 }
 
 /******************************************************************************/
