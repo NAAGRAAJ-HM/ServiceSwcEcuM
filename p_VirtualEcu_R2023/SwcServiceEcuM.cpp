@@ -26,9 +26,11 @@
 #include "Std_Types.hpp"
 
 #include "SwcServiceEcuM.hpp"
-#include "CalloutStubsSwcServiceEcuM.hpp"
+#include "infSwcServiceEcuMSwcServiceOs.hpp"
 #include "infSwcServiceEcuMSwcServiceStartUp.hpp"
 
+#include "CfgSwcServiceEcuM.hpp"
+#include "CalloutStubsSwcServiceEcuM.hpp"
 #include "infSwcServiceOsSwcServiceEcuM.hpp"
 
 /******************************************************************************/
