@@ -30,7 +30,6 @@
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
 extern FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceStartUp_InitFunction   (void);
-extern FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceStartUp_DeInitFunction (void);
 
 /******************************************************************************/
 /* EOF                                                                        */

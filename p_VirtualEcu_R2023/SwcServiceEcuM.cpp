@@ -85,12 +85,12 @@ FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceStartUp_InitFunction(
    infSwcServiceOsSwcServiceEcuM_Start();
 }
 
-FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceStartUp_DeInitFunction(void){
-   // TBD: ReSim.DeInitFunction();
-}
-
 FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceOs_StartupTwo(void){
    CalloutStubsSwcServiceEcuM_DriverInitOne(SwcServiceEcuM_Context.CfgSwcServiceEcuM_lptr);
+}
+
+FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceOs_Shutdown(void){
+   CalloutStubsSwcServiceEcuM_Shutdown();
 }
 
 /******************************************************************************/

@@ -29,7 +29,8 @@
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-extern FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceOs_StartupTwo(void);
+extern FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceOs_StartupTwo (void);
+extern FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceOs_Shutdown   (void);
 
 /******************************************************************************/
 /* EOF                                                                        */
