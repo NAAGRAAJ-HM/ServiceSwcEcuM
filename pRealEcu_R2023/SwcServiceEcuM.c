@@ -53,47 +53,26 @@
 /* OBJECTS                                                                    */
 /******************************************************************************/
 VAR(Type_SwcServiceEcuM_ePhase, SWCSERVICEECUM_VAR) SwcServiceEcuM_ePhase;
+P2CONST(Type_CfgSwcServiceEcuM_st, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONFIG_DATA) SwcServiceEcuM_pcstCfg;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
+FUNC(void, SWCAPPLECUM_CODE) infSwcApplEcuMSwcServiceEcuM_SetInterruptsProgrammable(void){
+}
+
+FUNC(void, SWCAPPLECUM_CODE) infSwcApplEcuMSwcServiceEcuM_InitDriverZero(void){
+}
+
+FUNC(const Type_CfgSwcServiceEcuM_st*, SWCAPPLECUM_CODE) infSwcApplEcuMSwcServiceEcuM_DetermineConfigurationPb(void){
+   return 0;
+}
+
 FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceStartUp_InitFunction(void){
-#if(ECUM_CFG_MULTICORE_ENABLED == STD_ON)
-   if(
-         ECUM_CFG_STARTUP_CORE
-      == GetCoreID()
-   ){
-#endif
-      SwcServiceEcuM_ePhase = SwcServiceEcuM_ePhaseStartOsPre;
-#if(ECUM_CFG_MULTICORE_ENABLED       == STD_ON)
-#if(ECUM_CFG_CCAS_INIT               == STD_OFF)
-#if(ECUM_CFG_SLAVECORE_EARLIER_START == STD_ON)
-      EcuM_Prv_StartSlaveCores();
-#endif
-#endif
-   }
-#endif
-#if(ECUM_CFG_MULTICORE_ENABLED == STD_ON)
-   if(
-         ECUM_CFG_STARTUP_CORE
-      == GetCoreID()
-   ){
-#endif
-#if(ECUM_STARTUP_DURATION == TRUE)
-      EcuM_Prv_dataSelectedShutdownTarget_st.TimeMeasured   = EcuM_Rb_adrConfigPtr_st->DefaultShutdownTarget.TimeMeasured;
-#endif
-#if(ECUM_CFG_MULTICORE_ENABLED == STD_ON)
-#if(ECUM_CFG_CCAS_INIT == STD_OFF)
-#if(ECUM_CFG_SLAVECORE_EARLIER_START == STD_OFF)
-      EcuM_Prv_StartSlaveCores();
-#endif
-#endif
-#endif
-#if(ECUM_CFG_MULTICORE_ENABLED == STD_ON)
-   }
-#endif
-#if(ECUM_CFG_CCAS_INIT == STD_OFF)
-#endif
+   SwcServiceEcuM_ePhase = SwcServiceEcuM_ePhaseStartOsPre;
+   infSwcApplEcuMSwcServiceEcuM_SetInterruptsProgrammable();
+   infSwcApplEcuMSwcServiceEcuM_InitDriverZero();
+   SwcServiceEcuM_pcstCfg = infSwcApplEcuMSwcServiceEcuM_DetermineConfigurationPb();
 }
 
 /******************************************************************************/

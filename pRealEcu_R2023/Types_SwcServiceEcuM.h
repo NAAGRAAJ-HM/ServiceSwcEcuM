@@ -40,11 +40,21 @@ typedef enum{
       SwcServiceEcuM_ePhaseInitClear
    ,  SwcServiceEcuM_ePhaseStartOsPre
    ,  SwcServiceEcuM_ePhaseStartOsPost
-   ,  SwcServiceEcuM_ePhaseUP
-   ,  SwcServiceEcuM_ePhaseOFF_PREOS
-   ,  SwcServiceEcuM_ePhaseOFF_POSTOS
-   ,  SwcServiceEcuM_ePhaseSLEEP
+   ,  SwcServiceEcuM_ePhaseUp
+   ,  SwcServiceEcuM_ePhaseShutdownOsPre
+   ,  SwcServiceEcuM_ePhaseShutdownOsPost
+   ,  SwcServiceEcuM_ePhaseSleep
 }Type_SwcServiceEcuM_ePhase;
+
+typedef uint8  Type_SwcServiceEcuM_tTargetShutdown;
+typedef uint8  Type_SwcServiceEcuM_tCauseShutdown;
+typedef uint16 Type_SwcServiceEcuM_tModeShutdown;
+
+typedef struct{
+   Type_SwcServiceEcuM_tTargetShutdown tTargetShutdown;
+   Type_SwcServiceEcuM_tCauseShutdown  tCauseShutdown;
+   Type_SwcServiceEcuM_tModeShutdown   mode;
+}Type_SwcServiceEcuM_stInfoTargetShutdown;
 
 /******************************************************************************/
 /* CONSTS                                                                     */
