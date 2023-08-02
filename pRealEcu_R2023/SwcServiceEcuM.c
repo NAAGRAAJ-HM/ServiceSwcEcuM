@@ -29,6 +29,8 @@
 #include "CfgSwcServiceEcuM.h"
 #include "infSwcServiceEcuMSwcServiceStartUp.h"
 
+#include "infSwcApplEcuMSwcServiceEcuM.h"
+
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
@@ -52,27 +54,44 @@
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-VAR(Type_SwcServiceEcuM_ePhase, SWCSERVICEECUM_VAR) SwcServiceEcuM_ePhase;
-P2CONST(Type_CfgSwcServiceEcuM_st, SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONFIG_DATA) SwcServiceEcuM_pcstCfg;
+P2CONST(Type_CfgSwcServiceEcuM_st,                SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONFIG_DATA) SwcServiceEcuM_pcstCfg;
+    VAR(Type_SwcServiceEcuM_tSourceWakeup,        SWCSERVICEECUM_VAR)                             SwcServiceEcuM_tSourceWakeup_EventsPending;
+    VAR(Type_SwcServiceEcuM_tSourceWakeup,        SWCSERVICEECUM_VAR)                             SwcServiceEcuM_tSourceWakeup_Validated;
+    VAR(Type_SwcServiceEcuM_tSourceWakeup,        SWCSERVICEECUM_VAR)                             SwcServiceEcuM_tSourceWakeup_ValInd;
+    VAR(Type_SwcServiceEcuM_stInfoTargetShutdown, SWCSERVICEECUM_VAR)                             SwcServiceEcuM_stInfoTargetShutdown;
+    VAR(Type_SwcServiceEcuM_ePhase,               SWCSERVICEECUM_VAR)                             SwcServiceEcuM_ePhase;
+    VAR(boolean,                                  SWCSERVICEECUM_VAR)                             SwcServiceEcuM_bIsInitialised;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
-FUNC(void, SWCAPPLECUM_CODE) infSwcApplEcuMSwcServiceEcuM_SetInterruptsProgrammable(void){
-}
-
-FUNC(void, SWCAPPLECUM_CODE) infSwcApplEcuMSwcServiceEcuM_InitDriverZero(void){
-}
-
-FUNC(const Type_CfgSwcServiceEcuM_st*, SWCAPPLECUM_CODE) infSwcApplEcuMSwcServiceEcuM_DetermineConfigurationPb(void){
-   return 0;
-}
-
 FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceStartUp_InitFunction(void){
    SwcServiceEcuM_ePhase = SwcServiceEcuM_ePhaseStartOsPre;
-   infSwcApplEcuMSwcServiceEcuM_SetInterruptsProgrammable();
-   infSwcApplEcuMSwcServiceEcuM_InitDriverZero();
-   SwcServiceEcuM_pcstCfg = infSwcApplEcuMSwcServiceEcuM_DetermineConfigurationPb();
+   infSwcApplEcuMSwcServiceEcuM_vSetInterruptsProgrammable();
+   infSwcApplEcuMSwcServiceEcuM_vInitDriverZero();
+   SwcServiceEcuM_pcstCfg = infSwcApplEcuMSwcServiceEcuM_stDetermineConfigurationPb();
+   infSwcApplEcuMSwcServiceEcuM_vCheckConsistency();
+   infSwcApplEcuMSwcServiceEcuM_vInitDriverOne(SwcServiceEcuM_pcstCfg);
+   infSwcApplEcuMSwcServiceEcuM_vSetSourceWakeup();
+
+   SwcServiceEcuM_stInfoTargetShutdown.tTargetShutdown = SwcServiceEcuM_pcstCfg->stInfoTargetShutdownDefault.tTargetShutdown;
+   SwcServiceEcuM_stInfoTargetShutdown.mode            = SwcServiceEcuM_pcstCfg->stInfoTargetShutdownDefault.mode;
+   SwcServiceEcuM_stInfoTargetShutdown.tCauseShutdown  = SwcServiceEcuM_pcstCfg->stInfoTargetShutdownDefault.tCauseShutdown;
+
+   if(
+         CfgSwcServiceEcuM_dSourceWakeupNone
+      == (
+               SwcServiceEcuM_tSourceWakeup_EventsPending
+            |  SwcServiceEcuM_tSourceWakeup_Validated
+         )
+   ){
+      SwcServiceEcuM_tSourceWakeup_Validated |= CfgSwcServiceEcuM_dRESET;
+      SwcServiceEcuM_tSourceWakeup_ValInd    |= CfgSwcServiceEcuM_dRESET;
+   }
+   SwcServiceEcuM_bIsInitialised  = TRUE;
+
+   infSwcApplEcuMSwcServiceEcuM_vSwitchOsModeApp();
+   infSwcApplEcuMSwcServiceEcuM_vStartOS();
 }
 
 /******************************************************************************/

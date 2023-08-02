@@ -46,9 +46,10 @@ typedef enum{
    ,  SwcServiceEcuM_ePhaseSleep
 }Type_SwcServiceEcuM_ePhase;
 
-typedef uint8  Type_SwcServiceEcuM_tTargetShutdown;
-typedef uint8  Type_SwcServiceEcuM_tCauseShutdown;
+typedef uint32 Type_SwcServiceEcuM_tSourceWakeup;
 typedef uint16 Type_SwcServiceEcuM_tModeShutdown;
+typedef uint8  Type_SwcServiceEcuM_tCauseShutdown;
+typedef uint8  Type_SwcServiceEcuM_tTargetShutdown;
 
 typedef struct{
    Type_SwcServiceEcuM_tTargetShutdown tTargetShutdown;
