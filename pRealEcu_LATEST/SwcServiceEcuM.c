@@ -23,13 +23,13 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
-#include "Std_Types.h"
+#include "Std_Types.hpp"
 
-#include "Types_SwcServiceEcuM.h"
-#include "CfgSwcServiceEcuM.h"
-#include "infSwcServiceEcuMSwcServiceStartUp.h"
+#include "Types_SwcServiceEcuM.hpp"
+#include "CfgSwcServiceEcuM.hpp"
+#include "infSwcServiceEcuMSwcServiceStartUp.hpp"
 
-#include "infSwcApplEcuMSwcServiceEcuM.h"
+#include "infSwcApplEcuMSwcServiceEcuM.hpp"
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -54,13 +54,13 @@
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-P2CONST(Type_CfgSwcServiceEcuM_st,                SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONFIG_DATA) SwcServiceEcuM_pcstCfg;
-    VAR(Type_SwcServiceEcuM_tSourceWakeup,        SWCSERVICEECUM_VAR)                             SwcServiceEcuM_tSourceWakeup_EventsPending;
-    VAR(Type_SwcServiceEcuM_tSourceWakeup,        SWCSERVICEECUM_VAR)                             SwcServiceEcuM_tSourceWakeup_Validated;
-    VAR(Type_SwcServiceEcuM_tSourceWakeup,        SWCSERVICEECUM_VAR)                             SwcServiceEcuM_tSourceWakeup_ValInd;
-    VAR(Type_SwcServiceEcuM_stInfoTargetShutdown, SWCSERVICEECUM_VAR)                             SwcServiceEcuM_stInfoTargetShutdown;
-    VAR(Type_SwcServiceEcuM_ePhase,               SWCSERVICEECUM_VAR)                             SwcServiceEcuM_ePhase;
-    VAR(boolean,                                  SWCSERVICEECUM_VAR)                             SwcServiceEcuM_bIsInitialised;
+P2CONST(Type_CfgSwcServiceEcuM_st,               SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONFIG_DATA) SwcServiceEcuM_pcstCfg;
+   VAR(Type_SwcServiceEcuM_tSourceWakeup,        SWCSERVICEECUM_VAR)                             SwcServiceEcuM_tSourceWakeup_EventsPending;
+   VAR(Type_SwcServiceEcuM_tSourceWakeup,        SWCSERVICEECUM_VAR)                             SwcServiceEcuM_tSourceWakeup_Validated;
+   VAR(Type_SwcServiceEcuM_tSourceWakeup,        SWCSERVICEECUM_VAR)                             SwcServiceEcuM_tSourceWakeup_ValInd;
+   VAR(Type_SwcServiceEcuM_stInfoTargetShutdown, SWCSERVICEECUM_VAR)                             SwcServiceEcuM_stInfoTargetShutdown;
+   VAR(Type_SwcServiceEcuM_ePhase,               SWCSERVICEECUM_VAR)                             SwcServiceEcuM_ePhase;
+   VAR(boolean,                                  SWCSERVICEECUM_VAR)                             SwcServiceEcuM_bIsInitialised;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
