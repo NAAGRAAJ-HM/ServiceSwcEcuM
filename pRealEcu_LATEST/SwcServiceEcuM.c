@@ -54,13 +54,13 @@
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
-P2CONST(Type_CfgSwcServiceEcuM_st,               SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONFIG_DATA) SwcServiceEcuM_pcstCfg;
-   VAR(Type_SwcServiceEcuM_tSourceWakeup,        SWCSERVICEECUM_VAR)                             SwcServiceEcuM_tSourceWakeup_EventsPending;
-   VAR(Type_SwcServiceEcuM_tSourceWakeup,        SWCSERVICEECUM_VAR)                             SwcServiceEcuM_tSourceWakeup_Validated;
-   VAR(Type_SwcServiceEcuM_tSourceWakeup,        SWCSERVICEECUM_VAR)                             SwcServiceEcuM_tSourceWakeup_ValInd;
-   VAR(Type_SwcServiceEcuM_stInfoTargetShutdown, SWCSERVICEECUM_VAR)                             SwcServiceEcuM_stInfoTargetShutdown;
-   VAR(Type_SwcServiceEcuM_ePhase,               SWCSERVICEECUM_VAR)                             SwcServiceEcuM_ePhase;
-   VAR(boolean,                                  SWCSERVICEECUM_VAR)                             SwcServiceEcuM_bIsInitialised;
+P2CONST(Type_CfgSwcServiceEcuM_st,                SWCSERVICEECUM_VAR, SWCSERVICEECUM_CONFIG_DATA) SwcServiceEcuM_pcstCfg;
+    VAR(Type_SwcServiceEcuM_tSourceWakeup,        SWCSERVICEECUM_VAR)                             SwcServiceEcuM_tSourceWakeup_EventsPending;
+    VAR(Type_SwcServiceEcuM_tSourceWakeup,        SWCSERVICEECUM_VAR)                             SwcServiceEcuM_tSourceWakeup_Validated;
+    VAR(Type_SwcServiceEcuM_tSourceWakeup,        SWCSERVICEECUM_VAR)                             SwcServiceEcuM_tSourceWakeup_ValInd;
+    VAR(Type_SwcServiceEcuM_stInfoTargetShutdown, SWCSERVICEECUM_VAR)                             SwcServiceEcuM_stInfoTargetShutdown;
+    VAR(Type_SwcServiceEcuM_ePhase,               SWCSERVICEECUM_VAR)                             SwcServiceEcuM_ePhase;
+    VAR(boolean,                                  SWCSERVICEECUM_VAR)                             SwcServiceEcuM_bIsInitialised;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
@@ -74,7 +74,7 @@ FUNC(void, SWCSERVICEECUM_CODE) infSwcServiceEcuMSwcServiceStartUp_InitFunction(
    infSwcApplEcuMSwcServiceEcuM_vInitDriverOne(SwcServiceEcuM_pcstCfg);
    infSwcApplEcuMSwcServiceEcuM_vSetSourceWakeup();
 
-   SwcServiceEcuM_stInfoTargetShutdown.tTargetShutdown = SwcServiceEcuM_pcstCfg->stInfoTargetShutdownDefault.tTargetShutdown;
+   SwcServiceEcuM_stInfoTargetShutdown.eTargetShutdown = SwcServiceEcuM_pcstCfg->stInfoTargetShutdownDefault.eTargetShutdown;
    SwcServiceEcuM_stInfoTargetShutdown.mode            = SwcServiceEcuM_pcstCfg->stInfoTargetShutdownDefault.mode;
    SwcServiceEcuM_stInfoTargetShutdown.tCauseShutdown  = SwcServiceEcuM_pcstCfg->stInfoTargetShutdownDefault.tCauseShutdown;
 
