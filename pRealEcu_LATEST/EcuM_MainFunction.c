@@ -297,7 +297,7 @@ static FUNC(void, ECUM_CODE) EcuM_Lok_ProceedShutdown(void){
 static FUNC(void, ECUM_CODE ) EcuM_Lok_WakeupValidation(void)
         {
    VAR(uint8, AUTOMATIC) cntrLoopCtr_u8;
-   VAR(Type_SwcServiceEcuM_tSourceWakeup,AUTOMATIC) dataPendingWakeupEvents_u32;
+   VAR(Type_SwcServiceEcuM_tSourceWakeup, AUTOMATIC) dataPendingWakeupEvents_u32;
    VAR( uint16, ECUM_VAR) datawkpSrcValidationTimeoutCtr_u16;
         SchM_Enter_EcuM();
         dataPendingWakeupEvents_u32 = SwcServiceEcuM_tSourceWakeup_EventsPending;

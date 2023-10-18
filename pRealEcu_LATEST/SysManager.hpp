@@ -2,7 +2,7 @@
 #define SYS_MANAGER_H
 
 #include "SysManagerX.hpp"
-#include "version.hpp"
+#include "CfgSwcServiceStartUp.hpp"
 
 #define cECU_RESET  1
 #define cECU_SLEEP  2

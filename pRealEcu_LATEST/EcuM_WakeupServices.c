@@ -144,7 +144,7 @@ FUNC(void, ECUM_CODE ) EcuM_ValidateWakeupEvent( VAR(Type_SwcServiceEcuM_tSource
    VAR(uint32, AUTOMATIC) EcuM_CommchlWkupEvents_u32 = 0;
 
     // Variable used to hold only the wakeup sources with Comm channel reference from the passed sources
-   VAR( Type_SwcServiceEcuM_tSourceWakeup,AUTOMATIC )  dataPendingWakeupEvents_u32 = 0;
+   VAR( Type_SwcServiceEcuM_tSourceWakeup, AUTOMATIC )  dataPendingWakeupEvents_u32 = 0;
 
    if( SwcServiceEcuM_bIsInitialised == FALSE )
    {

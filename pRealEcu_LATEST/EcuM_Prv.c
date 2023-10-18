@@ -128,7 +128,7 @@ FUNC( boolean, ECUM_CODE ) EcuM_Lok_IsUserHandlingPossible_b(
 ){
    VAR(boolean, AUTOMATIC ) return_value = FALSE;
    VAR(EcuM_UserType, AUTOMATIC) cntrLoop_u16;
-   VAR(boolean,AUTOMATIC) is_validuser_b = FALSE;
+   VAR(boolean, AUTOMATIC) is_validuser_b = FALSE;
    if(FALSE != SwcServiceEcuM_bIsInitialised){
         for(cntrLoop_u16 = 0;cntrLoop_u16 < ECUM_CFG_NUM_FLEX_USERS;cntrLoop_u16++){
                 if(EcuM_Cfg_flexUsers_au16[cntrLoop_u16] == *user){
@@ -445,7 +445,7 @@ static FUNC(void, ECUM_CODE)EcuM_Lok_McuSetMode( VAR(uint8, AUTOMATIC) Mode, VAR
 }
 #endif//ECUM_SLEEP_SUPPORT_ENABLE
 
-FUNC(uint32, ECUM_CODE)EcuM_Lok_ComMWakeupHandling (VAR( Type_SwcServiceEcuM_tSourceWakeup,AUTOMATIC )  dataPendingWakeupEvents){
+FUNC(uint32, ECUM_CODE)EcuM_Lok_ComMWakeupHandling (VAR( Type_SwcServiceEcuM_tSourceWakeup, AUTOMATIC )  dataPendingWakeupEvents){
    VAR(uint32, AUTOMATIC) EcuM_CommchlWkupEvents_u32 = 0;
    VAR(uint8, AUTOMATIC) ctrLoop_u8 = 0;
    VAR(uint8, AUTOMATIC) ctrLoopPNCNotify_u8 = 0;

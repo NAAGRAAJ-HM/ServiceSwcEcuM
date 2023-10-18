@@ -222,7 +222,7 @@ extern FUNC(void, ECUM_CODE ) EcuM_Lok_WakeupIndication(
         VAR(Type_SwcServiceEcuM_tSourceWakeup, AUTOMATIC) dataPendingWakeupEvents_u32  );
 extern FUNC(void, ECUM_CODE ) EcuM_Lok_DecValidationCtr(void);
 extern FUNC(void, ECUM_CODE ) infSwcApplEcuMSwcServiceEcuM_vStartOS(void);
-extern FUNC(uint32, ECUM_CODE)EcuM_Lok_ComMWakeupHandling(VAR(Type_SwcServiceEcuM_tSourceWakeup,AUTOMATIC )dataPendingWakeupEvents);
+extern FUNC(uint32, ECUM_CODE)EcuM_Lok_ComMWakeupHandling(VAR(Type_SwcServiceEcuM_tSourceWakeup, AUTOMATIC )dataPendingWakeupEvents);
 
 #if(ECUM_CFG_MODE_HANDLING == STD_ON)
 extern FUNC( boolean, ECUM_CODE ) EcuM_Lok_IsUserHandlingPossible_b(
