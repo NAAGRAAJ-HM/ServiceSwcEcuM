@@ -15,7 +15,7 @@
 #else
 #define cCOASTMODE_TIME_MIN (uint32)10   // 10 minutes
 #endif
-#define cCOASTMODE_TIME_10MS  (cCOASTMODE_TIME_MIN * 60 * 100) // coastmode timer is count in 10ms cycle //Rivian OIL#134
+#define cCOASTMODE_TIME_10MS  (cCOASTMODE_TIME_MIN * 60 * 100) // coastmode timer is count in 10ms cycle //RAJA OIL#134
 
 static eEcuEventsType SYSMGR_GetEvent(void);
 static void SYSMGR_SwitchEcuMode(void);
